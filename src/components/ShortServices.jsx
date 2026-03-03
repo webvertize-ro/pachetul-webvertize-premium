@@ -1,9 +1,13 @@
 import Modal from './Modal';
 import shortServicesPic from '../assets/images/short_services_pic.jpg';
 import Form from './Form';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase, faCheck } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBriefcase,
+  faCheck,
+  faPlay,
+} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router';
 import { shortServices } from '../data/listData';
 import ListItem from './ListItem';
@@ -29,6 +33,63 @@ const Row = styled.div`
   @media (max-width: 992px) {
     gap: 2rem;
   }
+`;
+
+const VideoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  border-radius: 1rem;
+  position: relative;
+`;
+
+const StyledIframe = styled.iframe`
+  width: 750px;
+  height: 400px;
+  padding: 1.5rem;
+`;
+
+const wave = keyframes`
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+`;
+
+const PlayButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: #1f3745;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  border: none;
+  border-radius: 50%;
+  padding: 1rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.75);
+    animation: ${wave} 2s ease-out infinite;
+  }
+`;
+
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  font-size: 1.5rem;
 `;
 
 const StyledH2 = styled.h2`
@@ -160,6 +221,7 @@ const Button2 = styled(Link)`
 const StyledImg = styled.img`
   max-width: 425px;
   border-radius: 1.5rem;
+  position: relative;
 
   @media (max-width: 576px) {
     max-width: 275px;
@@ -182,9 +244,27 @@ function ShortServices() {
       <div className="container">
         <Row className="row d-flex align-items-center">
           {/* Image */}
-          <div className="col-lg-6 d-flex justify-content-center">
-            <StyledImg src={shortServicesPic} className="img-fluid" />
-          </div>
+          <VideoContainer className="col-lg-6" bgimg={shortServicesPic}>
+            <StyledImg src={shortServicesPic} alt="" className="img-fluid" />
+            <Modal>
+              <Modal.Open opens="video-modal">
+                <PlayButton>
+                  <StyledFontAwesomeIcon icon={faPlay} />
+                </PlayButton>
+              </Modal.Open>
+              <Modal.Window
+                name="video-modal"
+                bgColor="rgba(59, 94, 117, 0.3)"
+                title="Video de prezentare"
+              >
+                <StyledIframe
+                  src="https://www.youtube.com/embed/jFum1tXS6H0?si=FR8U2WwAfJOZWdF6"
+                  frameborder="0"
+                  allowfullscreen
+                ></StyledIframe>
+              </Modal.Window>
+            </Modal>
+          </VideoContainer>
           {/* Text */}
           <TextContent className="col-lg-6 ">
             <StyledH2>
