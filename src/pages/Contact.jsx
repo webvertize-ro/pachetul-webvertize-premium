@@ -5,6 +5,7 @@ import ContactSection from '../components/ContactSection';
 import CTA from '../components/CTA';
 import { useEffect } from 'react';
 import Group from '../components/Group';
+import StreetView from '../components/StreetView';
 
 const StyledContact = styled.div`
   /* height: 650px; */
@@ -30,6 +31,7 @@ function Contact() {
         />
         <ContactSection />
       </Group>
+      <StreetView />
       <CTA
         title="Vrei să lucrăm împreună?"
         text="Completează formularul sau contactează-ne direct și hai să discutăm cum putem să-ți transformăm ideile în proiecte concrete."

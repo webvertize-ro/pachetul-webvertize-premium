@@ -45,10 +45,21 @@ const VideoContainer = styled.div`
   position: relative;
 `;
 
-const StyledIframe = styled.iframe`
+const IframeWrapper = styled.div`
   width: 750px;
   height: 400px;
-  padding: 1.5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+`;
+
+const ModalWindowInner = styled.div`
+  padding: 2rem 3rem;
+`;
+
+const StyledIframe = styled.iframe`
+  width: 100%;
+  height: 100%;
+  border: none;
 `;
 
 const wave = keyframes`
@@ -257,11 +268,15 @@ function ShortServices() {
                 bgColor="rgba(59, 94, 117, 0.3)"
                 title="Video de prezentare"
               >
-                <StyledIframe
-                  src="https://www.youtube.com/embed/jFum1tXS6H0?si=FR8U2WwAfJOZWdF6"
-                  frameborder="0"
-                  allowfullscreen
-                ></StyledIframe>
+                <ModalWindowInner>
+                  <IframeWrapper>
+                    <StyledIframe
+                      src="https://www.youtube.com/embed/jFum1tXS6H0?si=FR8U2WwAfJOZWdF6"
+                      frameborder="0"
+                      allowfullscreen
+                    ></StyledIframe>
+                  </IframeWrapper>
+                </ModalWindowInner>
               </Modal.Window>
             </Modal>
           </VideoContainer>
