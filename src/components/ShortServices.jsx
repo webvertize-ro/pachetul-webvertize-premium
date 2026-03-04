@@ -3,24 +3,18 @@ import shortServicesPic from '../assets/images/short_services_pic.jpg';
 import Form from './Form';
 import styled, { keyframes } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBriefcase,
-  faCheck,
-  faPlay,
-} from '@fortawesome/free-solid-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router';
 import { shortServices } from '../data/listData';
 import ListItem from './ListItem';
 
 const StyledShortServices = styled.div`
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  background-color: #7fa5b8;
+  padding: 3rem;
+  background-color: #365764;
   color: #fff;
 
   @media (max-width: 576px) {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding: 1.5rem;
   }
 
   @media (min-width: 576px) and (max-width: 992px) {
@@ -39,10 +33,33 @@ const VideoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-position: center;
-  background-size: cover;
-  border-radius: 1rem;
   position: relative;
+`;
+
+const StyledImg = styled.img`
+  max-width: 425px;
+  border-radius: 1.5rem;
+  border: 4px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+
+  @media (max-width: 576px) {
+    max-width: 275px;
+  }
+`;
+
+const myAnimation = keyframes`
+  0% {
+    opacity: 0;
+  } 
+  100%{
+    opacity: 1;
+  }
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
 `;
 
 const IframeWrapper = styled.div`
@@ -162,14 +179,14 @@ const ButtonsContainer = styled.div`
   justify-content: center;
   gap: 0.25rem;
 
-  @media (max-width: 992px) {
+  @media (max-width: 576px) {
     flex-direction: column;
   }
 `;
 
 const Button1 = styled(Link)`
   text-decoration: none;
-  background: rgba(31, 55, 69, 0.3);
+  background-color: rgba(255, 101, 0, 0.65);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -190,7 +207,7 @@ const Button1 = styled(Link)`
   @media (min-width: 992px) {
     flex: 1;
     &:hover {
-      background: rgba(31, 55, 69, 0.45);
+      background-color: rgba(255, 101, 0, 0.8);
       backdrop-filter: blur(7.5px);
       -webkit-backdrop-filter: blur(7.5px);
       border: 1px solid rgba(255, 255, 255, 0.5);
@@ -200,7 +217,7 @@ const Button1 = styled(Link)`
 
 const Button2 = styled(Link)`
   text-decoration: none;
-  background-color: rgba(42, 70, 87, 0.5);
+  background-color: rgba(30, 62, 98, 0.65);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(42, 70, 87, 0.3);
@@ -217,7 +234,7 @@ const Button2 = styled(Link)`
   }
 
   &:hover {
-    background-color: rgba(42, 70, 87, 0.75);
+    background-color: rgba(30, 62, 98, 0.9);
     backdrop-filter: blur(7.5px);
     -webkit-backdrop-filter: blur(7.5px);
     border: 1px solid rgba(42, 70, 87, 0.5);
@@ -226,16 +243,6 @@ const Button2 = styled(Link)`
   @media (max-width: 576px) {
     font-size: 1rem;
     padding: 0.5rem;
-  }
-`;
-
-const StyledImg = styled.img`
-  max-width: 425px;
-  border-radius: 1.5rem;
-  position: relative;
-
-  @media (max-width: 576px) {
-    max-width: 275px;
   }
 `;
 
@@ -254,9 +261,11 @@ function ShortServices() {
     <StyledShortServices>
       <div className="container">
         <Row className="row d-flex align-items-center">
-          {/* Image */}
+          {/* Image with Play Button */}
           <VideoContainer className="col-lg-6" bgimg={shortServicesPic}>
-            <StyledImg src={shortServicesPic} alt="" className="img-fluid" />
+            <ImageWrapper>
+              <StyledImg src={shortServicesPic} alt="" className="img-fluid" />
+            </ImageWrapper>
             <Modal>
               <Modal.Open opens="video-modal">
                 <PlayButton>
@@ -281,7 +290,7 @@ function ShortServices() {
             </Modal>
           </VideoContainer>
           {/* Text */}
-          <TextContent className="col-lg-6 ">
+          <TextContent className="col-lg-6">
             <StyledH2>
               Toate serviciile de care ai nevoie, într-un singur loc
             </StyledH2>

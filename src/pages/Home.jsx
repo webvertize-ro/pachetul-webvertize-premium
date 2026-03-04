@@ -12,7 +12,9 @@ import PhotoGallery from '../components/PhotoGallery';
 import { images } from '../data/gallery1.js';
 import SliderWrapper from '../components/ImageSlider/SliderWrapper.jsx';
 
-const StyledHome = styled.div``;
+const StyledHome = styled.div`
+  /* overflow-x: hidden; */
+`;
 
 function Home() {
   useEffect(() => {

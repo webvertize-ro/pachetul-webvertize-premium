@@ -26,6 +26,10 @@ const StyledP = styled.p`
 
 const Title = styled.div`
   font-size: 1.25rem;
+
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+  }
 `;
 
 function ListItem({ icon, title, subtitle }) {

@@ -17,21 +17,34 @@ const Container = styled.div`
 
 const StyledImg = styled.img`
   max-width: 950px;
+  border-radius: 1rem;
 
   @media (max-width: 576px) {
+    max-width: 325px;
   }
 
   @media (min-width: 576px) and (max-width: 992px) {
+    max-width: 550px;
   }
 `;
 
 const StyledH2 = styled.h2`
   font-size: 2.2rem;
   font-weight: 600;
+
+  @media (max-width: 576px) {
+    font-size: 1.6rem;
+    text-align: center;
+  }
 `;
 
 const StyledP = styled.p`
   font-size: 1.25rem;
+
+  @media (max-width: 576px) {
+    font-size: 1rem;
+    text-align: center;
+  }
 `;
 
 const ImageContainer = styled.div`
