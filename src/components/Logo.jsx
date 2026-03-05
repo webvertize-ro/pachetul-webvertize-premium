@@ -6,7 +6,13 @@ const StyledImg = styled.img`
 `;
 
 function Logo({ width }) {
-  return <StyledImg width={width} src={logoImg} />;
+  return (
+    <StyledImg
+      width={width}
+      src={logoImg}
+      alt="Logo-ul afacerii [Nume Afacere]"
+    />
+  );
 }
 
 export default Logo;

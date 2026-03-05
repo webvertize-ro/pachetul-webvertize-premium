@@ -213,16 +213,28 @@ function ImageSlider() {
           </React.Fragment>
         ))}
       </ImageContainer>
-      <SliderButton style={{ left: 0 }} onClick={showPrevImage}>
+      <SliderButton
+        style={{ left: 0 }}
+        onClick={showPrevImage}
+        aria-label="Imaginea anterioară"
+      >
         <StyledFontAwesomeIcon icon={faCircleLeft} />
       </SliderButton>
-      <SliderButton style={{ right: 0 }} onClick={showNextImage}>
+      <SliderButton
+        style={{ right: 0 }}
+        onClick={showNextImage}
+        aria-label="Imaginea următoare"
+      >
         <StyledFontAwesomeIcon icon={faCircleRight} />
       </SliderButton>
 
       <Dots>
         {images.map((_, index) => (
-          <Dot onClick={() => setImageIndex(index)} key={index}>
+          <Dot
+            aria-label={`imaginea-${index + 1}`}
+            onClick={() => setImageIndex(index)}
+            key={index}
+          >
             {index === imageIndex ? (
               <DotFontAwesomeIcon icon={faCircleDot} />
             ) : (

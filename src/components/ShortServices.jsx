@@ -284,7 +284,7 @@ function ShortServices() {
             </ImageWrapper>
             <Modal>
               <Modal.Open opens="video-modal">
-                <PlayButton>
+                <PlayButton aria-label="Deschide modalul cu videoclip">
                   <StyledFontAwesomeIcon icon={faPlay} />
                 </PlayButton>
               </Modal.Open>
@@ -321,7 +321,12 @@ function ShortServices() {
               ))}
             </StyledUl>
             <ButtonsContainer>
-              <Button1 to="/services">Află mai multe</Button1>
+              <Button1
+                to="/services"
+                aria-label="navighează la pagina cu servicii"
+              >
+                Află mai multe
+              </Button1>
               <Modal>
                 <Modal.Open opens="form-modal">
                   <Button2>Cere o ofertă de preț</Button2>

@@ -124,7 +124,7 @@ function StreetView() {
           <StyledImg src={businessStreetViewImg} className="img-fluid" alt="" />
           <Modal>
             <Modal.Open opens="form-modal">
-              <StyledButton>
+              <StyledButton aria-label="Deschide modalul cu videoclipul cu vederea stradală a afacerii">
                 <StyledFontAwesomeIcon icon={faPlay} />
               </StyledButton>
             </Modal.Open>

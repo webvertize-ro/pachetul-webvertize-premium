@@ -52,6 +52,7 @@ function FacebookButton({ isOpenModal }) {
       href="https://www.facebook.com"
       target="_blank"
       isOpenModal={isOpenModal}
+      aria-label="Click pentru a începe o conversație pe Facebook cu afacerea [Numele afacerii]"
     >
       <FontAwesomeIcon icon={faFacebookMessenger} />
     </StyledAnchor>

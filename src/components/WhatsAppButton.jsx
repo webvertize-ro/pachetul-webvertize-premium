@@ -49,6 +49,7 @@ function WhatsAppButton({ isOpenModal }) {
       href="https://wa.me/+40750419349"
       target="_blank"
       isOpenModal={isOpenModal}
+      aria-label="Click pentru a începe o conversație pe WhatsApp cu [Numele Afacerii]"
     >
       <FontAwesomeIcon icon={faWhatsappSquare} />
     </StyledAnchor>

@@ -50,7 +50,7 @@ function FormButton() {
     <>
       <Modal>
         <Modal.Open opens="form-modal">
-          <StyledFormButton>
+          <StyledFormButton aria-label="Deschide modalul cu formularul de contact">
             <FontAwesomeIcon icon={faMessage} />
           </StyledFormButton>
         </Modal.Open>
