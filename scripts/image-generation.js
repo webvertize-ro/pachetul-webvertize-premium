@@ -3,27 +3,23 @@ import path from 'path';
 
 const images = [
   {
-    input: './src/assets/images/gallery/gallery4/products_img1.avif',
+    input: './src/assets/images/img-slider/img1.avif',
     widths: [400, 800, 1200],
   },
   {
-    input: './src/assets/images/gallery/gallery4/products_img2.avif',
+    input: './src/assets/images/img-slider/img2.avif',
     widths: [400, 800, 1200],
   },
   {
-    input: './src/assets/images/gallery/gallery4/products_img3.avif',
+    input: './src/assets/images/img-slider/img3.avif',
     widths: [400, 800, 1200],
   },
   {
-    input: './src/assets/images/gallery/gallery4/products_img4.avif',
+    input: './src/assets/images/img-slider/img4.avif',
     widths: [400, 800, 1200],
   },
   {
-    input: './src/assets/images/gallery/gallery4/products_img5.avif',
-    widths: [400, 800, 1200],
-  },
-  {
-    input: './src/assets/images/gallery/gallery4/products_img6.avif',
+    input: './src/assets/images/img-slider/img5.avif',
     widths: [400, 800, 1200],
   },
 ];
