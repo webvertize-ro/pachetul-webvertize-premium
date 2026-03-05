@@ -198,7 +198,7 @@ function ImageSlider() {
         {images.map(({ url, alt, title, desc, caption, srcSet }, index) => (
           <React.Fragment key={url}>
             <StyledImg
-              srcset={srcSet}
+              srcSet={srcSet}
               sizes="(max-width: 576px) 33vw, (max-width: 992px) 33vw, calc(33vw - 4rem)"
               src={url}
               alt={alt}

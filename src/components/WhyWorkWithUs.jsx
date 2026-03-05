@@ -128,7 +128,7 @@ function WhyWorkWithUs() {
                 src={whyWorkWithUsPic}
                 alt=""
                 className="img-fluid"
-                srcset={`${img400} 400w, ${img800} 800w, ${img1200} 1200w`}
+                srcSet={`${img400} 400w, ${img800} 800w, ${img1200} 1200w`}
                 sizes="(max-width: 576px) 33vw, (max-width: 992px) 33vw, calc(33vw - 4rem)"
               />
             </div>

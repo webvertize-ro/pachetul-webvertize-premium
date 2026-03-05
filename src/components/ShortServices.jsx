@@ -279,7 +279,7 @@ function ShortServices() {
           <VideoContainer className="col-lg-6">
             <ImageWrapper>
               <StyledImg
-                srcset={`${img400} 400w, ${img800} 800w, ${img1200} 1200w`}
+                srcSet={`${img400} 400w, ${img800} 800w, ${img1200} 1200w`}
                 sizes="(max-width: 576px) 33vw, (max-width: 992px) 33vw, calc(33vw - 4rem)"
                 alt=""
                 className="img-fluid"
@@ -319,8 +319,8 @@ function ShortServices() {
             </StyledP>
 
             <StyledUl>
-              {shortServices.map((item) => (
-                <ListItem icon={item.icon} title={item.title} />
+              {shortServices.map((item, index) => (
+                <ListItem icon={item.icon} title={item.title} key={index} />
               ))}
             </StyledUl>
             <ButtonsContainer>
