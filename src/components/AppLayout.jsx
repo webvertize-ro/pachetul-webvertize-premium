@@ -10,7 +10,9 @@ function AppLayout() {
   return (
     <div>
       <Navigation />
-      <Outlet />
+      <div role="main">
+        <Outlet />
+      </div>
       <SideButtons />
       <BackTopBtn />
       <CookiePopup />
