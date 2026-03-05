@@ -48,11 +48,15 @@ function StickyButtons() {
   return (
     <StyledStickyButtons>
       {/* WhatsApp */}
-      <WhatsApp href="https://wa.me/+40750419349" target="_blank">
+      <WhatsApp
+        href="https://wa.me/+40750419349"
+        target="_blank"
+        aria-label="Începe o conversație pe WhatsApp"
+      >
         <StyledFontAwesomeIcon icon={faWhatsappSquare} />
       </WhatsApp>
       {/* Phone */}
-      <Phone href="tel:+40750419349" target="_blank">
+      <Phone href="tel:+40750419349" target="_blank" aria-label="Sună direct">
         <StyledFontAwesomeIcon icon={faSquarePhone} />
       </Phone>
     </StyledStickyButtons>
