@@ -18,6 +18,10 @@ const StyledFooter = styled.footer`
   color: #fff;
 `;
 
+const StyledH6 = styled.h6`
+  font-size: 1.5rem;
+`;
+
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: #fff;
@@ -48,7 +52,7 @@ function Footer() {
         <div className="row">
           <div className="col-md-4 my-3">
             <div className="d-flex align-items-center gap-1">
-              <h6 className="fw-bold fs-5">Despre</h6>
+              <StyledH6 className="fw-bold">Despre</StyledH6>
               <Logo width="100" />
             </div>
             <p>
