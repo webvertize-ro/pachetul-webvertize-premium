@@ -27,7 +27,7 @@ const StyledBottomNav = styled.div`
     margin-right: auto;
     width: 90%;
     padding: 0.75rem;
-    z-index: 99;
+    z-index: 110;
     gap: 0.5rem;
     /* glassmorphism effect */
     background: rgba(255, 255, 255, 0.2);

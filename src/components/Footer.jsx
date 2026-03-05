@@ -36,6 +36,11 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   }
 `;
 
+const StrongEmail = styled.strong`
+  color: #fff;
+  text-decoration: underline white;
+`;
+
 function Footer() {
   return (
     <StyledFooter className="footer py-6">
@@ -43,7 +48,7 @@ function Footer() {
         <div className="row">
           <div className="col-md-4 my-3">
             <div className="d-flex align-items-center gap-1">
-              <h5 className="fw-bold">Despre</h5>
+              <h6 className="fw-bold fs-5">Despre</h6>
               <Logo width="100" />
             </div>
             <p>
@@ -95,7 +100,7 @@ function Footer() {
             <p>
               Ne poți scrie direct pe email la
               <a href="mailto:contact@site.com">
-                <strong> contact@afacerea_ta.ro</strong>
+                <StrongEmail> contact@afacerea_ta.ro</StrongEmail>
               </a>
             </p>
           </div>

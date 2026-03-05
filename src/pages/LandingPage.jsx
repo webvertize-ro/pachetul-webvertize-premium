@@ -25,7 +25,7 @@ function LandingPage() {
           name="description"
           content="Cauți un specialist în [domeniu] în [orașul tău]? [Numele Afacerii] oferă soluții rapide, profesioniste și garantate. Contactează-ne azi și rezolvăm împreună!"
         />
-      </Helme>
+      </Helmet>
       <DiscountHeader />
       <MainContent
         img={landingImg}

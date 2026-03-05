@@ -13,7 +13,7 @@ import ListItem from './ListItem';
 
 const StyledShortServices = styled.div`
   padding: 3rem;
-  background-color: #365764;
+  background-color: rgb(44, 44, 44);
   color: #fff;
 
   @media (max-width: 576px) {
@@ -90,15 +90,15 @@ const StyledIframe = styled.iframe`
   border: none;
 `;
 
-const wave = keyframes`
-  0% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(1.3);
-    opacity: 0;
-  }
+const WaveAnimation = keyframes`
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.3);
+        opacity: 0;
+    }
 `;
 
 const PlayButton = styled.button`
@@ -106,7 +106,6 @@ const PlayButton = styled.button`
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  background-color: #1f3745;
   color: #fff;
   position: absolute;
   top: 50%;
@@ -117,13 +116,17 @@ const PlayButton = styled.button`
   border-radius: 50%;
   padding: 1rem;
 
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
   &::after {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: 50%;
     border: 4px solid rgba(255, 255, 255, 0.75);
-    animation: ${wave} 2s ease-out infinite;
+    animation: ${WaveAnimation} 2s ease-in-out infinite;
   }
 `;
 
@@ -197,7 +200,7 @@ const ButtonsContainer = styled.div`
 
 const Button1 = styled(Link)`
   text-decoration: none;
-  background-color: rgba(255, 101, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -218,7 +221,7 @@ const Button1 = styled(Link)`
   @media (min-width: 992px) {
     flex: 1;
     &:hover {
-      background-color: rgba(255, 101, 0, 0.8);
+      background-color: rgba(0, 0, 0, 1);
       backdrop-filter: blur(7.5px);
       -webkit-backdrop-filter: blur(7.5px);
       border: 1px solid rgba(255, 255, 255, 0.5);
@@ -228,7 +231,7 @@ const Button1 = styled(Link)`
 
 const Button2 = styled(Link)`
   text-decoration: none;
-  background-color: rgba(30, 62, 98, 0.65);
+  background-color: rgb(177, 44, 0);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(42, 70, 87, 0.3);
@@ -245,10 +248,10 @@ const Button2 = styled(Link)`
   }
 
   &:hover {
-    background-color: rgba(30, 62, 98, 0.9);
+    background-color: rgb(200, 44, 0);
     backdrop-filter: blur(7.5px);
     -webkit-backdrop-filter: blur(7.5px);
-    border: 1px solid rgba(42, 70, 87, 0.5);
+    border: 1px solid rgba(255, 255, 255, 1);
   }
 
   @media (max-width: 576px) {

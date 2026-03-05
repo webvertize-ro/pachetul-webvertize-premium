@@ -8,7 +8,7 @@ const StyledReviewGoogleButton = styled.a`
   gap: 0.25rem;
   text-decoration: none;
   padding: 1rem;
-  background: rgba(31, 55, 69, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -17,7 +17,7 @@ const StyledReviewGoogleButton = styled.a`
 
   @media (min-width: 992px) {
     &:hover {
-      background: rgba(31, 55, 69, 0.45);
+      background: rgba(255, 255, 255, 0.4);
       backdrop-filter: blur(7.5px);
       -webkit-backdrop-filter: blur(7.5px);
       border: 1px solid rgba(255, 255, 255, 0.5);
