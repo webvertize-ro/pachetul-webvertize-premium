@@ -70,23 +70,35 @@ function TeamMemberModalInner({ img, long_desc, name }) {
             <StyledP>{long_desc}</StyledP>
           </div>
           <Socials>
-            <h3>Rețele de socializare</h3>
+            <h4>Rețele de socializare</h4>
             <div className="d-flex">
               {/* LinkedIn */}
               <div>
-                <StyledLink href="https://linkedin.com" target="_blank">
+                <StyledLink
+                  href="https://linkedin.com"
+                  target="_blank"
+                  aria-label={`Pagina de LinkedIn a membrului ${name}`}
+                >
                   <FontAwesomeIcon icon={faLinkedin} />
                 </StyledLink>
               </div>
               {/* Facebook */}
               <div>
-                <StyledLink href="https://facebook.com" target="_blank">
+                <StyledLink
+                  href="https://facebook.com"
+                  target="_blank"
+                  aria-label={`Pagina de Facebook a membrului ${name}`}
+                >
                   <FontAwesomeIcon icon={faFacebookSquare} />
                 </StyledLink>
               </div>
               {/* Instragram */}
               <div>
-                <StyledLink href="https://linkedin.com" target="_blank">
+                <StyledLink
+                  href="https://linkedin.com"
+                  target="_blank"
+                  aria-label={`Pagina de Instagram a membrului ${name}`}
+                >
                   <FontAwesomeIcon icon={faInstagramSquare} />
                 </StyledLink>
               </div>

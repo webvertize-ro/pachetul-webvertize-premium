@@ -50,7 +50,7 @@ const GlassCardTitle = styled.div`
   margin-bottom: 0.25rem;
 `;
 
-const StyledH6 = styled.h6`
+const StyledH5 = styled.h5`
   font-weight: 600;
   margin-bottom: 0.25rem;
 `;
@@ -96,7 +96,7 @@ function CardTeamMember({ img, name, short_desc, long_desc, role }) {
               <StyledFontAwesomeIcon icon={faArrowUpRightFromSquare} />
             </GlassCardTitle>
             <div>
-              <StyledH6>{role}</StyledH6>
+              <StyledH5>{role}</StyledH5>
               <StyledP>{short_desc}</StyledP>
             </div>
             <SocialsContainer>
