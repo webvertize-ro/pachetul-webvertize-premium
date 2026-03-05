@@ -1,27 +1,27 @@
 import img1 from '../assets/images/img-slider/img1.avif';
-import img1_400 from '../assets/images/img-slider/img1-400.avif';
-import img1_800 from '../assets/images/img-slider/img1-800.avif';
-import img1_1200 from '../assets/images/img-slider/img1-1200.avif';
+import img1_400 from '../assets/images/img-slider/img1-400w.avif';
+import img1_800 from '../assets/images/img-slider/img1-800w.avif';
+import img1_1200 from '../assets/images/img-slider/img1-1200w.avif';
 
 import img2 from '../assets/images/img-slider/img2.avif';
-import img2_400 from '../assets/images/img-slider/img2-400.avif';
-import img2_800 from '../assets/images/img-slider/img2-800.avif';
-import img2_1200 from '../assets/images/img-slider/img2-1200.avif';
+import img2_400 from '../assets/images/img-slider/img2-400w.avif';
+import img2_800 from '../assets/images/img-slider/img2-800w.avif';
+import img2_1200 from '../assets/images/img-slider/img2-1200w.avif';
 
 import img3 from '../assets/images/img-slider/img3.avif';
-import img3_400 from '../assets/images/img-slider/img3-400.avif';
-import img3_800 from '../assets/images/img-slider/img3-800.avif';
-import img3_1200 from '../assets/images/img-slider/img3-1200.avif';
+import img3_400 from '../assets/images/img-slider/img3-400w.avif';
+import img3_800 from '../assets/images/img-slider/img3-800w.avif';
+import img3_1200 from '../assets/images/img-slider/img3-1200w.avif';
 
 import img4 from '../assets/images/img-slider/img4.avif';
-import img4_400 from '../assets/images/img-slider/img4-400.avif';
-import img4_800 from '../assets/images/img-slider/img4-800.avif';
-import img4_1200 from '../assets/images/img-slider/img4-1200.avif';
+import img4_400 from '../assets/images/img-slider/img4-400w.avif';
+import img4_800 from '../assets/images/img-slider/img4-800w.avif';
+import img4_1200 from '../assets/images/img-slider/img4-1200w.avif';
 
 import img5 from '../assets/images/img-slider/img5.avif';
-import img5_400 from '../assets/images/img-slider/img5-400.avif';
-import img5_800 from '../assets/images/img-slider/img5-800.avif';
-import img5_1200 from '../assets/images/img-slider/img5-1200.avif';
+import img5_400 from '../assets/images/img-slider/img5-400w.avif';
+import img5_800 from '../assets/images/img-slider/img5-800w.avif';
+import img5_1200 from '../assets/images/img-slider/img5-1200w.avif';
 
 export const images = [
   {
