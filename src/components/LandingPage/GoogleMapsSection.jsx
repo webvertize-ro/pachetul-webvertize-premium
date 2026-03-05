@@ -68,6 +68,7 @@ function GoogleMapsSection() {
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
+          title="Hartă Google Maps cu locația afacerii"
         ></StyledIframe>
       </div>
     </StyledGoogleMapsSection>
