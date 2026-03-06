@@ -5,6 +5,7 @@ import SideButtons from './SideButtons';
 import BackTopBtn from './BackTopBtn';
 import CookiePopup from './CookiePopup';
 import BottomNav from './BottomNav';
+import Chat from './live-chat/Chat';
 
 function AppLayout() {
   return (
@@ -13,6 +14,7 @@ function AppLayout() {
       <div role="main">
         <Outlet />
       </div>
+      <Chat />
       <SideButtons />
       <BackTopBtn />
       <CookiePopup />

@@ -13,7 +13,6 @@ const StyledSection = styled.section`
   padding: 2rem;
   background-color: #2d5775;
   color: #fff;
-  border: 10px solid var(--my-cool-color);
 
   @media (max-width: 576px) {
     padding: 1.2rem;
