@@ -17,10 +17,12 @@ import HowWeWork from './pages/HowWeWork';
 import Certifications from './pages/Certifications';
 import FAQ from './pages/FAQ';
 import Products from './pages/Products';
+import GlobalStyles from './styles/GlobalStyles';
 
 function App() {
   return (
-    <div>
+    <>
+      <GlobalStyles />
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
@@ -42,7 +44,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 
