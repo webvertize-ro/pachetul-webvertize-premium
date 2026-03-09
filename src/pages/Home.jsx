@@ -11,17 +11,12 @@ import PhotoGallery from '../components/PhotoGallery';
 import { images } from '../data/gallery1.js';
 import SliderWrapper from '../components/ImageSlider/SliderWrapper.jsx';
 import { Helmet } from 'react-helmet-async';
-import { getUsers } from '../services/getUsers.js';
 
 const StyledHome = styled.div`
   /* overflow-x: hidden; */
 `;
 
 function Home() {
-  useEffect(() => {
-    getUsers().then((data) => console.log('the data is: ', data));
-  }, []);
-
   return (
     <>
       <Helmet>
