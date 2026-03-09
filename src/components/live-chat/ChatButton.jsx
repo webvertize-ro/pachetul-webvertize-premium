@@ -12,6 +12,7 @@ const StyledChatWidget = styled.div`
   background-color: rgb(31, 125, 83);
   z-index: 110;
   border: 2px solid rgba(255, 255, 255, 0.9);
+  cursor: pointer;
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -19,9 +20,9 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   color: #fff;
 `;
 
-function ChatButton() {
+function ChatButton({ onChatOpen }) {
   return (
-    <StyledChatWidget>
+    <StyledChatWidget onClick={() => onChatOpen()}>
       <StyledFontAwesomeIcon icon={faComments} />
     </StyledChatWidget>
   );

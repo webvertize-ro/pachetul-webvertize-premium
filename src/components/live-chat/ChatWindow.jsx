@@ -4,6 +4,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteUser } from '../../services/apiUsers';
 import toast from 'react-hot-toast';
 import ChatConversation from './ChatConversation';
+import { faWindowMinimize } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const StyledChatWindow = styled.div`
   position: absolute;
@@ -12,13 +14,21 @@ const StyledChatWindow = styled.div`
   z-index: 110;
   border: 1px solid lime;
   background-color: #fff;
-  padding: 1.5rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
-  width: 300px;
-  aspect-ratio: 1 / 1;
+  width: 350px;
+  aspect-ratio: 1 / 1.2;
 `;
 
-function ChatWindow({ user, mutate, isCreating }) {
+const ClosingButton = styled.button`
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  border: none;
+  background: transparent;
+`;
+
+function ChatWindow({ user, mutateMsg, isCreating, onCloseWindow, mutate }) {
   /**
    * This component should display either the form (is there is no userId in localStorage) or the chat conversation
    *    1. We will implement the Form first
@@ -44,7 +54,6 @@ function ChatWindow({ user, mutate, isCreating }) {
   // });
 
   if (isCreating) return <div>Loading...</div>;
-  console.log(isCreating);
 
   return (
     <StyledChatWindow>
@@ -57,11 +66,14 @@ function ChatWindow({ user, mutate, isCreating }) {
           </button>
         </div>
       ))} */}
+      <ClosingButton onClick={() => onCloseWindow()}>
+        <FontAwesomeIcon icon={faWindowMinimize} />
+      </ClosingButton>
 
       {!user ? (
-        <ChatForm user={user} mutate={mutate} isCreating={isCreating} />
+        <ChatForm mutate={mutate} user={user} isCreating={isCreating} />
       ) : (
-        <ChatConversation user={user} />
+        <ChatConversation user={user} mutateMsg={mutateMsg} />
       )}
     </StyledChatWindow>
   );

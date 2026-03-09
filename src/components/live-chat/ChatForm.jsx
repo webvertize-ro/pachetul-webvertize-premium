@@ -9,7 +9,7 @@ import { createUser, getUser } from '../../services/apiUsers';
 import toast from 'react-hot-toast';
 import FormRow from './FormRow';
 
-function ChatForm({ user, mutate, isCreating }) {
+function ChatForm({ user, isCreating, mutate }) {
   /**
    *  This component will submit data to the table "users"
    *  It will use react-hook-form

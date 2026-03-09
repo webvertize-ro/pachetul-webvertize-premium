@@ -13,10 +13,10 @@ export async function getUser(id) {
   return data;
 }
 
-export async function createUser(newCabin) {
+export async function createUser(newUser) {
   const { data, error } = await supabase
     .from('users')
-    .insert([newCabin])
+    .insert([newUser])
     .select();
 
   if (error) {
