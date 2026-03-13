@@ -20,15 +20,26 @@ const StyledChatWindow = styled.div`
   aspect-ratio: 1 / 1.2;
 `;
 
-const ClosingButton = styled.button`
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  border: none;
-  background: transparent;
+const ChatHeader = styled.div`
+  display: flex;
+  border: 2px solid lime;
 `;
 
-function ChatWindow({ user, mutateMsg, isCreating, onCloseWindow, mutate }) {
+const ClosingButton = styled.button`
+  border: none;
+  background: transparent;
+  margin-left: auto;
+`;
+
+function ChatWindow({
+  user,
+  mutateMsg,
+  isCreating,
+  onCloseWindow,
+  mutate,
+  mutateFile,
+  isSending,
+}) {
   /**
    * This component should display either the form (is there is no userId in localStorage) or the chat conversation
    *    1. We will implement the Form first
@@ -66,14 +77,21 @@ function ChatWindow({ user, mutateMsg, isCreating, onCloseWindow, mutate }) {
           </button>
         </div>
       ))} */}
-      <ClosingButton onClick={() => onCloseWindow()}>
-        <FontAwesomeIcon icon={faWindowMinimize} />
-      </ClosingButton>
+      <ChatHeader>
+        <ClosingButton onClick={() => onCloseWindow()}>
+          <FontAwesomeIcon icon={faWindowMinimize} />
+        </ClosingButton>
+      </ChatHeader>
 
       {!user ? (
         <ChatForm mutate={mutate} user={user} isCreating={isCreating} />
       ) : (
-        <ChatConversation user={user} mutateMsg={mutateMsg} />
+        <ChatConversation
+          isSending={isSending}
+          user={user}
+          mutateMsg={mutateMsg}
+          mutateFile={mutateFile}
+        />
       )}
     </StyledChatWindow>
   );

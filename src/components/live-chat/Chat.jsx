@@ -32,7 +32,7 @@ function Chat() {
 
   const queryClient = useQueryClient();
   // Creating a new user
-  const { mutate, isLoading: isCreating } = useMutation({
+  const { mutate, isPending: isCreating } = useMutation({
     mutationFn: createUser,
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['users'] });
@@ -41,6 +41,7 @@ function Chat() {
     },
     onError: (error) => toast.error(error.message),
   });
+
   // Read the current user from the database
   const {
     isLoading,
@@ -52,10 +53,9 @@ function Chat() {
     select: (data) => data[0],
   });
   // Send the message
-  const { mutate: mutateMsg, isLoading: isSending } = useMutation({
+  const { mutate: mutateMsg, isPending: isSending } = useMutation({
     mutationFn: sendMessage,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['messages'] });
       reset();
     },
     onError: (error) => toast.error(error.message),
@@ -72,6 +72,7 @@ function Chat() {
           mutate={mutate}
           mutateMsg={mutateMsg}
           isCreating={isCreating}
+          isSending={isSending}
           onCloseWindow={() => setChatOpen(false)}
         />
       )}
