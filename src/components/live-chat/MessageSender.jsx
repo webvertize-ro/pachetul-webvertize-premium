@@ -20,6 +20,11 @@ const StyledMessageSender = styled.div`
   border-radius: 0.5rem;
 `;
 
+const ReplyToMessagePreview = styled.div`
+  background-color: lightgreen;
+  width: 100%;
+`;
+
 const StyledForm = styled.form`
   display: flex;
   gap: 0.5rem;
@@ -41,7 +46,15 @@ const InputFile = styled.input`
   display: none;
 `;
 
-function MessageSender({ mutateMsg, user, isSending, messages }) {
+function MessageSender({
+  mutateMsg,
+  user,
+  isSending,
+  messages,
+  replyMessage,
+  onReplyMessage,
+  onMessageHasImage,
+}) {
   const [attachment, setAttachment] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
 
@@ -72,16 +85,20 @@ function MessageSender({ mutateMsg, user, isSending, messages }) {
   }
 
   function onSubmit(data) {
-    console.log('data is: ', data);
+    onMessageHasImage(attachment?.type?.startsWith('image/') || false);
     const message = {
       ...data,
       user_id: user.id,
       sender_type: 'user',
       document: attachment,
+      reply_to_message_id: replyMessage?.id || null,
     };
-    console.log('prepared message: ', message);
+
+    console.log('prepared message is: ', message);
+
     mutateMsg(message);
     clearAttachment();
+    onReplyMessage(null);
     reset();
   }
 
@@ -91,6 +108,24 @@ function MessageSender({ mutateMsg, user, isSending, messages }) {
 
   return (
     <StyledMessageSender>
+      {replyMessage && (
+        <ReplyToMessagePreview>
+          <strong>Raspuns pentru: </strong>
+          {/* Render image */}
+          {replyMessage.has_image && (
+            <img src={replyMessage.document} width="60" className="img-fluid" />
+          )}
+
+          {/* Render document (if has_image is false) */}
+          {!replyMessage.has_image && (
+            <a href={replyMessage.document}>{replyMessage.document_name}</a>
+          )}
+
+          {/* Render text */}
+          {replyMessage.message && <div>{replyMessage.message}</div>}
+        </ReplyToMessagePreview>
+      )}
+
       {/* File Preview */}
       <FilePreview
         attachment={attachment}

@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import supabase from '../../services/supabase';
 import MessageBubble from './MessageBubble';
 import styled from 'styled-components';
-import FileMessage from './FileMessage';
+import Message from './Message';
 import { useFetcher } from 'react-router';
 
 const StyledConversations = styled.div`
@@ -14,7 +14,7 @@ const StyledConversations = styled.div`
   overflow-y: scroll;
   max-height: 100%;
   padding: 1rem 0;
-  border: 1px solid lime;
+  border: 1px solid red;
   height: 90%;
 `;
 
@@ -22,7 +22,14 @@ const InvisibleDiv = styled.div`
   /* margin-top: auto; */
 `;
 
-function Conversations({ user, isLoading, messages }) {
+function Conversations({
+  user,
+  isLoading,
+  messages,
+  onReplyMessage,
+  replyMessage,
+  messageHasImage,
+}) {
   /**
    * 
    * slides={[
@@ -46,9 +53,12 @@ function Conversations({ user, isLoading, messages }) {
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      scrollToBottom();
-    }, 0);
+    const timer = setTimeout(
+      () => {
+        scrollToBottom();
+      },
+      messageHasImage ? 1500 : 0,
+    );
 
     return () => clearTimeout(timer);
   }, [messages]);
@@ -58,8 +68,15 @@ function Conversations({ user, isLoading, messages }) {
   return (
     <StyledConversations>
       {messages.map((msg) => (
-        <MessageBubble key={msg.id} message={msg} user={user}>
-          <FileMessage msg={msg} slides={slides} messages={messages} />
+        <MessageBubble
+          key={msg.id}
+          message={msg}
+          user={user}
+          onReplyMessage={onReplyMessage}
+          replyMessage={replyMessage}
+          messages={messages}
+        >
+          <Message msg={msg} slides={slides} messages={messages} />
         </MessageBubble>
       ))}
       <InvisibleDiv ref={ref}></InvisibleDiv>

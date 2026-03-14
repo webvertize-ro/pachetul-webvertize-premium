@@ -27,7 +27,7 @@ export default async function handler(req, res) {
 
   const client = await clientPromise;
   const db = client.db('PacheteWebvertize');
-  const collection = db.collection('PachetulWebvertizeStandard');
+  const collection = db.collection('PachetulWebvertizePremium');
 
   // Determine the user's IP
   const forwardedFor = req.headers['x-forwarded-for'];

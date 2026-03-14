@@ -4,7 +4,7 @@ import MessageSender from './MessageSender';
 import Conversations from './Conversations';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { getMessages, subscribeToMessages } from '../../services/apiMessages';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import supabase from '../../services/supabase';
 
 const StyledChatConversation = styled.div`
@@ -12,6 +12,7 @@ const StyledChatConversation = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
+  border: 2px solid orange;
 `;
 
 function ChatConversation({ user, mutateMsg, mutateFile, isSending }) {
@@ -30,8 +31,12 @@ function ChatConversation({ user, mutateMsg, mutateFile, isSending }) {
    * }
    *
    */
+  const [replyMessage, setReplyMessage] = useState(null);
+  const [messageHasImage, setMessageHasImage] = useState(false);
 
   const queryClient = useQueryClient();
+
+  console.log('replyMessage: ', replyMessage);
 
   // Initial fetch via React Query
   const { data: messages, isLoading } = useQuery({
@@ -53,10 +58,21 @@ function ChatConversation({ user, mutateMsg, mutateFile, isSending }) {
 
   return (
     <StyledChatConversation>
-      {/* Conversations */}
-      <Conversations user={user} isLoading={isLoading} messages={messages} />
+      {/* Conversations -> MessageBubble -> Message */}
+
+      <Conversations
+        user={user}
+        isLoading={isLoading}
+        messages={messages}
+        onReplyMessage={setReplyMessage}
+        replyMessage={replyMessage}
+        messageHasImage={messageHasImage}
+      />
       {/* MessageSender */}
       <MessageSender
+        onMessageHasImage={setMessageHasImage}
+        replyMessage={replyMessage}
+        onReplyMessage={setReplyMessage}
         mutateMsg={mutateMsg}
         user={user}
         mutateFile={mutateFile}
