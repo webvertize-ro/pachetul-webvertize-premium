@@ -46,6 +46,11 @@ export default async function handler(req, res) {
     .eq('ip', ip)
     .gte('created_at', twentyFourHoursAgo);
 
+  if (error) {
+    console.log('Failed to count the entries in the DB!');
+    throw new Error(error.message);
+  }
+
   console.log('submissionsCount is: ', submissionsCount);
 
   if (submissionsCount >= 2) {
