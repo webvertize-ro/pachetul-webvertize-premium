@@ -44,7 +44,8 @@ export default async function handler(req, res) {
   const { count: submissionsCount, error } = await supabase
     .from('submissions')
     .select('*', { count: 'exact', head: true })
-    .eq('ip', ip);
+    .eq('ip', ip)
+    .gte('created_at', twentyFourHoursAgo.toISOString());
 
   if (error) {
     console.log('Supabase error: ', JSON.stringify(error));
