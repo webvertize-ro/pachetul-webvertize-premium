@@ -1,6 +1,11 @@
 import nodemailer from 'nodemailer';
-import clientPromise from '../lib/mongodb.js';
-import supabase from '../src/services/supabase.js';
+import { createClient } from '@supabase/supabase-js/dist/index.cjs';
+
+// create the supabase client
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SERVICE_ROLE_KEY,
+);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -89,7 +94,7 @@ export default async function handler(req, res) {
 
   const { data, errorInsert } = await supabase
     .from('submissions')
-    .insert([{ ...body }])
+    .insert([body])
     .select();
 
   console.log('inserted data is: ', data);
