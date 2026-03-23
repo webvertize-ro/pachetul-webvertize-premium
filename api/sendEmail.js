@@ -39,11 +39,13 @@ export default async function handler(req, res) {
 
   // Calculate the time window
   const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+  console.log('twentyFourHoursAgo: ', twentyFourHoursAgo);
 
   const { count: submissionsCount, error } = await supabase
     .from('submissions')
     .select('*', { count: 'exact', head: true })
-    .eq('ip', ip);
+    .eq('ip', ip)
+    .gte('created_at', twentyFourHoursAgo);
 
   if (error) {
     console.log('Failed to count the entries in the DB!');
