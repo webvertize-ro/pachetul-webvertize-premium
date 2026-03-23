@@ -68,7 +68,7 @@ const ReplyBox = styled.div`
   border-left: 5px solid green;
 `;
 
-function Message({ msg, slides, messages, replyMessage, datePrepared }) {
+function Message({ msg, messages, replyMessage, datePrepared }) {
   const referencedMsg = msg.reply_to_message_id
     ? messages.find((m) => m.id === msg.reply_to_message_id)
     : null;
@@ -98,6 +98,15 @@ function Message({ msg, slides, messages, replyMessage, datePrepared }) {
   const [open, setOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
+  const imageMessages = messages.filter((msg) => msg.has_image && msg.document);
+
+  const slides = imageMessages.map((m) => ({
+    src: m.document,
+    alt: m.document_name,
+  }));
+
+  // const imageMessages = messages.filter((img) => );
+
   if (msg.has_image) {
     // Images & Message
     if (msg.message) {
@@ -105,7 +114,7 @@ function Message({ msg, slides, messages, replyMessage, datePrepared }) {
         <div>
           <ImageContainer
             onClick={() => {
-              const index = messages.findIndex(
+              const index = imageMessages.findIndex(
                 (i) => i.document === msg.document,
               );
 
@@ -132,7 +141,7 @@ function Message({ msg, slides, messages, replyMessage, datePrepared }) {
         <>
           <ImageContainer
             onClick={() => {
-              const index = messages.findIndex(
+              const index = imageMessages.findIndex(
                 (i) => i.document === msg.document,
               );
 
@@ -146,7 +155,7 @@ function Message({ msg, slides, messages, replyMessage, datePrepared }) {
               className="img-fluid"
               width="120"
               onClick={() => {
-                const index = messages.findIndex(
+                const index = imageMessages.findIndex(
                   (i) => i.document === msg.document,
                 );
                 setLightboxIndex(index);

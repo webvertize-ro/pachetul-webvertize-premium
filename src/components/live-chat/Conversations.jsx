@@ -39,12 +39,12 @@ function Conversations({
         ]}
    * 
    */
-  const slides = messages
-    ?.map((m) => m.document)
-    .filter((m) => m !== null)
-    .map((el) => {
-      return { src: el };
-    });
+  // const slides = messages
+  //   ?.map((m) => m.document)
+  //   .filter((m) => m !== null)
+  //   .map((el) => {
+  //     return { src: el };
+  //   });
 
   const ref = useRef(null);
 
@@ -76,7 +76,7 @@ function Conversations({
           replyMessage={replyMessage}
           messages={messages}
         >
-          <Message msg={msg} slides={slides} messages={messages} />
+          <Message msg={msg} messages={messages} />
         </MessageBubble>
       ))}
       <InvisibleDiv ref={ref}></InvisibleDiv>
