@@ -43,8 +43,7 @@ export default async function handler(req, res) {
   const { count: submissionsCount, error } = await supabase
     .from('submissions')
     .select('*', { count: 'exact', head: true })
-    .eq('ip', ip)
-    .gte('created_at', twentyFourHoursAgo);
+    .eq('ip', ip);
 
   if (error) {
     console.log('Failed to count the entries in the DB!');
