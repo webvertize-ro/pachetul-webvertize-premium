@@ -39,7 +39,6 @@ export default async function handler(req, res) {
 
   // Calculate the time window
   const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
-  console.log('twentyFourHoursAgo: ', twentyFourHoursAgo);
 
   const { count: submissionsCount, error } = await supabase
     .from('submissions')
@@ -48,10 +47,8 @@ export default async function handler(req, res) {
     .gte('created_at', twentyFourHoursAgo.toISOString());
 
   if (error) {
-    console.log('Supabase error: ', JSON.stringify(error));
+    throw new Error(error.message);
   }
-
-  console.log('submissionsCount is: ', submissionsCount);
 
   if (submissionsCount >= 2) {
     return res.status(429).json({ status: 'Too many requests!' });
@@ -94,8 +91,6 @@ export default async function handler(req, res) {
   const body = req.body;
 
   // Inserting the submission in the database
-
-  console.log('body is: ', body);
 
   const { data, errorInsert } = await supabase
     .from('submissions')
