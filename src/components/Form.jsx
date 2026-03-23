@@ -103,7 +103,6 @@ function Form({ onCloseModal }) {
   }, []);
 
   async function onSubmit(data) {
-    console.log('submitting data: ', data);
     try {
       setIsLoadding(true);
       const res = await fetch('/api/sendEmail', {
