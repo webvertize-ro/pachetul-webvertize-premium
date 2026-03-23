@@ -4,7 +4,7 @@ import { createClient } from '@supabase/supabase-js/dist/index.cjs';
 // create the supabase client
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY,
+  process.env.SUPABASE_SERVICE_ROLE_KEY,
 );
 
 export default async function handler(req, res) {
@@ -44,8 +44,7 @@ export default async function handler(req, res) {
   const { count: submissionsCount, error } = await supabase
     .from('submissions')
     .select('*', { count: 'exact', head: true })
-    .eq('ip', ip)
-    .gte('created_at', twentyFourHoursAgo);
+    .eq('ip', ip);
 
   if (error) {
     console.log('Supabase error: ', JSON.stringify(error));
