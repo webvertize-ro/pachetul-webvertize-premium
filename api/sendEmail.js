@@ -85,9 +85,7 @@ export default async function handler(req, res) {
 
   // Inserting the submission in the database
 
-  console.log('body is: ', body);
-
-  // await supabase.from('submissions').insert();
+  await supabase.from('submissions').insert([body]);
 
   // await collection.insertOne({
   //   ...body,
