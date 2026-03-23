@@ -85,13 +85,16 @@ export default async function handler(req, res) {
 
   // Inserting the submission in the database
 
-  await supabase.from('submissions').insert([body]);
+  const { data, errorInsert } = await supabase
+    .from('submissions')
+    .insert([body])
+    .select();
 
-  // await collection.insertOne({
-  //   ...body,
-  //   ip,
-  //   createdAt: new Date(),
-  // });
+  console.log('inserted data is: ', data);
+
+  if (errorInsert) {
+    throw new Error('There was an error inserting data in Supabase!');
+  }
 
   res.status(200).json({ success: true });
 }
