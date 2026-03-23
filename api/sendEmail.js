@@ -48,8 +48,7 @@ export default async function handler(req, res) {
     .gte('created_at', twentyFourHoursAgo);
 
   if (error) {
-    console.log('Failed to count the entries in the DB!');
-    throw new Error(error.message);
+    console.log('Supabase error: ', JSON.stringify(error));
   }
 
   console.log('submissionsCount is: ', submissionsCount);
