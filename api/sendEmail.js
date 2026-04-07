@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 import { createClient } from '@supabase/supabase-js/dist/index.cjs';
-import { WEBSITE_ID } from '../public/config';
+import { WEBSITE_ID } from '../config.js';
 
 // create the supabase client
 const supabase = createClient(
