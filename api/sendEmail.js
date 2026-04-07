@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import { createClient } from '@supabase/supabase-js/dist/index.cjs';
+import { WEBSITE_ID } from '../config';
 
 // create the supabase client
 const supabase = createClient(
@@ -54,8 +55,8 @@ export default async function handler(req, res) {
     return res.status(429).json({ status: 'Too many requests!' });
   }
 
+  // Validation
   if (!name || !phone || !email) {
-    // Validation
     return res.status(400).json({ status: 'Missing required fields!' });
   }
 
@@ -94,7 +95,7 @@ export default async function handler(req, res) {
 
   const { data, errorInsert } = await supabase
     .from('submissions')
-    .insert({ ...body, ip: ip })
+    .insert({ ...body, ip: ip, website_id: WEBSITE_ID })
     .select();
 
   console.log('inserted data is: ', data);
