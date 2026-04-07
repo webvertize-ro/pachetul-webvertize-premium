@@ -13,6 +13,8 @@ export default async function handler(req, res) {
     return res.status(400).json({ status: 'Method not allowed!' });
   }
 
+  console.log('website_id is: ', WEBSITE_ID);
+
   const { name, phone, email, message, cf_turnstile_token } = req.body;
 
   // Turnstile validation
