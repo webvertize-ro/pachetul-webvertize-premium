@@ -1,19 +1,12 @@
 import nodemailer from 'nodemailer';
 import { createClient } from '@supabase/supabase-js/dist/index.cjs';
 import { WEBSITE_ID } from '../config.js';
-
-// create the supabase client
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY,
-);
+import supabase from '../src/services/supabase.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(400).json({ status: 'Method not allowed!' });
   }
-
-  console.log('website_id is: ', WEBSITE_ID);
 
   const { name, phone, email, message, cf_turnstile_token } = req.body;
 
@@ -47,6 +40,7 @@ export default async function handler(req, res) {
     .from('submissions')
     .select('*', { count: 'exact', head: true })
     .eq('ip', ip)
+    .eq('website_id', WEBSITE_ID)
     .gte('created_at', twentyFourHoursAgo.toISOString());
 
   if (error) {
@@ -94,13 +88,10 @@ export default async function handler(req, res) {
   const body = req.body;
 
   // Inserting the submission in the database
-
   const { data, errorInsert } = await supabase
     .from('submissions')
     .insert({ ...body, ip: ip, website_id: WEBSITE_ID })
     .select();
-
-  console.log('inserted data is: ', data);
 
   if (errorInsert) {
     throw new Error('There was an error inserting data in Supabase!');
