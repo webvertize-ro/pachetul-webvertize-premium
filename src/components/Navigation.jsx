@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Logo from './Logo';
 import Dropdown from './Dropdown';
+import { c } from '../utils/content';
 
 const NavigationHeader = styled.header`
   transition: all 0.3s ease-in-out;

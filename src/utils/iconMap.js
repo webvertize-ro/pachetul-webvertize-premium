@@ -1,0 +1,33 @@
+import {
+  faWrench,
+  faGear,
+  faBolt,
+  faStar,
+  faShieldHalved,
+  faHandshake,
+  faComments,
+  faClipboardList,
+  faHammer,
+  faCircleCheck,
+  faLocationDot,
+  faPhone,
+  faEnvelope,
+  faClock,
+} from '@fortawesome/free-solid-svg-icons';
+
+export const iconMap = {
+  'fa-solid fa-wrench': faWrench,
+  'fa-solid fa-gear': faGear,
+  'fa-solid fa-bolt': faBolt,
+  'fa-solid fa-star': faStar,
+  'fa-solid fa-shield-halved': faShieldHalved,
+  'fa-solid fa-handshake': faHandshake,
+  'fa-solid fa-comments': faComments,
+  'fa-solid fa-clipboard-list': faClipboardList,
+  'fa-solid fa-hammer': faHammer,
+  'fa-solid fa-circle-check': faCircleCheck,
+  'fa-solid fa-location-dot': faLocationDot,
+  'fa-solid fa-phone': faPhone,
+  'fa-solid fa-envelope': faEnvelope,
+  'fa-solid fa-clock': faClock,
+};
