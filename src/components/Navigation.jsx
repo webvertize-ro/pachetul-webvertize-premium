@@ -1,4 +1,10 @@
-import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import {
+  faFacebook,
+  faInstagram,
+  faLinkedin,
+  faTiktok,
+  faYoutube,
+} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
