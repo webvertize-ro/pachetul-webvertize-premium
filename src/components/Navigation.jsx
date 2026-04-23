@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Logo from './Logo';
 import Dropdown from './Dropdown';
 import { c } from '../utils/content';
+import { useContent } from '../hooks/useContent';
 
 const NavigationHeader = styled.header`
   transition: all 0.3s ease-in-out;
@@ -136,6 +137,7 @@ const BurgerLine = styled.div`
 `;
 
 function Navigation() {
+  const { contentMap } = useContent();
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigation = useRef(null);
