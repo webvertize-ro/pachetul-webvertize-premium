@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router';
 import Logo from './Logo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faMessage } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import {
   faFacebook,
@@ -9,6 +9,8 @@ import {
   faPinterest,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
+import { c } from '../utils/content';
+import { useContent } from '../hooks/useContent';
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -45,7 +47,16 @@ const StrongEmail = styled.strong`
   text-decoration: underline white;
 `;
 
+const Copyright = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  border-radius: 0.5rem;
+`;
+
 function Footer() {
+  const { contentMap } = useContent();
+
   return (
     <StyledFooter className="footer py-6">
       <div className="container">
@@ -128,6 +139,9 @@ function Footer() {
             </p>
           </div>
         </div>
+
+        {/* Copyright */}
+        <Copyright>{c(contentMap, 'global.footer_copyright')}</Copyright>
       </div>
     </StyledFooter>
   );
