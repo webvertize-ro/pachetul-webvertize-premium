@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import { WEBSITE_ID } from '../config.js';
 import { PACKAGE } from '../config.js';
-import supabase from '../src/services/supabase.js';
+import supabase from '../services/supabase.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -36,6 +36,7 @@ export default async function handler(req, res) {
   // Calculate the time window
   const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
 
+  // Count how many submissions this IP made in the last 24 hours
   const { count: submissionsCount, error } = await supabase
     .from('submissions')
     .select('*', { count: 'exact', head: true })
@@ -52,6 +53,7 @@ export default async function handler(req, res) {
   }
 
   // Validation
+
   if (!name || !phone || !email) {
     return res.status(400).json({ status: 'Missing required fields!' });
   }
@@ -73,7 +75,7 @@ export default async function handler(req, res) {
   });
 
   await transporter.sendMail({
-    from: `Solicitare formular ${process.env.SMTP_USER}`,
+    from: `Solicitare formular ${process.env.SMTP_FROM}`,
     to: process.env.RECEIVING_EMAIL,
     subject: `Solicitare formular ${formattedDate}`,
     html: `
