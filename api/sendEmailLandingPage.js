@@ -1,5 +1,7 @@
 import nodemailer from 'nodemailer';
-import clientPromise from '../lib/mongodb.js';
+import { WEBSITE_ID } from '../config.js';
+import { PACKAGE } from '../config.js';
+import supabase from '../services/supabase.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -30,28 +32,32 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'CAPTCHA verification failed!' });
   }
 
-  const client = await clientPromise;
-  const db = client.db('PacheteWebvertize');
-  const collection = db.collection('PachetulWebvertizePremium');
-
   // Determine the user's IP
   const forwardedFor = req.headers['x-forwarded-for'];
   const ip = forwardedFor
     ? forwardedFor.split(',')[0].trim()
     : req.socket?.remoteAddress;
-
-  // Calculate the time window
-  const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
-
+  
+  
   // Count how many submissions this IP made in the last 24 hours
-  const submissionsCount = await collection.countDocuments({
-    ip: ip,
-    createdAt: { $gte: twentyFourHoursAgo },
-  });
+
+  const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+  const { count: submissionsCount, error } = await supabase
+    .from('submissions')
+    .select('*', { count: 'exact', head: true })
+    .eq('ip', ip)
+    .eq('website_id', WEBSITE_ID)
+    .gte('created_at', twentyFourHoursAgo.toISOString());
+
+  if (error) {
+    throw new Error(error.message);
+  }
 
   if (submissionsCount >= 2) {
     return res.status(429).json({ status: 'Too many requests!' });
   }
+
+  
 
   // Calculate the date in format dd/mm/YYYY - h:m:s
   const theDate = new Date();
@@ -71,7 +77,7 @@ export default async function handler(req, res) {
   });
 
   await transporter.sendMail({
-    from: `Solicitare formular de la ${process.env.SMTP_USER}`,
+    from: `Solicitare formular (pagina de aterizare) ${process.env.SMTP_FROM}`,
     to: process.env.RECEIVING_EMAIL,
     subject: `Solicitare formular ${localDate}`,
     html: `
@@ -88,14 +94,17 @@ export default async function handler(req, res) {
     `,
   });
 
-  // Insert each submission in the database
   const body = req.body;
 
-  await collection.insertOne({
-    ...body,
-    ip,
-    createdAt: new Date(),
-  });
+  // Inserting the submission in the database
+  const { data, errorInsert } = await supabase
+    .from('submissions')
+    .insert({ ...body, ip: ip, website_id: WEBSITE_ID, package: PACKAGE })
+    .select();
+
+  if (errorInsert) {
+    throw new Error('There was an error inserting data in Supabase!');
+  }
 
   res.status(200).json({ success: true });
 }
