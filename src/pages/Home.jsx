@@ -4,9 +4,7 @@ import Stats from '../components/Stats';
 import CTA from '../components/CTA';
 import OurPartners from '../components/OurPartners';
 import WhyWorkWithUs from '../components/WhyWorkWithUs';
-import Testimonials from '../components/Testimonials';
 import ShortServices from '../components/ShortServices';
-import { useEffect } from 'react';
 import PhotoGallery from '../components/PhotoGallery';
 import { images } from '../data/gallery1.js';
 import SliderWrapper from '../components/ImageSlider/SliderWrapper.jsx';
@@ -39,7 +37,6 @@ function Home() {
         <ShortServices />
         <OurPartners />
         <WhyWorkWithUs />
-        <Testimonials />
         <CTA />
       </StyledHome>
     </>

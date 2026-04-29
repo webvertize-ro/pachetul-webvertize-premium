@@ -153,16 +153,16 @@ function Dropdown() {
               </StyledNavLink>
             </StyledLi>
             <StyledLi>
-              <StyledNavLink to="/how-we-work" onClick={() => setOpen(false)}>
-                Cum Lucrăm
+              <StyledNavLink to="/testimonials" onClick={() => setOpen(false)}>
+                Testimoniale
               </StyledNavLink>
             </StyledLi>
             <StyledLi>
               <StyledNavLink
-                to="/certifications"
+                to="/blog"
                 onClick={() => setOpen(false)}
               >
-                Certificări
+                Blog/Noutăți
               </StyledNavLink>
             </StyledLi>
           </DropdownItems>

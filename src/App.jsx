@@ -21,6 +21,8 @@ import GlobalStyles from './styles/GlobalStyles';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
+import Testimonials from './pages/Testimonials';
+import Blog from './pages/Blog';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,8 +47,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/how-we-work" element={<HowWeWork />} />
-            <Route path="/certifications" element={<Certifications />} />
+            <Route path="/testimonials" element={<Testimonials />} />
+            <Route path="/blog" element={<Blog />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/products" element={<Products />} />
           </Route>
