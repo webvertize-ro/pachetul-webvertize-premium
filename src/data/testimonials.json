@@ -3,30 +3,42 @@
     "user_name": "Andrei M.",
     "profile_pic": "https://randomuser.me/api/portraits/men/10.jpg",
     "stars": 5,
-    "testimonial_content": "Colaborarea a decurs foarte bine de la început până la final. Comunicarea a fost clară, iar rezultatul a fost exact ce ne doream."
+    "testimonial_content": "Colaborarea a decurs foarte bine de la început până la final. Comunicarea a fost clară, iar rezultatul a fost exact ce ne doream.",
+    "profession": "Agent de vanzari"
   },
   {
     "user_name": "Ioana P.",
     "profile_pic": "https://randomuser.me/api/portraits/women/11.jpg",
     "stars": 5,
-    "testimonial_content": "Am apreciat seriozitatea și atenția la detalii. Totul a fost explicat pe înțelesul nostru, fără complicații inutile."
+    "testimonial_content": "Am apreciat seriozitatea și atenția la detalii. Totul a fost explicat pe înțelesul nostru, fără complicații inutile.",
+    "profession": "Expert Marketing"
   },
   {
     "user_name": "Cristian L.",
     "profile_pic": "https://randomuser.me/api/portraits/men/12.jpg",
     "stars": 5,
-    "testimonial_content": "Un proces simplu și eficient. Am primit soluții potrivite nevoilor noastre și suport ori de câte ori a fost nevoie."
+    "testimonial_content": "Un proces simplu și eficient. Am primit soluții potrivite nevoilor noastre și suport ori de câte ori a fost nevoie.",
+    "profession": "Dezvoltator Web"
   },
   {
     "user_name": "Maria D.",
     "profile_pic": "https://randomuser.me/api/portraits/women/12.jpg",
     "stars": 5,
-    "testimonial_content": "Ne-a plăcut abordarea profesionistă și faptul că am fost implicați pe tot parcursul proiectului."
+    "testimonial_content": "Ne-a plăcut abordarea profesionistă și faptul că am fost implicați pe tot parcursul proiectului.",
+    "profession": "Inginer de sistem"
   },
   {
     "user_name": "Radu T.",
     "profile_pic": "https://randomuser.me/api/portraits/men/13.jpg",
     "stars": 5,
-    "testimonial_content": "Recomand pentru modul de lucru organizat și rezultatul final. O colaborare corectă și fără surprize."
+    "testimonial_content": "Recomand pentru modul de lucru organizat și rezultatul final. O colaborare corectă și fără surprize.",
+    "profession": "Administrator de retea"
+  },
+  {
+    "user_name": "Radu T.",
+    "profile_pic": "https://randomuser.me/api/portraits/men/14.jpg",
+    "stars": 5,
+    "testimonial_content": "Am avut o experienta foarte placuta cu aceasta afacere locala.",
+    "profession": "IP Broker Specialist"
   }
 ]

@@ -1,9 +1,11 @@
 function Blog() {
-    return (
-        <div>
-            This will be the Blog page!
-        </div>
-    )
+  return (
+    <div>
+      {/* 1. Hero */}
+      {/* 2. Articles Section */}
+      {/* CTA */}
+    </div>
+  );
 }
 
-export default Blog
+export default Blog;

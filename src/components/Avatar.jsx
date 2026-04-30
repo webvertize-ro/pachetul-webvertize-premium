@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledImg = styled.img`
   max-width: 75px;
@@ -8,7 +8,7 @@ const StyledImg = styled.img`
 
 function Avatar({ img }) {
   return (
-    <div>
+    <div className="mb-2">
       <StyledImg src={img} alt="avatar" />
     </div>
   );
