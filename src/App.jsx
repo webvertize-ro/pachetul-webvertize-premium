@@ -1,28 +1,29 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AppLayout from './components/AppLayout';
-import Home from './pages/Home';
-import Services from './pages/Services';
-import Portfolio from './pages/Portfolio';
-import Contact from './pages/Contact';
-import ThankYou from './pages/ThankYou';
-import TooManyRequests from './pages/TooManyRequests';
-import 'yet-another-react-lightbox/styles.css';
-import 'yet-another-react-lightbox/plugins/captions.css';
-import Cookies from './pages/Cookies';
-import ScrollToTop from './components/ScrollToTop';
-import NotFound from './pages/NotFound';
-import LandingPage from './pages/LandingPage';
-import AboutUs from './pages/AboutUs';
-import HowWeWork from './pages/HowWeWork';
-import Certifications from './pages/Certifications';
-import FAQ from './pages/FAQ';
-import Products from './pages/Products';
-import GlobalStyles from './styles/GlobalStyles';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { Toaster } from 'react-hot-toast';
-import Testimonials from './pages/Testimonials';
-import Blog from './pages/Blog';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AppLayout from "./components/AppLayout";
+import Home from "./pages/Home";
+import Services from "./pages/Services";
+import Portfolio from "./pages/Portfolio";
+import Contact from "./pages/Contact";
+import ThankYou from "./pages/ThankYou";
+import TooManyRequests from "./pages/TooManyRequests";
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/captions.css";
+import Cookies from "./pages/Cookies";
+import ScrollToTop from "./components/ScrollToTop";
+import NotFound from "./pages/NotFound";
+import LandingPage from "./pages/LandingPage";
+import AboutUs from "./pages/AboutUs";
+import HowWeWork from "./pages/HowWeWork";
+import Certifications from "./pages/Certifications";
+import FAQ from "./pages/FAQ";
+import Products from "./pages/Products";
+import GlobalStyles from "./styles/GlobalStyles";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from "react-hot-toast";
+import Testimonials from "./pages/Testimonials";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -49,6 +50,7 @@ function App() {
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/products" element={<Products />} />
           </Route>
@@ -62,7 +64,7 @@ function App() {
       <Toaster
         position="top-center"
         gutter={12}
-        containerStyle={{ margin: '10px' }}
+        containerStyle={{ margin: "10px" }}
         toastOptions={{
           success: {
             duration: 3000,
@@ -71,11 +73,11 @@ function App() {
             duration: 5000,
           },
           style: {
-            fontSize: '16px',
-            maxWidth: '500px',
-            padding: '16px',
-            backgroundColor: 'white',
-            color: 'black',
+            fontSize: "16px",
+            maxWidth: "500px",
+            padding: "16px",
+            backgroundColor: "white",
+            color: "black",
           },
         }}
       />

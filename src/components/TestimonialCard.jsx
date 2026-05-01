@@ -33,7 +33,7 @@ const PlayButton = styled.button`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100;
+  z-index: 90;
   border: none;
   border-radius: 50%;
   padding: 1rem;
