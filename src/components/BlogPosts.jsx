@@ -57,7 +57,7 @@ function BlogPosts() {
 
   return (
     <Posts className="container">
-      <StyledH2>Postările noastre</StyledH2>
+      <StyledH2>Postările noastre test</StyledH2>
       <StyledP>
         Află mai multe despre serviciile și produsele oferite de Afacerea
         Noastră Locală direct din postările de pe blogul nostru.{" "}
