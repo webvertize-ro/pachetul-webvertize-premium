@@ -51,6 +51,7 @@ const StyledP = styled.p`
 
 function BlogPosts() {
   const { data: posts, isLoading } = useBlogPosts();
+  console.log("posts in BlogPosts: ", posts);
 
   if (isLoading) return <LoadingSpinner />;
 
