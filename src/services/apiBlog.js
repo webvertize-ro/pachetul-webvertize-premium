@@ -1,5 +1,5 @@
-import supabase from "./supabase";
-import { WEBSITE_ID } from "../../config";
+import supabase from "./supabase.js";
+import { WEBSITE_ID } from "../../config.js";
 
 export async function getBlogPosts() {
   const { data, error } = await supabase
