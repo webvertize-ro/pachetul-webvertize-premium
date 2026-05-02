@@ -1,7 +1,7 @@
-import Modal from './Modal';
-import styled from 'styled-components';
-import Form from './Form';
-import { Link } from 'react-router';
+import Modal from "./Modal";
+import styled from "styled-components";
+import Form from "./Form";
+import { Link } from "react-router";
 
 const StyledHero = styled.div`
   background-image: url(${(props) => props.heroBg});
@@ -11,7 +11,7 @@ const StyledHero = styled.div`
   padding: 5rem 0;
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
     top: 0;
@@ -94,14 +94,14 @@ const Button = styled(Link)`
   }
 `;
 
-function Hero({ heroBg, heroTitle, heroDesc }) {
+function Hero({ heroBg, heroTitle, heroDesc, ctaBtn = true }) {
   return (
     <StyledHero heroBg={heroBg}>
       <div className="container">
         <TextContent>
           <StyledH2>{heroTitle}</StyledH2>
           <StyledP>{heroDesc}</StyledP>
-          {heroTitle !== 'Politica noastră privind cookie-urile' && (
+          {ctaBtn && (
             <Modal>
               <Modal.Open opens="form-modal">
                 <Button>Cere o ofertă de preț</Button>
