@@ -7,7 +7,7 @@ import CookiePopup from "./CookiePopup";
 import BottomNav from "./BottomNav";
 import Chat from "./live-chat/Chat";
 import { Helmet } from "react-helmet-async";
-import c from "../utils/content";
+import { c } from "../utils/content";
 import { useContent } from "../hooks/useContent";
 
 function AppLayout() {
