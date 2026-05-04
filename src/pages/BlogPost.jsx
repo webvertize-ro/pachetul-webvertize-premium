@@ -102,6 +102,13 @@ function BlogPost() {
   if (isLoading) return <LoadingSpinner />;
   if (!post) return <p>Articolul nu a fost gasit.</p>;
 
+  const paragraphs = post.body
+    .split("\n")
+    .map((p) => p.trim())
+    .filter((p) => p.length > 0);
+
+  console.log("paragraphs: ", paragraphs);
+
   return (
     <>
       <ArticleContainer className="container">
@@ -151,7 +158,9 @@ function BlogPost() {
           </StyledArticleTop>
 
           <ArticleBody>
-            <StyledP>{post.body}</StyledP>
+            {paragraphs.map((paragraph) => (
+              <StyledP>{paragraph}</StyledP>
+            ))}
           </ArticleBody>
         </StyledArticle>
       </ArticleContainer>
