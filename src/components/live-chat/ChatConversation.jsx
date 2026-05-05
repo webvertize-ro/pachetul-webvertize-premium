@@ -1,18 +1,17 @@
-import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
-import MessageSender from './MessageSender';
-import Conversations from './Conversations';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { getMessages, subscribeToMessages } from '../../services/apiMessages';
-import { useEffect, useState } from 'react';
-import supabase from '../../services/supabase';
+import { useForm } from "react-hook-form";
+import styled from "styled-components";
+import MessageSender from "./MessageSender";
+import Conversations from "./Conversations";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getMessages, subscribeToMessages } from "../../services/apiMessages";
+import { useEffect, useState } from "react";
+import supabase from "../../services/supabase";
 
 const StyledChatConversation = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  border: 2px solid orange;
 `;
 
 function ChatConversation({ user, mutateMsg, mutateFile, isSending }) {
@@ -36,18 +35,18 @@ function ChatConversation({ user, mutateMsg, mutateFile, isSending }) {
 
   const queryClient = useQueryClient();
 
-  console.log('replyMessage: ', replyMessage);
+  console.log("replyMessage: ", replyMessage);
 
   // Initial fetch via React Query
   const { data: messages, isLoading } = useQuery({
-    queryKey: ['messages', user.id],
+    queryKey: ["messages", user.id],
     queryFn: () => getMessages(user.id),
   });
 
   // Subscription to keep cache up to date
   useEffect(() => {
     const channel = subscribeToMessages(user.id, (payload) => {
-      queryClient.setQueryData(['messages', user.id], (old = []) => {
+      queryClient.setQueryData(["messages", user.id], (old = []) => {
         return [...old, payload.new];
       });
     });

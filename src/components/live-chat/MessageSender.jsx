@@ -1,14 +1,14 @@
-import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
-import FileInputButton from './FileInputButton';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useForm } from "react-hook-form";
+import styled from "styled-components";
+import FileInputButton from "./FileInputButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFile,
   faPaperclip,
   faXmark,
-} from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
-import FilePreview from './FilePreview';
+} from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
+import FilePreview from "./FilePreview";
 
 const StyledMessageSender = styled.div`
   width: 100%;
@@ -30,6 +30,8 @@ const StyledForm = styled.form`
   gap: 0.5rem;
   align-items: center;
   background-color: lightblue;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
 `;
 
 const StyledInput = styled.input``;
@@ -71,7 +73,7 @@ function MessageSender({
     setAttachment(file);
     console.log(attachment);
     // Create the URL for the image preview
-    if (file.type.startsWith('image/')) {
+    if (file.type.startsWith("image/")) {
       const fileURL = URL.createObjectURL(file);
       setPreviewUrl(fileURL);
     } else {
@@ -85,16 +87,16 @@ function MessageSender({
   }
 
   function onSubmit(data) {
-    onMessageHasImage(attachment?.type?.startsWith('image/') || false);
+    onMessageHasImage(attachment?.type?.startsWith("image/") || false);
     const message = {
       ...data,
       user_id: user.id,
-      sender_type: 'user',
+      sender_type: "user",
       document: attachment,
       reply_to_message_id: replyMessage?.id || null,
     };
 
-    console.log('prepared message is: ', message);
+    console.log("prepared message is: ", message);
 
     mutateMsg(message);
     clearAttachment();
@@ -134,13 +136,7 @@ function MessageSender({
       />
 
       <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
-        <StyledInput
-          type="text"
-          name="message"
-          placeholder="Scrieți mesajul aici..."
-          className="form-control"
-          {...register('message')}
-        />
+        {/* Attachment */}
         <div>
           <FileLabel htmlFor="document">
             <StyledFontAwesomeIcon icon={faPaperclip} />
@@ -149,13 +145,28 @@ function MessageSender({
             type="file"
             id="document"
             name="document"
-            {...register('document')}
+            {...register("document")}
             onChange={(e) => handleSelectFile(e.target.files[0])}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          {isSending ? 'Sending...' : 'Send'}
-        </button>
+
+        {/* Text */}
+        <div>
+          <StyledInput
+            type="text"
+            name="message"
+            placeholder="Scrieți mesajul aici..."
+            className="form-control"
+            {...register("message")}
+          />
+        </div>
+
+        {/* Sending button */}
+        <div>
+          <button type="submit" className="btn btn-primary">
+            {isSending ? "Sending..." : "Send"}
+          </button>
+        </div>
       </StyledForm>
     </StyledMessageSender>
   );

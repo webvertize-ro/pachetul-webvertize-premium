@@ -3,11 +3,44 @@ import {
   useMutation,
   useQuery,
   useQueryClient,
-} from '@tanstack/react-query';
-import { useForm } from 'react-hook-form';
-import { createUser, getUser } from '../../services/apiUsers';
-import toast from 'react-hot-toast';
-import FormRow from './FormRow';
+} from "@tanstack/react-query";
+import { useForm } from "react-hook-form";
+import { createUser, getUser } from "../../services/apiUsers";
+import toast from "react-hot-toast";
+import FormRow from "./FormRow";
+import styled from "styled-components";
+import Logo from "../Logo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 20;
+`;
+
+const StartConvoBtn = styled.button`
+  border: none;
+  background-color: #1e5128;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+`;
+
+const CancelBtn = styled.button`
+  border: none;
+  background-color: #740a03;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+`;
+
+const ActionButtons = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+`;
 
 function ChatForm({ user, isCreating, mutate }) {
   /**
@@ -27,14 +60,16 @@ function ChatForm({ user, isCreating, mutate }) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit, onError)}>
-      <FormRow label="Nume" error={errors?.name?.message}>
+    <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
+      <Logo dark={true} />
+
+      <FormRow label="Nume Complet" error={errors?.name?.message}>
         <input
           type="text"
           name="name"
           className="form-control"
-          {...register('name', {
-            required: 'Numele este obligatoriu!',
+          {...register("name", {
+            required: "Numele este obligatoriu!",
           })}
         />
       </FormRow>
@@ -43,18 +78,18 @@ function ChatForm({ user, isCreating, mutate }) {
           type="text"
           name="phone_number"
           className="form-control"
-          {...register('phone_number', {
-            required: 'Numărul de telefon este obligatoriu!',
+          {...register("phone_number", {
+            required: "Numărul de telefon este obligatoriu!",
           })}
         />
       </FormRow>
-      <div className="">
-        <button type="submit" disabled={isCreating}>
-          Incepe conversatia
-        </button>
-        <button type="reset">Anulează</button>
-      </div>
-    </form>
+      <ActionButtons>
+        <StartConvoBtn type="submit" disabled={isCreating}>
+          Începe conversația
+        </StartConvoBtn>
+        <CancelBtn type="reset">Anulează</CancelBtn>
+      </ActionButtons>
+    </StyledForm>
   );
 }
 

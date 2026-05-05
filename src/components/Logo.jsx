@@ -1,17 +1,26 @@
-import styled from 'styled-components';
-import logoImg from '../assets/images/basic-business-logo.svg';
+import styled from "styled-components";
+import logoImg from "../assets/images/basic-business-logo.svg";
+import logoImgDark from "../assets/images/basic-business-logo-dark.svg";
 
-const StyledImg = styled.img`
-  max-width: ${(props) => (props.width ? props.width : '160px')};
+const ImgContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
-function Logo({ width }) {
+const StyledImg = styled.img`
+  max-width: ${(props) => (props.width ? props.width : "160px")};
+  max-height: ${(props) => (props.width ? props.width : "60px")};
+`;
+
+function Logo({ width, dark }) {
   return (
-    <StyledImg
-      width={width}
-      src={logoImg}
-      alt="Logo-ul afacerii [Nume Afacere]"
-    />
+    <ImgContainer>
+      <StyledImg
+        width={width}
+        src={dark ? logoImgDark : logoImg}
+        alt="Logo-ul afacerii [Nume Afacere]"
+      />
+    </ImgContainer>
   );
 }
 

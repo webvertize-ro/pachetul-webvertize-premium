@@ -1,18 +1,20 @@
-import styled from 'styled-components';
-import ChatForm from './ChatForm';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { deleteUser } from '../../services/apiUsers';
-import toast from 'react-hot-toast';
-import ChatConversation from './ChatConversation';
-import { faWindowMinimize } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from "styled-components";
+import ChatForm from "./ChatForm";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deleteUser } from "../../services/apiUsers";
+import toast from "react-hot-toast";
+import ChatConversation from "./ChatConversation";
+import { faWindowMinimize } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const StyledChatWindow = styled.div`
+  display: flex;
+  flex-direction: column;
+
   position: absolute;
   bottom: 100%;
   right: 110%;
   z-index: 110;
-  border: 1px solid lime;
   background-color: #fff;
   padding: 0.5rem;
   border-radius: 0.5rem;
@@ -22,7 +24,7 @@ const StyledChatWindow = styled.div`
 
 const ChatHeader = styled.div`
   display: flex;
-  border: 2px solid lime;
+  flex: 1;
 `;
 
 const ClosingButton = styled.button`
@@ -41,7 +43,7 @@ function ChatWindow({
   isSending,
 }) {
   /**
-   * This component should display either the form (is there is no userId in localStorage) or the chat conversation
+   * This component should display either the form (if there is no userId in localStorage) or the chat conversation
    *    1. We will implement the Form first
    *    2. We will implement the ChatConversation as well
    */

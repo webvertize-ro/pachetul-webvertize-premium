@@ -1,11 +1,11 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { getMessages, subscribeToMessages } from '../../services/apiMessages';
-import { useEffect, useRef } from 'react';
-import supabase from '../../services/supabase';
-import MessageBubble from './MessageBubble';
-import styled from 'styled-components';
-import Message from './Message';
-import { useFetcher } from 'react-router';
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getMessages, subscribeToMessages } from "../../services/apiMessages";
+import { useEffect, useRef } from "react";
+import supabase from "../../services/supabase";
+import MessageBubble from "./MessageBubble";
+import styled from "styled-components";
+import Message from "./Message";
+import { useFetcher } from "react-router";
 
 const StyledConversations = styled.div`
   display: flex;
@@ -14,7 +14,6 @@ const StyledConversations = styled.div`
   overflow-y: scroll;
   max-height: 100%;
   padding: 1rem 0;
-  border: 1px solid red;
   height: 90%;
 `;
 
@@ -49,7 +48,7 @@ function Conversations({
   const ref = useRef(null);
 
   function scrollToBottom() {
-    ref.current?.scrollIntoView({ behavior: 'smooth' });
+    ref.current?.scrollIntoView({ behavior: "smooth" });
   }
 
   useEffect(() => {

@@ -1,15 +1,21 @@
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFile, faXmark } from '@fortawesome/free-solid-svg-icons';
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFile, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const StyledFilePreview = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  background-color: lightgrey;
+  background-color: rgba(92, 118, 109, 0.15);
   width: 100%;
   position: relative;
+  padding: 1rem;
+  border-radius: 0.5rem;
+`;
+
+const StyledImg = styled.img`
+  width: 120px;
 `;
 
 const ClosingButton = styled.button`
@@ -38,9 +44,9 @@ function FilePreview({ attachment, onAttachment, previewUrl }) {
         <FontAwesomeIcon icon={faXmark} />
       </ClosingButton>
 
-      {attachment.type.startsWith('image/') ? (
+      {attachment.type.startsWith("image/") ? (
         <div>
-          <img src={previewUrl} width="60" className="img-fluid" />
+          <StyledImg src={previewUrl} className="img-fluid" />
         </div>
       ) : (
         <FileName>
