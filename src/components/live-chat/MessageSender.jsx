@@ -21,15 +21,37 @@ const StyledMessageSender = styled.div`
 `;
 
 const ReplyToMessagePreview = styled.div`
-  background-color: lightgreen;
+  background-color: rgba(92, 118, 109, 0.25);
   width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  position: relative;
+`;
+
+const CancelReply = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background-color: #740a03;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+`;
+
+const StyledFontAwesomeIconCancelBtn = styled(FontAwesomeIcon)`
+  font-size: 0.75rem;
 `;
 
 const StyledForm = styled.form`
   display: flex;
   gap: 0.5rem;
   align-items: center;
-  background-color: lightblue;
+  background-color: rgba(68, 68, 78, 0.25);
   padding: 0.25rem;
   border-radius: 0.5rem;
 `;
@@ -112,6 +134,9 @@ function MessageSender({
     <StyledMessageSender>
       {replyMessage && (
         <ReplyToMessagePreview>
+          <CancelReply onClick={() => onReplyMessage(null)}>
+            <StyledFontAwesomeIconCancelBtn icon={faXmark} />
+          </CancelReply>
           <strong>Raspuns pentru: </strong>
           {/* Render image */}
           {replyMessage.has_image && (
@@ -164,7 +189,7 @@ function MessageSender({
         {/* Sending button */}
         <div>
           <button type="submit" className="btn btn-primary">
-            {isSending ? "Sending..." : "Send"}
+            {isSending ? "Se trimite..." : "Trimite"}
           </button>
         </div>
       </StyledForm>

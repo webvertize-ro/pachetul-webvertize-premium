@@ -11,7 +11,7 @@ const StyledConversations = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 100%;
   padding: 1rem 0;
   height: 90%;
