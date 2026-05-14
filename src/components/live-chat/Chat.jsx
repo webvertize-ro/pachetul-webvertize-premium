@@ -1,19 +1,20 @@
-import styled from 'styled-components';
-import ChatButton from './ChatButton';
-import ChatWindow from './ChatWindow';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { getUser } from '../../services/apiUsers';
-import LoadingSpinner from '../LoadingSpinner';
-import { createUser } from '../../services/apiUsers';
-import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
-import { useState } from 'react';
-import { sendMessage } from '../../services/apiMessages';
+import styled from "styled-components";
+import ChatButton from "./ChatButton";
+import ChatWindow from "./ChatWindow";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { getUser } from "../../services/apiUsers";
+import LoadingSpinner from "../LoadingSpinner";
+import { createUser } from "../../services/apiUsers";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import { sendMessage } from "../../services/apiMessages";
 
 const StyledChat = styled.div`
   position: fixed;
   bottom: 10%;
   right: 1.5rem;
+  z-index: 100;
 `;
 
 function Chat() {
@@ -26,7 +27,7 @@ function Chat() {
     setChatOpen((o) => !o);
   }
 
-  const userId = localStorage.getItem('userId');
+  const userId = localStorage.getItem("userId");
 
   const { reset } = useForm();
 
@@ -35,9 +36,9 @@ function Chat() {
   const { mutate, isPending: isCreating } = useMutation({
     mutationFn: createUser,
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ['users'] });
+      queryClient.invalidateQueries({ queryKey: ["users"] });
       reset();
-      localStorage.setItem('userId', data[0].id);
+      localStorage.setItem("userId", data[0].id);
     },
     onError: (error) => toast.error(error.message),
   });
@@ -48,7 +49,7 @@ function Chat() {
     data: user,
     error,
   } = useQuery({
-    queryKey: ['users', userId],
+    queryKey: ["users", userId],
     queryFn: () => getUser(userId),
     select: (data) => data[0],
   });

@@ -1,18 +1,16 @@
-import styled from 'styled-components';
-import SplitSection from '../components/SplitSection';
-import Stats from '../components/Stats';
-import CTA from '../components/CTA';
-import OurPartners from '../components/OurPartners';
-import WhyWorkWithUs from '../components/WhyWorkWithUs';
-import ShortServices from '../components/ShortServices';
-import PhotoGallery from '../components/PhotoGallery';
-import { images } from '../data/gallery1.js';
-import SliderWrapper from '../components/ImageSlider/SliderWrapper.jsx';
-import { Helmet } from 'react-helmet-async';
+import styled from "styled-components";
+import SplitSection from "../components/SplitSection";
+import Stats from "../components/Stats";
+import CTA from "../components/CTA";
+import OurPartners from "../components/OurPartners";
+import WhyWorkWithUs from "../components/WhyWorkWithUs";
+import ShortServices from "../components/ShortServices";
+import PhotoGallery from "../components/PhotoGallery";
+import { images } from "../data/gallery1.js";
+import SliderWrapper from "../components/ImageSlider/SliderWrapper.jsx";
+import { Helmet } from "react-helmet-async";
 
-const StyledHome = styled.div`
-  /* overflow-x: hidden; */
-`;
+const StyledHome = styled.div``;
 
 function Home() {
   return (

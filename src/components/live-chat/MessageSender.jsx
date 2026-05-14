@@ -16,7 +16,7 @@ const StyledMessageSender = styled.div`
   flex-direction: column;
   justify-content: center;
   padding: 0.5rem;
-  background-color: #144272;
+  background-color: #0f828c;
   color: #fff;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
