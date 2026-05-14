@@ -1,17 +1,9 @@
-import {
-  QueryClient,
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { QueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { createUser, getUser } from "../../services/apiUsers";
-import toast from "react-hot-toast";
 import FormRow from "./FormRow";
 import styled from "styled-components";
 import Logo from "../Logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 const StyledForm = styled.form`
   display: flex;
@@ -61,8 +53,6 @@ function ChatForm({ user, isCreating, mutate }) {
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
-      <Logo dark={true} />
-
       <FormRow label="Nume Complet" error={errors?.name?.message}>
         <input
           type="text"

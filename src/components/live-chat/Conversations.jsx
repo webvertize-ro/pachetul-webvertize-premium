@@ -13,7 +13,7 @@ const StyledConversations = styled.div`
   gap: 0.5rem;
   overflow-y: auto;
   max-height: 100%;
-  padding: 1rem 0;
+  padding: 1rem 0.75rem;
   height: 90%;
 `;
 

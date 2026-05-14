@@ -3,28 +3,30 @@ import styled from "styled-components";
 import FileInputButton from "./FileInputButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFile,
   faPaperclip,
+  faPaperPlane,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import FilePreview from "./FilePreview";
+import LoadingSpinner from "../LoadingSpinner";
 
 const StyledMessageSender = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  background-color: #144272;
+  color: #fff;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 `;
 
 const ReplyToMessagePreview = styled.div`
   background-color: rgba(92, 118, 109, 0.25);
+
   width: 100%;
   padding: 1rem;
-  border-radius: 0.5rem;
   position: relative;
 `;
 
@@ -49,14 +51,24 @@ const StyledFontAwesomeIconCancelBtn = styled(FontAwesomeIcon)`
 
 const StyledForm = styled.form`
   display: flex;
-  gap: 0.5rem;
   align-items: center;
-  background-color: rgba(68, 68, 78, 0.25);
+  justify-content: space-between;
   padding: 0.25rem;
-  border-radius: 0.5rem;
 `;
 
 const StyledInput = styled.input``;
+
+const SendingButton = styled.button`
+  border: none;
+  background-color: #75b06f;
+  color: #fff;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+`;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)``;
 
@@ -64,6 +76,7 @@ const FileLabel = styled.label`
   &:hover {
     cursor: pointer;
   }
+  font-size: 1.2rem;
 `;
 
 const InputFile = styled.input`
@@ -188,9 +201,13 @@ function MessageSender({
 
         {/* Sending button */}
         <div>
-          <button type="submit" className="btn btn-primary">
-            {isSending ? "Se trimite..." : "Trimite"}
-          </button>
+          <SendingButton type="submit">
+            {isSending ? (
+              <LoadingSpinner />
+            ) : (
+              <FontAwesomeIcon icon={faPaperPlane} />
+            )}
+          </SendingButton>
         </div>
       </StyledForm>
     </StyledMessageSender>

@@ -35,13 +35,13 @@ function ChatConversation({ user, mutateMsg, mutateFile, isSending }) {
 
   const queryClient = useQueryClient();
 
-  console.log("replyMessage: ", replyMessage);
-
   // Initial fetch via React Query
   const { data: messages, isLoading } = useQuery({
     queryKey: ["messages", user.id],
     queryFn: () => getMessages(user.id),
   });
+
+  console.log("messages in ChatConversation: ", messages);
 
   // Subscription to keep cache up to date
   useEffect(() => {

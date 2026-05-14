@@ -1,16 +1,17 @@
 import {
   faFile,
   faUpRightAndDownLeftFromCenter,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
-import styled from 'styled-components';
-import Lightbox from 'yet-another-react-lightbox';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import styled from "styled-components";
+import Lightbox from "yet-another-react-lightbox";
 
 const FileLink = styled.a`
   max-width: 150px;
   overflow-wrap: break-word;
   position: relative;
+  color: #fff;
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -28,7 +29,7 @@ const ImageContainer = styled.div`
 
   &:hover {
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -43,8 +44,13 @@ const ImageContainer = styled.div`
   }
 `;
 
+const TextMessage = styled.div`
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: flex-end;
+`;
+
 const Date = styled.div`
-  border: 1px solid lime;
   font-size: 0.8rem;
   font-weight: 600;
   display: flex;
@@ -60,6 +66,7 @@ const StyledImg = styled.img`
 
 const ReplyMessageContainer = styled.div`
   padding-left: 1rem;
+  border: 2px solid lime;
 `;
 
 const ReplyBox = styled.div`
@@ -125,7 +132,7 @@ function Message({ msg, messages, replyMessage, datePrepared }) {
             <StyledFontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} />
             <StyledImg src={msg.document} className="img-fluid" width="120" />
           </ImageContainer>
-          <div>{msg.message}</div>
+          <TextMessage>{msg.message}</TextMessage>
           <Lightbox
             open={open}
             close={() => setOpen(false)}
@@ -183,7 +190,7 @@ function Message({ msg, messages, replyMessage, datePrepared }) {
             <FontAwesomeIcon icon={faFile} />
             {msg.document_name}
           </FileLink>
-          <div>{msg.message}</div>
+          <TextMessage>{msg.message}</TextMessage>
           <Date>{datePrepared}</Date>
         </div>
       );
@@ -260,7 +267,8 @@ function Message({ msg, messages, replyMessage, datePrepared }) {
           </ReplyBox>
         </>
       )}
-      {msg.message}
+      {/* Actual text message */}
+      <TextMessage>{msg.message}</TextMessage>
       <Date>{datePrepared}</Date>
     </div>
   );

@@ -6,17 +6,16 @@ import toast from "react-hot-toast";
 import ChatConversation from "./ChatConversation";
 import { faWindowMinimize } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Logo from "../Logo";
 
 const StyledChatWindow = styled.div`
   display: flex;
   flex-direction: column;
-
   position: absolute;
   bottom: 100%;
   right: 110%;
   z-index: 110;
   background-color: #fff;
-  padding: 0.5rem;
   border-radius: 0.5rem;
   width: 350px;
   aspect-ratio: 1 / 1.2;
@@ -25,6 +24,8 @@ const StyledChatWindow = styled.div`
 const ChatHeader = styled.div`
   display: flex;
   flex: 1;
+  border-bottom: 2px solid #1f7d53;
+  padding: 0.5rem;
 `;
 
 const ClosingButton = styled.button`
@@ -70,16 +71,8 @@ function ChatWindow({
 
   return (
     <StyledChatWindow>
-      {/* {users.map((user) => (
-        <div className="border" key={user.id}>
-          <div>{user.name}</div>
-          <div>{user.phone_number}</div>
-          <button onClick={() => mutate(userId)} disabled={isDeleting}>
-            Delete
-          </button>
-        </div>
-      ))} */}
       <ChatHeader>
+        <Logo dark="true" />
         <ClosingButton onClick={() => onCloseWindow()}>
           <FontAwesomeIcon icon={faWindowMinimize} />
         </ClosingButton>

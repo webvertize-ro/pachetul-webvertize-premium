@@ -12,6 +12,7 @@ const StyledFilePreview = styled.div`
   position: relative;
   padding: 1rem;
   border-radius: 0.5rem;
+  border: 1px solid #fff;
 `;
 
 const StyledImg = styled.img`
