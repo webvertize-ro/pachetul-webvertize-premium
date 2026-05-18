@@ -7,8 +7,8 @@ import WhyWorkWithUs from "../components/WhyWorkWithUs";
 import ShortServices from "../components/ShortServices";
 import PhotoGallery from "../components/PhotoGallery";
 import { images } from "../data/gallery1.js";
-import SliderWrapper from "../components/ImageSlider/SliderWrapper.jsx";
 import { Helmet } from "react-helmet-async";
+import HeroVideo from "../components/HeroVideo.jsx";
 
 const StyledHome = styled.div``;
 
@@ -22,10 +22,8 @@ function Home() {
           content="[Numele Afacerii] – servicii profesionale de [domeniu] în [orașul tău]. Calitate garantată, experiență locală și clienți mulțumiți. Cere o ofertă gratuită azi!"
         />
       </Helmet>
+      <HeroVideo />
       <StyledHome>
-        {/* <SplitSection btn1Path="/portfolio" /> */}
-        {/* Slider/Carousel */}
-        <SliderWrapper />
         <Stats />
         <PhotoGallery
           title="Galerie foto din activitatea noastră"

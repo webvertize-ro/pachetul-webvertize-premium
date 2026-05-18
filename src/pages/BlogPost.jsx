@@ -59,6 +59,7 @@ const StyledImgContainer = styled.div`
   position: relative;
   max-width: 600px;
   transition: all 0.3s ease;
+  /* object-fit: cover; */
 
   &:hover {
     cursor: pointer;
@@ -83,7 +84,10 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   pointer-events: none;
 `;
 
-const StyledImg = styled.img``;
+const StyledImg = styled.img`
+  width: 100%;
+  height: 100%;
+`;
 
 const ArticleInfo = styled.div``;
 

@@ -66,7 +66,7 @@ function Chat() {
 
   return (
     <StyledChat>
-      <ChatButton onChatOpen={handleChatOpen} />
+      <ChatButton onChatOpen={handleChatOpen} chatOpen={chatOpen} />
       {chatOpen && (
         <ChatWindow
           user={user}

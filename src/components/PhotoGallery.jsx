@@ -1,39 +1,92 @@
-import { useState } from 'react';
-import styled from 'styled-components';
-import Lightbox from 'yet-another-react-lightbox';
-import { Captions } from 'yet-another-react-lightbox/plugins';
+import { useState } from "react";
+import styled from "styled-components";
+import Lightbox from "yet-another-react-lightbox";
+import { Captions } from "yet-another-react-lightbox/plugins";
 
 const StyledPhotoGallery = styled.div`
-  padding: 3rem 0;
-  background-color: #1f3745;
+  padding: 5rem 0;
+  background-color: #0b2240;
   color: #fff;
 
   @media (max-width: 576px) {
-    padding: 1.5rem;
+    padding: 3rem 1.5rem;
   }
 
   @media (min-width: 576px) and (max-width: 992px) {
-    padding: 1.75rem;
+    padding: 3.5rem 1.75rem;
   }
 `;
 
-const StyledImg = styled.img`
-  border-radius: 1rem;
-  height: 100%;
-  width: 100%;
+const GalleryHeader = styled.div`
+  margin-bottom: 3rem;
+
+  @media (min-width: 576px) and (max-width: 992px) {
+    text-align: center;
+  }
+`;
+
+const StyledH2 = styled.h2`
+  font-size: 2rem;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+  }
+`;
+
+const StyledP = styled.p`
+  font-size: 1rem;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.65;
+
+  @media (max-width: 576px) {
+    font-size: 0.95rem;
+  }
+
+  @media (min-width: 576px) and (max-width: 992px) {
+    margin: 0 auto;
+  }
 `;
 
 const ImageContainer = styled.div`
-  /* position: relative; */
-  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  cursor: pointer;
 
-  @media (min-width: 992px) {
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.02);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(11, 34, 64, 0.85) 0%,
+      rgba(11, 34, 64, 0.2) 50%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0.5rem;
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  @media (min-width: 576px) {
+    &:hover img {
+      transform: scale(1.04);
     }
+
     &:hover .img-caption {
       opacity: 1;
+      transform: translateY(0);
     }
   }
 
@@ -43,103 +96,76 @@ const ImageContainer = styled.div`
   }
 `;
 
+const StyledImg = styled.img`
+  border-radius: 0.5rem;
+  height: 100%;
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+`;
+
 const ImageCaption = styled.div`
   opacity: 0;
-  transition: all 0.2s ease-in-out;
+  transform: translateY(6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
   position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-size: 1.2rem;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 2;
+  font-size: 0.875rem;
   font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #ffffff;
   white-space: nowrap;
-  background-color: rgba(0, 0, 0, 0.75);
-  padding: 0.5rem 1rem;
-  border-radius: 0.75rem;
-  cursor: pointer;
-
-  @media (min-width: 992px) and (max-width: 1200px) {
-    font-size: 1rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.5rem;
-  }
-`;
-
-const StyledH2 = styled.h2`
-  font-size: 2.2rem;
-  font-weight: 600;
-
-  @media (max-width: 576px) {
-    font-size: 1.6rem;
-  }
-
-  @media (min-width: 576px) and (max-width: 992px) {
-    text-align: center;
-  }
-`;
-
-const StyledP = styled.p`
-  font-size: 1.25rem;
-  font-weight: 300;
-
-  @media (max-width: 576px) {
-    font-size: 1rem;
-  }
-
-  @media (min-width: 576px) and (max-width: 992px) {
-    text-align: center;
-  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
 `;
 
 function PhotoGallery({ title, text, images }) {
   const [open, setOpen] = useState(false);
   const [indexImg, setIndexImg] = useState(0);
 
-  const slides = images.map((i) => {
-    return {
-      src: i.img,
-      title: i.title,
-      alt: i.alt,
-    };
-  });
+  const slides = images.map((i) => ({
+    src: i.img,
+    title: i.title,
+    alt: i.alt,
+  }));
 
-  const sets = images.map((i) => {
-    return {
-      srcSet: i.srcSet,
-    };
-  });
+  const sets = images.map((i) => ({
+    srcSet: i.srcSet,
+  }));
 
   return (
     <>
       <StyledPhotoGallery>
         <div className="container">
-          <StyledH2>{title}</StyledH2>
-          <StyledP>{text}</StyledP>
-          <div className="row">
+          <GalleryHeader>
+            <StyledH2>{title}</StyledH2>
+            <StyledP>{text}</StyledP>
+          </GalleryHeader>
+          <div className="row g-3">
             {slides.map((img, i) => (
-              <ImageContainer className="col-4 col-md-4 mb-4" key={i}>
+              <ImageContainer
+                className="col-4 col-md-4"
+                key={i}
+                onClick={() => {
+                  setOpen(true);
+                  setIndexImg(i);
+                }}
+              >
                 <StyledImg
                   srcSet={sets[i].srcSet}
                   sizes="(max-width: 576px) 33vw, (max-width: 992px) 33vw, calc(33vw - 4rem)"
                   src={img.src}
                   alt={img.alt}
                   className="img-fluid"
-                  onClick={() => {
-                    setOpen(true);
-                    setIndexImg(i);
-                  }}
                   loading="lazy"
                 />
-                <ImageCaption
-                  className="img-caption"
-                  onClick={() => {
-                    setOpen(true);
-                    setIndexImg(i);
-                  }}
-                >
-                  {img.title}
-                </ImageCaption>
+                <ImageCaption className="img-caption">{img.title}</ImageCaption>
               </ImageContainer>
             ))}
           </div>

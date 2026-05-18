@@ -8,12 +8,16 @@ const StyledHero = styled.div`
   background-position: center;
   position: relative;
   z-index: 10;
-  padding: 5rem 0;
+  padding: 8rem 0;
 
   &:after {
     content: "";
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(
+      to bottom,
+      rgba(11, 34, 64, 0.55) 0%,
+      rgba(11, 34, 64, 0.75) 100%
+    );
     top: 0;
     left: 0;
     width: 100%;
@@ -21,7 +25,6 @@ const StyledHero = styled.div`
   }
 
   @media (max-width: 576px) {
-    text-align: center;
     padding: 2rem 0;
   }
 
@@ -33,15 +36,16 @@ const StyledHero = styled.div`
 const TextContent = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
   z-index: 12;
   color: #fff;
 `;
 
 const StyledH2 = styled.h2`
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
 
   @media (max-width: 576px) {
     font-size: 1.6rem;
@@ -53,41 +57,39 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledP = styled.p`
-  font-size: 1.4rem;
-  text-align: center;
-  max-width: 920px;
+  font-size: 1.05rem;
+  max-width: 600px;
+  color: rgba(168, 212, 245, 0.85);
+  font-weight: 300;
 
   @media (max-width: 576px) {
     font-size: 1rem;
   }
 
   @media (min-width: 576px) and (max-width: 992px) {
-    text-align: center;
   }
 `;
 
 const Button = styled(Link)`
+  background: transparent;
   text-decoration: none;
-  background: rgba(54, 85, 104, 0.5);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.2s ease-in-out;
+  border: 0.5px solid rgba(96, 165, 232, 0.45);
+  color: rgba(168, 212, 245, 0.85);
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 12px 28px;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
 
   @media (min-width: 992px) {
     &:hover {
-      background: rgba(54, 85, 104, 0.65);
-      backdrop-filter: blur(7.5px);
-      -webkit-backdrop-filter: blur(7.5px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-color: rgba(96, 165, 232, 0.9);
+      color: #fff;
+      background: transparent;
     }
   }
-
-  color: #fff;
-  font-size: 1.25rem;
-  font-weight: 500;
-  border-radius: 0.75rem;
-  padding: 1rem;
 
   @media (max-width: 576px) {
     font-size: 1rem;

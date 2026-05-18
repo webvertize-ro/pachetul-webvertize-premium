@@ -8,12 +8,12 @@ import TestimonialWrittenCard from "./TestimonialWrittenCard";
 import GoogleReviewsBanner from "./GoogleReviewsBanner";
 
 const StyledWrittenTestimonials = styled.section`
-  padding: 4rem 0;
+  padding: 5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3rem;
-  background-color: rgb(32, 32, 32);
+  background-color: #0f2f5a;
 
   @media (max-width: 576px) {
     padding: 2.5rem 1.5rem;
@@ -26,8 +26,9 @@ const WrittenTestimonialsTitle = styled.h2`
 
 const TestimonialsHeading = styled.h2`
   font-size: 2.2rem;
-  margin-bottom: 0;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
   color: #fff;
 
   @media (max-width: 576px) {
@@ -37,8 +38,10 @@ const TestimonialsHeading = styled.h2`
 
 const TestimonialsSubtitle = styled.p`
   margin-bottom: 0;
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 300;
+  max-width: 600px;
+  margin-bottom: 3rem;
   color: #fff;
 
   @media (max-width: 576px) {

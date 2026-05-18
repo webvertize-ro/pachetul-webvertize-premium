@@ -1,14 +1,13 @@
 import {
-  faFacebook,
   faFacebookSquare,
   faInstagramSquare,
   faLinkedin,
-} from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styled from "styled-components";
 
 const StyledTeamMemberModalInner = styled.div`
-  padding: 2rem;
+  padding: 1.5rem 2rem;
 `;
 
 const Layout = styled.div`
@@ -22,13 +21,17 @@ const Layout = styled.div`
 `;
 
 const StyledImg = styled.img`
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   max-height: 500px;
+  object-fit: cover;
+  width: 100%;
 `;
 
 const StyledP = styled.p`
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(168, 212, 245, 0.8);
+  line-height: 1.7;
 
   @media (max-width: 992px) {
     font-size: 1rem;
@@ -37,21 +40,53 @@ const StyledP = styled.p`
 
 const StyledLink = styled.a`
   text-decoration: none;
-  color: #fff;
-  font-size: 2.5rem;
+  color: rgba(168, 212, 245, 0.6);
+  font-size: 1.3rem;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #fff;
+  }
 `;
 
 const MemberDescription = styled.div`
-  height: 100%;
-  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 `;
 
-const StyledH3 = styled.h3``;
+const StyledH3 = styled.h3`
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.01em;
+
+  strong {
+    font-weight: 600;
+    color: #a8d4f5;
+  }
+`;
 
 const Socials = styled.div`
   /* display: flex;
   flex-direction: column;
   align-items: center; */
+`;
+
+const SocialsTitle = styled.h4`
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(168, 212, 245, 0.5);
+  margin-bottom: 0.75rem;
+`;
+
+const SocialIcons = styled.div`
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
 `;
 
 function TeamMemberModalInner({ img, long_desc, name }) {
@@ -62,7 +97,7 @@ function TeamMemberModalInner({ img, long_desc, name }) {
           <StyledImg src={img} alt="member image" className="img-fluid" />
         </div>
 
-        <MemberDescription className="d-flex flex-column">
+        <MemberDescription>
           <div>
             <StyledH3>
               Despre <strong>{name}</strong>
@@ -70,8 +105,8 @@ function TeamMemberModalInner({ img, long_desc, name }) {
             <StyledP>{long_desc}</StyledP>
           </div>
           <Socials>
-            <h4>Rețele de socializare</h4>
-            <div className="d-flex">
+            <SocialsTitle>Rețele de socializare</SocialsTitle>
+            <SocialIcons>
               {/* LinkedIn */}
               <div>
                 <StyledLink
@@ -102,7 +137,7 @@ function TeamMemberModalInner({ img, long_desc, name }) {
                   <FontAwesomeIcon icon={faInstagramSquare} />
                 </StyledLink>
               </div>
-            </div>
+            </SocialIcons>
           </Socials>
         </MemberDescription>
       </Layout>

@@ -1,8 +1,8 @@
-import styled, { keyframes } from 'styled-components';
-import businessStreetViewImg from '../assets/images/business_street_view.avif';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import Modal from './Modal';
+import styled, { keyframes } from "styled-components";
+import businessStreetViewImg from "../assets/images/business_street_view.avif";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import Modal from "./Modal";
 
 const StyledStreetView = styled.div`
   color: #fff;
@@ -64,21 +64,9 @@ const ModalWindowInner = styled.div`
 `;
 
 const StyledIframe = styled.iframe`
-  /* border-radius: 1rem; */
   width: 100%;
   height: 100%;
   border: none;
-`;
-
-const WaveAnimation = keyframes`
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1.3);
-        opacity: 0;
-    }
 `;
 
 const StyledButton = styled.button`
@@ -98,15 +86,7 @@ const StyledButton = styled.button`
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 4px solid rgba(255, 255, 255, 0.75);
-    animation: ${WaveAnimation} 2s ease-in-out infinite;
-  }
+  border: 2px solid #fff;
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`

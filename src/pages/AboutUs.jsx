@@ -1,9 +1,9 @@
-import Hero from '../components/Hero';
-import aboutUsImage from '../assets/images/about_us_image.avif';
-import OurTeam from '../components/OurTeam';
-import OurMission from '../components/OurMission';
-import CTA from '../components/CTA';
-import { Helmet } from 'react-helmet-async';
+import Hero from "../components/Hero";
+import aboutUsImage from "../assets/images/about_us_image.avif";
+import OurTeam from "../components/OurTeam";
+import OurMission from "../components/OurMission";
+import CTA from "../components/CTA";
+import { Helmet } from "react-helmet-async";
 
 function AboutUs() {
   return (
@@ -17,9 +17,9 @@ function AboutUs() {
       </Helmet>
       <Hero
         heroBg={aboutUsImage}
-        heroTitle={'Cine suntem'}
+        heroTitle={"Cine suntem"}
         heroDesc={
-          'Povestea și valorile care ne definesc activitatea și modul în care lucrăm pentru clienții noștri'
+          "Povestea și valorile care ne definesc activitatea și modul în care lucrăm pentru clienții noștri"
         }
       />
       <OurMission />

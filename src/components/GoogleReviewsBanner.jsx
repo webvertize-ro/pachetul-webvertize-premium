@@ -17,7 +17,7 @@ const GoogleFontAwesomeIcon = styled(FontAwesomeIcon)`
 
 const GoogleReviewsText = styled.div`
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 300;
   color: #fff;
 `;
 

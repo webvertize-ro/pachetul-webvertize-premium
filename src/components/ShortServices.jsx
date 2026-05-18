@@ -1,19 +1,18 @@
-import Modal from './Modal';
-
-import img400 from '../assets/images/short_services_pic-400.avif';
-import img800 from '../assets/images/short_services_pic-800.avif';
-import img1200 from '../assets/images/short_services_pic-1200.avif';
-import Form from './Form';
-import styled, { keyframes } from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router';
-import { shortServices } from '../data/listData';
-import ListItem from './ListItem';
+import Modal from "./Modal";
+import img400 from "../assets/images/short_services_pic-400.avif";
+import img800 from "../assets/images/short_services_pic-800.avif";
+import img1200 from "../assets/images/short_services_pic-1200.avif";
+import Form from "./Form";
+import styled, { keyframes } from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router";
+import { shortServices } from "../data/listData";
+import ListItem from "./ListItem";
 
 const StyledShortServices = styled.div`
-  padding: 3rem;
-  background-color: rgb(44, 44, 44);
+  padding: 5rem 0;
+  background-color: #0c1e33;
   color: #fff;
 
   @media (max-width: 576px) {
@@ -41,8 +40,8 @@ const VideoContainer = styled.div`
 
 const StyledImg = styled.img`
   max-width: 475px;
-  border-radius: 1.5rem;
-  border: 4px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.75rem;
+  border: 0.5px solid rgba(168, 212, 245, 0.2);
   position: relative;
 
   @media (max-width: 576px) {
@@ -58,18 +57,9 @@ const StyledImg = styled.img`
   }
 `;
 
-const myAnimation = keyframes`
-  0% {
-    opacity: 0;
-  } 
-  100%{
-    opacity: 1;
-  }
-`;
-
 const ImageWrapper = styled.div`
   position: relative;
-  border-radius: 1.5rem;
+  border-radius: 0.75rem;
   overflow: hidden;
 `;
 
@@ -90,24 +80,21 @@ const StyledIframe = styled.iframe`
   border: none;
 `;
 
-const WaveAnimation = keyframes`
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1.3);
-        opacity: 0;
-    }
+const arcSweep = keyframes`
+  0% {transform: rotate(-40deg); opacity: 0;}
+  15% {opacity: 1;}
+  85% {opacity: 1;}
+  100% {transform: rotate(200deg); opacity: 0;}
 `;
 
 const PlayButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
   color: #fff;
   position: absolute;
+  overflow: hidden;
+  isolation: isolate;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -115,18 +102,41 @@ const PlayButton = styled.button`
   border: none;
   border-radius: 50%;
   padding: 1rem;
-
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
-    inset: 0;
+    top: -10%;
+    left: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.35) 0%,
+      transparent 70%
+    );
     border-radius: 50%;
-    border: 4px solid rgba(255, 255, 255, 0.75);
-    animation: ${WaveAnimation} 2s ease-in-out infinite;
+    transform-origin: 90% 90%;
+    animation: ${arcSweep} 3.2s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%) scale(1.06);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &::after {
+      animation: none;
+    }
   }
 `;
 
@@ -136,7 +146,8 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 
 const StyledH2 = styled.h2`
   font-size: 2.2rem;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 
   @media (max-width: 576px) {
     font-size: 1.6rem;
@@ -151,7 +162,6 @@ const StyledP = styled.p`
   margin-bottom: 1.5rem;
   font-size: 1.25rem;
   font-weight: 300;
-  text-align: justify;
 
   @media (max-width: 576px) {
     font-size: 1rem;
@@ -172,26 +182,10 @@ const StyledUl = styled.ul`
   padding: 0;
 `;
 
-const StyledLi = styled.li`
-  font-size: 1.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #1b3c53;
-  color: #fff;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.5rem;
-  cursor: default;
-
-  @media (max-width: 576px) {
-    font-size: 1rem;
-  }
-`;
-
 const ButtonsContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.75rem;
 
   @media (max-width: 576px) {
     flex-direction: column;
@@ -200,13 +194,14 @@ const ButtonsContainer = styled.div`
 
 const Button1 = styled(Link)`
   text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: transparent;
+  border: 0.5px solid rgba(96, 165, 232, 0.4);
+  color: rgba(168, 212, 245, 0.85);
+  border-radius: 8px;
+
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
-  font-size: 1.25rem;
-  border-radius: 0.75rem;
+  font-size: 1rem;
   padding: 1rem;
   transition: all 0.2s ease;
   display: flex;
@@ -221,23 +216,22 @@ const Button1 = styled(Link)`
   @media (min-width: 992px) {
     flex: 1;
     &:hover {
-      background-color: rgba(0, 0, 0, 1);
-      backdrop-filter: blur(7.5px);
-      -webkit-backdrop-filter: blur(7.5px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-color: rgba(96, 165, 232, 0.9);
+      color: #fff;
+      background-color: transparent;
     }
   }
 `;
 
 const Button2 = styled(Link)`
+  background-color: #1a4f8a;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
   text-decoration: none;
-  background-color: rgb(177, 44, 0);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(42, 70, 87, 0.3);
   color: #fff;
-  font-size: 1.25rem;
-  border-radius: 0.75rem;
   padding: 1rem;
   transition: all 0.3s ease;
   display: flex;
@@ -248,10 +242,8 @@ const Button2 = styled(Link)`
   }
 
   &:hover {
-    background-color: rgb(200, 44, 0);
-    backdrop-filter: blur(7.5px);
-    -webkit-backdrop-filter: blur(7.5px);
-    border: 1px solid rgba(255, 255, 255, 1);
+    background-color: #2563b0;
+    border: none;
   }
 
   @media (max-width: 576px) {

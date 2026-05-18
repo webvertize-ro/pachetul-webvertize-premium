@@ -1,27 +1,13 @@
 import styled from "styled-components";
-
 import Modal from "./Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAddressCard,
   faBriefcase,
-  faInfoCircle,
   faPlay,
 } from "@fortawesome/free-solid-svg-icons";
-import { keyframes } from "styled-components";
 
 const StyledTestimonialCard = styled.div``;
-
-const WaveAnimation = keyframes`
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1.3);
-        opacity: 0;
-    }
-`;
 
 const PlayButton = styled.button`
   display: flex;
@@ -37,19 +23,9 @@ const PlayButton = styled.button`
   border: none;
   border-radius: 50%;
   padding: 1rem;
-
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 4px solid rgba(255, 255, 255, 0.75);
-    animation: ${WaveAnimation} 2s ease-in-out infinite;
-  }
 `;
 
 const IframeWrapper = styled.div`

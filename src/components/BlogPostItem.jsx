@@ -1,7 +1,6 @@
 import {
   faArrowsRotate,
   faCalendarCheck,
-  faGroupArrowsRotate,
   faSquarePen,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +13,7 @@ const StyledBlogPostItem = styled.div`
   gap: 1.5rem;
   border-radius: 1rem;
   padding: 1.5rem;
-  background-color: #456882;
+  background-color: #3b82d4;
   transition: all 0.3s ease;
 
   &:hover {

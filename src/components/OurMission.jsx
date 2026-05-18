@@ -1,23 +1,23 @@
-import styled from 'styled-components';
-import ourMissionImg from '../assets/images/our_mission_image.avif';
-import Modal from './Modal';
-import Form from './Form';
-import { NavLink } from 'react-router';
+import styled from "styled-components";
+import ourMissionImg from "../assets/images/our_mission_image.avif";
+import Modal from "./Modal";
+import Form from "./Form";
+import { NavLink } from "react-router";
 
 const StyledOurMission = styled.div`
-  padding: 3rem 0;
-  background-color: #1f3745;
+  padding: 5rem 0;
+  background-color: #0b2240;
   color: #fff;
 `;
 
 const TextContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0;
 `;
 
 const StyledImg = styled.img`
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   max-width: 425px;
 
   @media (max-width: 576px) {
@@ -26,18 +26,19 @@ const StyledImg = styled.img`
 `;
 
 const StyledH2 = styled.h2`
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 `;
 
 const StyledP = styled.p`
-  font-weight: 500;
-  font-size: 1.1rem;
-  text-align: justify;
+  font-weight: 300;
+  font-size: 1rem;
+  color: rgba(168, 212, 245, 0.8);
 `;
 
 const ButtonsContainer = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
 
   @media (max-width: 992px) {
     flex-direction: column;
@@ -45,26 +46,26 @@ const ButtonsContainer = styled.div`
 `;
 
 const StyledButton = styled.button`
-  background: rgba(172, 149, 132, 0.35);
+  background: #1a4f8a;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  color: #e8f2ff;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
   backdrop-filter: blur(5px);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  flex: 1;
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(172, 149, 132, 0.3);
 
   @media (min-width: 992px) {
     &:hover {
-      background: rgba(172, 149, 132, 0.5);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(172, 149, 132, 0.5);
+      background: #2563b0;
     }
   }
-
-  border-radius: 0.5rem;
-  padding: 0.75rem;
-  color: #fff;
-  font-weight: 500;
-  font-size: 1.1rem;
-  flex: 1;
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -72,25 +73,26 @@ const StyledNavLink = styled(NavLink)`
   justify-content: center;
   text-decoration: none;
 
-  background: rgba(224, 204, 192, 0.35);
+  background: transparent;
+  border: 0.5px solid rgba(96, 165, 232, 0.4);
+  border-radius: 8px;
+  padding: 12px 24px;
+  color: rgba(168, 212, 245, 0.85);
+  font-weight: 500;
+  font-size: 1rem;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(224, 204, 192, 0.35);
-  transition: all 0.2s ease-in-out;
 
   @media (min-width: 992px) {
     &:hover {
-      background: rgba(224, 204, 192, 0.5);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(224, 204, 192, 0.35);
+      background: transparent;
+      border-color: rgba(96, 165, 232, 0.9);
+      color: #fff;
     }
   }
-  border-radius: 0.5rem;
-  padding: 0.75rem;
-  color: #fff;
-  font-weight: 500;
-  font-size: 1.1rem;
   flex: 1;
 `;
 

@@ -5,22 +5,39 @@ import user3 from "../assets/images/user3.jpg";
 import user4 from "../assets/images/user4.jpg";
 import TestimonialCard from "./TestimonialCard";
 
+const Section = styled.section`
+  background-color: #2c5d93;
+  padding: 5rem 0;
+
+  @media (max-width: 576px) {
+    padding: 3rem 0;
+  }
+`;
+
 const StyledVideoTestimonials = styled.div`
   display: flex;
   flex-direction: column;
   color: #fff;
-  padding: 4rem 0;
-
-  @media (max-width: 576px) {
-    padding: 2.5rem 1.5rem;
-  }
 `;
 
 const VideoTestimonialsTitle = styled.h2`
-  /* margin-bottom: 1.5rem; */
+  font-size: 2rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
 `;
 
 const VideoTestimonialsDescription = styled.div``;
+
+const Description = styled.p`
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(168, 212, 245, 0.75);
+  max-width: 520px;
+  line-height: 1.65;
+  margin-bottom: 3rem;
+`;
 
 const VideoTestimonialsInner = styled.div`
   display: flex;
@@ -59,26 +76,28 @@ function VideoTestimonials() {
   ];
 
   return (
-    <StyledVideoTestimonials className="container">
-      <VideoTestimonialsTitle>Testimoniale Video</VideoTestimonialsTitle>
-      <VideoTestimonialsDescription>
-        <p>
-          Vizualizează videoclipurile de mai jos și află care este opinia
-          oamenilor despre noi.
-        </p>
-      </VideoTestimonialsDescription>
-      <VideoTestimonialsInner className="row">
-        {testimonials.map((t, index) => (
-          <TestimonialCard
-            img={t.user_image}
-            name={t.name}
-            functionUser={t.function}
-            video={t.testimonial_video}
-            key={index}
-          />
-        ))}
-      </VideoTestimonialsInner>
-    </StyledVideoTestimonials>
+    <Section>
+      <StyledVideoTestimonials className="container">
+        <VideoTestimonialsTitle>Testimoniale Video</VideoTestimonialsTitle>
+        <VideoTestimonialsDescription>
+          <p>
+            Vizualizează videoclipurile de mai jos și află care este opinia
+            oamenilor despre noi.
+          </p>
+        </VideoTestimonialsDescription>
+        <VideoTestimonialsInner className="row g-4">
+          {testimonials.map((t, index) => (
+            <TestimonialCard
+              img={t.user_image}
+              name={t.name}
+              functionUser={t.function}
+              video={t.testimonial_video}
+              key={index}
+            />
+          ))}
+        </VideoTestimonialsInner>
+      </StyledVideoTestimonials>
+    </Section>
   );
 }
 

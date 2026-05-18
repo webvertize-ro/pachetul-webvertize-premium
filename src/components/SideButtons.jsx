@@ -1,8 +1,7 @@
-import styled from 'styled-components';
-import FormButton from './FormButton';
-import WhatsAppButton from './WhatsAppButton';
-import { useState } from 'react';
-import FacebookButton from './FacebookButton';
+import styled from "styled-components";
+import FormButton from "./FormButton";
+import WhatsAppButton from "./WhatsAppButton";
+import FacebookButton from "./FacebookButton";
 
 const StyledSideButtons = styled.div`
   display: flex;

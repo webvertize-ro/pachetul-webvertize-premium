@@ -4,28 +4,28 @@ import {
   faLinkedin,
   faTiktok,
   faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import styled from 'styled-components';
-import Logo from './Logo';
-import Dropdown from './Dropdown';
-import { c } from '../utils/content';
-import { useContent } from '../hooks/useContent';
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useRef, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import styled from "styled-components";
+import Logo from "./Logo";
+import Dropdown from "./Dropdown";
+import { c } from "../utils/content";
+import { useContent } from "../hooks/useContent";
 
 const NavigationHeader = styled.header`
   transition: all 0.3s ease-in-out;
   top: 0;
   width: 100%;
   z-index: 100;
-  padding: ${({ $isScrolled }) => ($isScrolled ? '0.75rem 3rem' : '0')};
+  padding: ${({ $isScrolled }) => ($isScrolled ? "0.75rem 1.5rem" : "0")};
   ${({ $isScrolled }) =>
     $isScrolled
       ? `filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.15));`
       : `filter: none`}
   @media (max-width: 576px) {
-    padding: ${({ $isScrolled }) => ($isScrolled ? '0.5rem 1.25rem' : '0')};
+    padding: ${({ $isScrolled }) => ($isScrolled ? "0.5rem 1.25rem" : "0")};
   }
 `;
 
@@ -35,17 +35,17 @@ const StyledNav = styled.nav`
   z-index: 101;
   font-size: 0.9rem;
   background-color: ${({ $isScrolled }) =>
-    $isScrolled ? 'rgba(31, 55, 69, 0.9)' : 'transparent'};
+    $isScrolled ? "rgba(15, 47, 90, 0.93)" : "transparent"};
   box-shadow: ${({ $isScrolled }) =>
-    $isScrolled ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'unset'};
+    $isScrolled ? "0 1px 24px rgba(0, 0, 0, 0.2)" : "unset"};
   backdrop-filter: ${({ $isScrolled }) =>
-    $isScrolled ? 'blur(20px)' : 'unset'};
+    $isScrolled ? "blur(20px)" : "unset"};
   -webkit-backdrop-filter: ${({ $isScrolled }) =>
-    $isScrolled ? 'blur(20px)' : 'unset'};
+    $isScrolled ? "blur(20px)" : "unset"};
   border: ${({ $isScrolled }) =>
-    $isScrolled ? '1px solid rgba(255, 255, 255, 0.3)' : 'unset'};
+    $isScrolled ? "0.5px solid rgba(168, 212, 245, 0.15)" : "unset"};
   transition: all 0.5s ease-in-out;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
 
   @media (max-width: 992px) {
     height: unset;
@@ -76,23 +76,45 @@ const StyledNavCollapse = styled.div`
 
 const StyledNavUl = styled.ul`
   height: 100%;
+  display: flex;
 `;
 
 const StyledNavLink = styled(NavLink)`
   display: flex;
   align-items: center;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #fff;
+  font-family: "Montserrat";
+  font-weight: 400;
+  color: rgba(168, 212, 245, 0.75);
+  padding: 0 1rem !important;
+  letter-spacing: 0.05em;
+  font-size: 14px;
+  position: relative;
+
   &:hover {
-    background-color: #2c5870;
+    background-color: transparent;
     color: #fff;
   }
 
   &.active {
-    background-color: #2c5870;
+    background-color: transparent;
     color: #fff !important;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 24px;
+    left: 1rem;
+    right: 1rem;
+    height: 1px;
+    background: #60a5e8;
+    width: 0;
+    transition: width 0.25s ease;
+  }
+
+  &:hover::after,
+  &.active::after {
+    width: calc(100% - 2rem);
   }
 
   @media (max-width: 992px) {
@@ -106,12 +128,15 @@ const StyledSocialLinks = styled.div`
   @media (min-width: 992px) {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 1rem;
+    margin-left: 1.5rem;
+    padding-left: 1.5rem;
+    border-left: 0.5px solid rgba(168, 212, 245, 0.15);
   }
 `;
 
 const StyledAnchor = styled.a`
-  color: #000;
+  color: inherit;
   &:hover {
     text-decoration: none;
   }
@@ -119,14 +144,14 @@ const StyledAnchor = styled.a`
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 1.2rem;
-  background-color: #456882;
-  color: #fff;
-  padding: 0.25rem;
-  border-radius: 0.35rem;
-  transition: all 0.3s ease;
+  color: rgba(168, 212, 245, 0.65);
+  background-color: transparent;
+  padding: 0rem;
+  border-radius: 0;
+  transition: color 0.2s ease;
 
   &:hover {
-    background-color: #1b3c53;
+    color: #fff;
   }
 `;
 
@@ -137,7 +162,8 @@ const Burger = styled.div`
 `;
 
 const BurgerLine = styled.div`
-  height: 4px;
+  height: 2px;
+  border-radius: 2px;
   width: 25px;
   background-color: #fff;
 `;
@@ -154,14 +180,14 @@ function Navigation() {
       setIsScrolled(myBool);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Run once on mount
     handleScroll();
 
     // clean up
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -173,16 +199,16 @@ function Navigation() {
     }
 
     if (isNavbarOpen) {
-      document.addEventListener('mousedown', closeNavigation);
+      document.addEventListener("mousedown", closeNavigation);
     }
 
     return () => {
-      document.removeEventListener('mousedown', closeNavigation);
+      document.removeEventListener("mousedown", closeNavigation);
     };
   }, [isNavbarOpen]);
 
   function handleNavClick(e) {
-    const link = e.target.closest('a');
+    const link = e.target.closest("a");
     if (!link) return;
     setIsNavbarOpen(false);
   }
@@ -190,7 +216,7 @@ function Navigation() {
   // Social Links
   const socialLinks = [1, 2, 3, 4]
     .map((n) => {
-      const raw = c(contentMap, `navbar_social_${n}`);
+      const raw = c(contentMap, `global.navbar_social_${n}`);
       if (!raw) return null;
       try {
         return JSON.parse(raw);
@@ -237,7 +263,7 @@ function Navigation() {
             </Burger>
           </StyledButton>
           <StyledNavCollapse
-            className={`collapse navbar-collapse ${isNavbarOpen ? 'show' : ''}`}
+            className={`collapse navbar-collapse ${isNavbarOpen ? "show" : ""}`}
             id="menuLinks"
           >
             <StyledNavUl className="navbar-nav ms-auto">
@@ -266,7 +292,7 @@ function Navigation() {
             </StyledNavUl>
           </StyledNavCollapse>
           <StyledSocialLinks>
-            {socialLinks.map((link) => (
+            {/* {socialLinks.map((link) => (
               <StyledAnchor
                 key={link.platform}
                 href={link.url}
@@ -275,7 +301,22 @@ function Navigation() {
               >
                 <StyledFontAwesomeIcon icon={iconMap[link.platform]} />
               </StyledAnchor>
-            ))}
+            ))} */}
+            {/* Temporary: before inserting the website in the database */}
+            <StyledAnchor
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <StyledFontAwesomeIcon icon={faFacebook} />
+            </StyledAnchor>
+            <StyledAnchor
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <StyledFontAwesomeIcon icon={faInstagram} />
+            </StyledAnchor>
           </StyledSocialLinks>
         </StyledNavContainer>
       </StyledNav>

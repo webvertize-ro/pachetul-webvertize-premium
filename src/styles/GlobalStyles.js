@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import MontserratVariable from '../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf';
+import { createGlobalStyle } from "styled-components";
+import MontserratVariable from "../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf";
 
 const GlobalStyles = createGlobalStyle`
 /* CSS variables */
@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
 body {
   font-family: 'Montserrat' !important;
   font-weight: 400 !important;
-  background-color: #1f3745 !important;
+  background-color: rgba(26,79,138,0.92) !important;
 }
 `;
 

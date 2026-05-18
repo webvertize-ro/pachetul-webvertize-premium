@@ -1,16 +1,15 @@
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   cloneElement,
   createContext,
   useContext,
   useEffect,
-  useRef,
   useState,
-} from 'react';
-import { createPortal } from 'react-dom';
-import styled from 'styled-components';
-import { useOutsideClick } from '../hooks/useOutsideClick';
+} from "react";
+import { createPortal } from "react-dom";
+import styled from "styled-components";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -18,19 +17,19 @@ const StyledModal = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: ${(props) =>
-    props.bgColor ? props.bgColor : 'rgba(74, 112, 137, 0.75)'};
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8.7px);
+    props.bgColor ? props.bgColor : "rgba(15, 47, 90, 0.92)"};
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(8.7px);
-  border: 1px solid rgba(74, 112, 137, 0.01);
+
   box-shadow:
     0,
     2.4rem 3.2rem rgba(0, 0, 0, 0.12);
-  border-radius: 1rem;
+  border-radius: 12px;
   transition: all 0.5s;
   z-index: 91;
   color: #fff;
-  border: 0.5px solid rgba(255, 255, 255, 0.5);
+  border: 0.5px solid rgba(168, 212, 245, 0.15);
 
   @media (max-width: 576px) {
     width: 320px;
@@ -43,7 +42,7 @@ const Header = styled.div`
   justify-content: space-between;
   position: relative;
   padding: 1rem;
-  /* border-bottom: 1px solid grey; */
+  border-bottom: 0.5px solid rgba(168, 212, 245, 0.1);
   color: #fff;
 `;
 
@@ -63,6 +62,10 @@ const ModalContent = styled.div`
 `;
 
 const StyledH4 = styled.h4`
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
   margin: 0;
   @media (max-width: 576px) {
     font-size: 1rem;
@@ -75,8 +78,8 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4px);
+  background-color: rgba(7, 20, 38, 0.7);
+  backdrop-filter: blur(6px);
   z-index: 102;
   transition: all 0.5s;
 `;
@@ -92,7 +95,7 @@ const Button = styled.button`
   color: #fff;
 
   &:hover {
-    background-color: #2a4657;
+    background-color: rgba(168, 212, 245, 0.1);
   }
 
   & svg {
@@ -105,15 +108,15 @@ const Button = styled.button`
 const ModalContext = createContext();
 
 function Modal({ children }) {
-  const [openName, setOpenName] = useState('');
+  const [openName, setOpenName] = useState("");
 
-  const close = () => setOpenName('');
+  const close = () => setOpenName("");
   const open = setOpenName;
 
   // Disable scrolling when the modal is open
   useEffect(() => {
-    if (openName) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'auto';
+    if (openName) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "auto";
   }, [openName]);
 
   return (
@@ -132,7 +135,7 @@ function Open({ children, opens: opensWindowName }) {
 function Window({
   children,
   name,
-  title = 'Solicită o ofertă',
+  title = "Solicită o ofertă",
   lightboxOpen,
   bgColor,
 }) {

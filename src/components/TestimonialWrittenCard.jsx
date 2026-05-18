@@ -8,7 +8,6 @@ import {
   faQuoteLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const StyledTestimonialWrittenCard = styled.div`
   border: 2px solid #fff;
@@ -49,7 +48,7 @@ const UserName = styled.div`
 `;
 
 const UserNameName = styled.div`
-  font-weight: bold;
+  font-weight: 400;
   font-size: 1.25rem;
 `;
 

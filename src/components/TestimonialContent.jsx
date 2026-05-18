@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledP = styled.p`
   font-size: 1.15rem;
@@ -6,7 +6,7 @@ const StyledP = styled.p`
   font-style: italic;
   max-width: 600px;
   color: #fff;
-  font-weight: 500;
+  font-weight: 300;
   text-align: center;
 `;
 

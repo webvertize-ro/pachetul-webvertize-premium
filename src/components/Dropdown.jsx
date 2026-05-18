@@ -1,12 +1,8 @@
-import {
-  faArrowUp,
-  faChevronDown,
-  faChevronUp,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useRef, useState } from 'react';
-import { NavLink } from 'react-router';
-import styled from 'styled-components';
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useRef, useState } from "react";
+import { NavLink } from "react-router";
+import styled from "styled-components";
 
 const StyledDropdown = styled.div`
   display: flex;
@@ -18,22 +14,11 @@ const StyledDropdown = styled.div`
     flex-direction: column;
     gap: 0.5rem;
   }
-  /* width: 150px; */
-
   text-decoration: none;
-  /* &:hover {
-    background-color: #2c5870;
-    color: #fff;
-  }
-
-  &.active {
-    background-color: #e9e0d8;
-    color: #fff !important;
-  } */
 
   @media (min-width: 992px) {
     &:hover {
-      background-color: #2c5870;
+      background-color: transparent;
     }
   }
 `;
@@ -44,14 +29,36 @@ const StyledButton = styled.div`
   background-color: transparent;
   text-decoration: none !important;
   position: relative;
-  font-family: 'Montserrat';
-  font-weight: 600;
-  color: #fff;
-  text-transform: uppercase;
+  padding: 0 1rem;
+  font-family: "Montserrat";
+  font-weight: 400;
+  color: rgba(168, 212, 245, 0.75);
+  letter-spacing: 0.04em;
+  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 24px;
+    left: 1rem;
+    right: 1rem;
+    height: 1px;
+    background: #60a5e8;
+    width: 0;
+    transition: width 0.25s ease;
+  }
+
+  &:hover::after {
+    width: calc(100% - 2rem);
+  }
 `;
 
 const DropdownItems = styled.ul`
@@ -62,15 +69,13 @@ const DropdownItems = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  text-transform: uppercase;
-  font-weight: 600;
-  /* border: 3px solid #1b3c53; */
-  border-radius: 0.25rem;
-  background-color: rgba(31, 55, 69, 0.85);
+  border-radius: 0.75rem;
+  margin-top: 0.5rem;
+  background-color: rgba(15, 47, 90, 0.96);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 0.5px solid rgba(168, 212, 245, 0.15);
 `;
 
 const DropdownItemsContainer = styled.div`
@@ -87,10 +92,10 @@ const DropdownItemsContainer = styled.div`
 const StyledLi = styled.li``;
 
 const StyledNavLink = styled(NavLink)`
-  color: #fff;
+  color: rgba(168, 212, 245, 0.75);
   display: flex;
   text-decoration: none;
-  padding: 0.75rem;
+  padding: 0.6rem 1rem;
 
   @media (max-width: 992px) {
     display: flex;
@@ -99,13 +104,13 @@ const StyledNavLink = styled(NavLink)`
 
   @media (min-width: 992px) {
     &:hover {
-      background-color: #2c5870;
+      background-color: transparent;
       color: #fff;
     }
   }
 
   &.active {
-    background-color: #2c5870;
+    background-color: transparent;
     color: #fff;
   }
 `;
@@ -123,9 +128,9 @@ function Dropdown() {
       }
     }
 
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
 
-    return () => document.removeEventListener('click', handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   return (
@@ -158,10 +163,7 @@ function Dropdown() {
               </StyledNavLink>
             </StyledLi>
             <StyledLi>
-              <StyledNavLink
-                to="/blog"
-                onClick={() => setOpen(false)}
-              >
+              <StyledNavLink to="/blog" onClick={() => setOpen(false)}>
                 Blog/Noutăți
               </StyledNavLink>
             </StyledLi>

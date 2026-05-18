@@ -1,6 +1,6 @@
-import { faPenToSquare, faSquarePen } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
+import { faPenToSquare, faSquarePen } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styled from "styled-components";
 
 const StyledReviewGoogleButton = styled.a`
   display: flex;
@@ -26,8 +26,8 @@ const StyledReviewGoogleButton = styled.a`
 
   border-radius: 0.75rem;
   color: #fff;
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 400;
 
   @media (max-width: 576px) {
     font-size: 1rem;
@@ -35,7 +35,7 @@ const StyledReviewGoogleButton = styled.a`
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  font-size: 1.4rem;
+  font-size: 1rem;
 `;
 
 function ReviewGoogleButton() {

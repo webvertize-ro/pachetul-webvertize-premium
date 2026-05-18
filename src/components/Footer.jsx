@@ -1,27 +1,55 @@
-import { NavLink } from 'react-router';
-import Logo from './Logo';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
+import { NavLink } from "react-router";
+import Logo from "./Logo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
 import {
   faFacebook,
   faInstagram,
   faPinterest,
   faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
-import { c } from '../utils/content';
-import { useContent } from '../hooks/useContent';
+} from "@fortawesome/free-brands-svg-icons";
+import { c } from "../utils/content";
+import { useContent } from "../hooks/useContent";
 
 const StyledFooter = styled.footer`
   display: flex;
   align-items: center;
-  padding: 2rem 0;
-  background-color: #142b3e;
+  padding: 4rem 0;
+  background-color: #1a3f72;
   color: #fff;
+  border-top: 0.5px solid rgba(168, 212, 245, 0.1);
 `;
 
 const StyledH6 = styled.h6`
-  font-size: 1.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+`;
+
+const ColumnTitle = styled.h5`
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(168, 212, 245, 0.5);
+  margin-bottom: 1.25em;
+`;
+
+const FooterLink = styled(NavLink)`
+  text-decoration: none;
+  color: rgba(168, 212, 245, 0.65);
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+  display: block;
+  margin-bottom: 0.5rem;
+
+  &:hover {
+    color: #fff;
+  }
+
+  &.active {
+    color: #fff;
+  }
 `;
 
 const StyledNavLink = styled(NavLink)`
@@ -30,28 +58,47 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  font-size: 1.5rem;
-  background-color: #456882;
-  color: #fff;
-  padding: 0.25rem;
-  border-radius: 0.35rem;
-  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  color: rgba(168, 212, 245, 0.6);
+  transition: color 0.25s ease;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
 
   &:hover {
-    background-color: #1b3c53;
+    color: #fff;
   }
 `;
 
+const StyledFooterLink = styled.a`
+  text-decoration: none;
+`;
+
+const FooterP = styled.p`
+  color: rgba(168, 212, 245, 0.65);
+  font-size: 0.9rem;
+  line-height: 1.65;
+`;
+
 const StrongEmail = styled.strong`
-  color: #fff;
-  text-decoration: underline white;
+  color: #60a5e8;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #fff;
+  }
 `;
 
 const Copyright = styled.div`
   display: flex;
   justify-content: center;
-  font-size: 0.8rem;
-  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  color: rgba(168, 212, 245, 0.35);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 0.5px solid rgba(168, 212, 245, 0.1);
 `;
 
 function Footer() {
@@ -66,38 +113,33 @@ function Footer() {
               <StyledH6 className="fw-bold">Despre</StyledH6>
               <Logo width="100" />
             </div>
-            <p>
+            <FooterP>
               Acesta este un mic paragraf despre afacerea ta. Poate fi un scurt
               text descriptiv, un motto sau orice altceva ți se pare relevant.
-            </p>
+            </FooterP>
           </div>
           <div className="col-md-4 my-3">
-            <h5 className="fw-bold">Link-uri Utile</h5>
+            <ColumnTitle className="fw-bold">Link-uri Utile</ColumnTitle>
             <ul className="list-unstyled">
               <li>
-                <FontAwesomeIcon icon={faCheck} />
-                <StyledNavLink to="/">Acasă</StyledNavLink>
+                <FooterLink to="/">Acasă</FooterLink>
               </li>
               <li>
-                <FontAwesomeIcon icon={faCheck} />
-                <StyledNavLink to="/services">Servicii</StyledNavLink>
+                <FooterLink to="/services">Servicii</FooterLink>
               </li>
               <li>
-                <FontAwesomeIcon icon={faCheck} />
-                <StyledNavLink to="/portfolio">Portfoliu</StyledNavLink>
+                <FooterLink to="/portfolio">Portfoliu</FooterLink>
               </li>
               <li>
-                <FontAwesomeIcon icon={faCheck} />
-                <StyledNavLink to="/contact">Contact</StyledNavLink>
+                <FooterLink to="/contact">Contact</FooterLink>
               </li>
               <li>
-                <FontAwesomeIcon icon={faCheck} />
-                <StyledNavLink to="/cookies">Politica de Cookies</StyledNavLink>
+                <FooterLink to="/cookies">Politica de Cookies</FooterLink>
               </li>
             </ul>
           </div>
           <div className="col-md-4 my-3">
-            <h5 className="fw-bold">Rețele de socializare</h5>
+            <ColumnTitle className="fw-bold">Rețele de socializare</ColumnTitle>
             <div className="mb-4 d-flex gap-2">
               <a
                 href="#"
@@ -128,20 +170,23 @@ function Footer() {
                 <StyledFontAwesomeIcon icon={faPinterest} />
               </a>
             </div>
-            <p>
+            <FooterP>
               Ne poți scrie direct pe email la
-              <a
+              <StyledFooterLink
                 href="mailto:contact@site.com"
                 aria-label="Click pentru a scrie un email pe adresa afacerii"
               >
                 <StrongEmail> contact@afacerea_ta.ro</StrongEmail>
-              </a>
-            </p>
+              </StyledFooterLink>
+            </FooterP>
           </div>
         </div>
 
         {/* Copyright */}
-        <Copyright>{c(contentMap, 'global.footer_copyright')}</Copyright>
+        <Copyright>
+          {/* {c(contentMap, "global.footer_copyright")} */}
+          2026 - Toate drepturile rezervate. Numele Afacerii.
+        </Copyright>
       </div>
     </StyledFooter>
   );

@@ -1,9 +1,9 @@
-import styled, { keyframes } from 'styled-components';
-import { partners } from '../data/partners.js';
-import { useEffect, useState } from 'react';
+import styled, { keyframes } from "styled-components";
+import { partners } from "../data/partners.js";
+import { useEffect, useState } from "react";
 
 const ContainerFluid = styled.div`
-  background-color: #1f3745;
+  background-color: #0b2240;
 `;
 
 const scroll = keyframes`
@@ -13,8 +13,8 @@ const scroll = keyframes`
 `;
 
 const Scroller = styled.div`
-  background-color: #2c4a5b;
-  padding: 2.5rem 0;
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 4rem 0;
   overflow: hidden;
   -webkit-mask: linear-gradient(
     90deg,
@@ -27,32 +27,47 @@ const Scroller = styled.div`
 `;
 
 const StyledH5 = styled.h5`
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  color: rgba(168, 212, 245, 0.5);
+  margin-bottom: 1.5rem;
   text-align: center;
-  color: #fff;
-  text-transform: uppercase;
 `;
 
 const ScrollerInner = styled.ul`
   display: flex;
-  gap: 1rem;
+  gap: 3rem;
   width: max-content;
   margin: 0;
   flex-wrap: wrap;
   list-style: none;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 
   animation: ${scroll}
     ${({ speed }) =>
-      speed === 'fast' ? '20s' : speed === 'slow' ? '120s' : '40s'}
+      speed === "fast" ? "20s" : speed === "slow" ? "120s" : "40s"}
     linear infinite
-    ${({ direction }) => (direction === 'right' ? 'reverse' : 'forwards')};
+    ${({ direction }) => (direction === "right" ? "reverse" : "forwards")};
+`;
+
+const PartnerImg = styled.img`
+  height: 36px;
+  width: auto;
+  opacity: 0.55;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;
 
 function OurPartners() {
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     setReducedMotion(mediaQuery.matches);
   }, []);
@@ -67,11 +82,11 @@ function OurPartners() {
           <ScrollerInner
             speed="slow"
             direction="left"
-            style={{ animation: reducedMotion ? 'none' : undefined }}
+            style={{ animation: reducedMotion ? "none" : undefined }}
           >
             {duplicatedPartners.map((partner, index) => (
               <li key={index}>
-                <img src={partner.img} alt="" />
+                <PartnerImg src={partner.img} alt="" />
               </li>
             ))}
           </ScrollerInner>
