@@ -5,21 +5,22 @@ import ListItem from "./ListItem";
 
 const StyledWhyChooseOurProducts = styled.div`
   padding: 5rem 0;
-  background-color: #e4f0fc;
+  background-color: #0b2240;
   color: #0c1e33;
+  border-top: 0.5px solid rgba(26, 79, 138, 0.15);
 `;
 
 const StyledH2 = styled.h2`
   font-size: 2rem;
   font-weight: 500;
-  color: #0c1e33;
+  color: #fff;
   letter-spacing: -0.01em;
   margin-bottom: 0.75rem;
 `;
 
 const StyledP = styled.p`
   font-size: 1rem;
-  color: #0c1e33;
+  color: #fff;
   font-weight: 300;
   max-width: 560px;
   margin-bottom: 2.5rem;

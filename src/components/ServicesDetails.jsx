@@ -6,7 +6,7 @@ const StyledServicesDetails = styled.div`
   padding: 5rem 0;
   color: #0c1e33;
   border-top: 0.5px solid rgba(168, 212, 245, 0.1);
-  background-color: #f0f6ff;
+  background-color: #0b2240;
 
   @media (max-width: 576px) {
     padding: 3rem 0;
@@ -25,7 +25,7 @@ const StyledH2 = styled.h2`
   font-size: 2.2rem;
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: #0c1e33;
+  color: #fff;
 
   @media (max-width: 576px) {
     font-size: 1.6rem;
@@ -42,7 +42,7 @@ const StyledP = styled.p`
   font-weight: 300;
   max-width: 560px;
   margin-bottom: 3rem;
-  color: #0c1e33;
+  color: rgba(168, 212, 245, 0.85);
 
   @media (max-width: 576px) {
     font-size: 1rem;
