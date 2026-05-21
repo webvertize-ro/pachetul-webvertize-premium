@@ -1,46 +1,31 @@
-import styled from 'styled-components';
-import Card from './Card';
-import { services } from '../data/services';
-
-import { faComment } from '@fortawesome/free-solid-svg-icons';
+import styled from "styled-components";
+import Card from "./Card";
+import { services } from "../data/services";
 
 const StyledServicesDetails = styled.div`
-  padding: 3rem 0;
-  color: #fff;
-  position: relative;
-  border-top: 3px solid rgba(107, 117, 128, 0.3);
-  background-color: #2a4657;
-
-  &:after {
-    content: '';
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 90;
-  }
+  padding: 5rem 0;
+  color: #0c1e33;
+  border-top: 0.5px solid rgba(168, 212, 245, 0.1);
+  background-color: #f0f6ff;
 
   @media (max-width: 576px) {
-    padding: 1.5rem 0;
+    padding: 3rem 0;
   }
 
   @media (min-width: 576px) and (max-width: 992px) {
-    padding: 1.25rem 0;
+    padding: 3rem 0;
   }
 `;
 
-const Container = styled.div`
-  position: relative;
-  z-index: 91;
-`;
+const Container = styled.div``;
 
 const Services = styled.div``;
 
 const StyledH2 = styled.h2`
   font-size: 2.2rem;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #0c1e33;
 
   @media (max-width: 576px) {
     font-size: 1.6rem;
@@ -52,7 +37,12 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledP = styled.p`
-  font-size: 1.25rem;
+  font-size: 1rem;
+  color: rgba(168, 212, 245, 0.75);
+  font-weight: 300;
+  max-width: 560px;
+  margin-bottom: 3rem;
+  color: #0c1e33;
 
   @media (max-width: 576px) {
     font-size: 1rem;

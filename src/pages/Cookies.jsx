@@ -1,12 +1,11 @@
-import styled from 'styled-components';
-import Accordion from '../components/Accordion';
-import Hero from '../components/Hero';
-import cookiesImg from '../assets/images/cookies-img.avif';
-import CookiesInfoSection from '../components/CookiesInfoSection';
-import { useEffect } from 'react';
-import cookies from '../data/cookies.json';
-import Group from '../components/Group';
-import { Helmet } from 'react-helmet-async';
+import styled from "styled-components";
+import Accordion from "../components/Accordion";
+import Hero from "../components/Hero";
+import cookiesImg from "../assets/images/cookies-img.avif";
+import CookiesInfoSection from "../components/CookiesInfoSection";
+import cookies from "../data/cookies.json";
+import Group from "../components/Group";
+import { Helmet } from "react-helmet-async";
 
 const StyledCookies = styled.div`
   @media (min-width: 576px) and (max-width: 992px) {
@@ -25,16 +24,12 @@ function Cookies() {
         />
       </Helmet>
       <StyledCookies>
-        <Group bgImg={cookiesImg}>
-          <Hero
-            heroTitle="Politica noastră privind cookie-urile"
-            heroDesc="Cookie-urile sunt fișiere mici stocate pe dispozitivul tău atunci când vizitezi un site web. Ele ajută site-ul să funcționeze corect, să îți ofere o experiență personalizată și să colecteze informații statistice despre modul în care este folosit. Folosind site-ul nostru, accepți utilizarea cookie-urilor conform acestei politici."
-          />
-          <Accordion
-            data={cookies}
-            title="Informații generale despre cookies"
-          />
-        </Group>
+        <Hero
+          heroTitle="Politica noastră privind cookie-urile"
+          heroDesc="Cookie-urile sunt fișiere mici stocate pe dispozitivul tău atunci când vizitezi un site web. Ele ajută site-ul să funcționeze corect, să îți ofere o experiență personalizată și să colecteze informații statistice despre modul în care este folosit. Folosind site-ul nostru, accepți utilizarea cookie-urilor conform acestei politici."
+          heroBg={cookiesImg}
+        />
+        <Accordion data={cookies} title="Informații generale despre cookies" />
         <CookiesInfoSection />
       </StyledCookies>
     </>

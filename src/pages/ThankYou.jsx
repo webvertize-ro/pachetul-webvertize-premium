@@ -1,27 +1,45 @@
-import styled from 'styled-components';
-import Logo from '../components/Logo';
-import { Link, useNavigate } from 'react-router';
-import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import styled from "styled-components";
+import Logo from "../components/Logo";
+import { Link, useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const StyledThankYou = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1.25rem;
   justify-content: center;
   align-items: center;
-  background-color: #2e5368;
+  background-color: #0b2240;
+  background-image: radial-gradient(
+    ellipse at center,
+    rgba(59, 130, 212, 0.15) 0%,
+    transparent 70%
+  );
 `;
 
 const StyledP = styled.p`
-  font-family: 'Montserrat';
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-family: "Montserrat";
+  font-size: 1rem;
+  font-weight: 400;
   text-align: center;
   margin-bottom: 0;
   padding-bottom: 0;
-  color: #fff;
+  color: rgba(168, 212, 245, 0.85);
+
+  &:first-of-type {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #fff;
+  }
+`;
+
+const Divider = styled.div`
+  width: 36px;
+  height: 1px;
+  background: rgba(168, 212, 245, 0.2);
+  margin: 0.5rem 0;
 `;
 
 const StyledButton = styled(Link)`
@@ -29,9 +47,16 @@ const StyledButton = styled(Link)`
   border: none;
   padding: 0.75rem;
   background-color: #7fa5b8;
-  color: #fff;
-  border-radius: 0.5rem;
-  font-size: 1.1rem;
+  color: #e8f2ff;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: #2563b0;
+  }
 `;
 
 function ThankYou() {
@@ -41,15 +66,15 @@ function ThankYou() {
 
   useEffect(() => {
     // check sessionStorage
-    const formFilledOut = sessionStorage.getItem('formFilledOut');
+    const formFilledOut = sessionStorage.getItem("formFilledOut");
     if (!formFilledOut) {
-      navigate('/');
+      navigate("/");
       return;
     }
     setAllowed(true);
 
     // clear sessionStorage (such that it won't load on refresh)
-    sessionStorage.removeItem('formFilledOut');
+    sessionStorage.removeItem("formFilledOut");
   }, [navigate]);
 
   if (!allowed) return null;
@@ -70,6 +95,7 @@ function ThankYou() {
           Urmează să vă contactăm în cel mai scurt timp în legătură cu
           solicitarea dumneavoastră!
         </StyledP>
+        <Divider />
         <StyledButton to="/">Înapoi pe pagina principală</StyledButton>
       </StyledThankYou>
     </>

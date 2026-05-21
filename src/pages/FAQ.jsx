@@ -1,11 +1,9 @@
-import Accordion from '../components/Accordion';
-import Hero from '../components/Hero';
-import faqImage from '../assets/images/faq_image.avif';
-import CTA from '../components/CTA';
-import { faqData } from '../data/faq';
-import styled from 'styled-components';
-import Group from '../components/Group';
-import { Helmet } from 'react-helmet-async';
+import Accordion from "../components/Accordion";
+import Hero from "../components/Hero";
+import CTA from "../components/CTA";
+import { faqData } from "../data/faq";
+import { Helmet } from "react-helmet-async";
+import faqImage from "../assets/images/faq_image.avif";
 
 function FAQ() {
   return (
@@ -18,18 +16,17 @@ function FAQ() {
         />
       </Helmet>
       {/* The items in the Group share the same background image */}
-      <Group bgImg={faqImage}>
-        <Hero
-          heroTitle={'Întrebări Frecvente'}
-          heroDesc="Răspunsuri rapide la cele mai comune întrebări despre produsele și serviciile noastre"
-        />
-        <Accordion
-          data={faqData}
-          title="Întrebări Frecvente"
-          subtitle="Răspunsuri la cele mai comune întrebări. Dacă nu găsești răspunsul
+      <Hero
+        heroTitle={"Întrebări Frecvente"}
+        heroDesc="Răspunsuri rapide la cele mai comune întrebări despre produsele și serviciile noastre"
+        heroBg={faqImage}
+      />
+      <Accordion
+        data={faqData}
+        title="Întrebări Frecvente"
+        subtitle="Răspunsuri la cele mai comune întrebări. Dacă nu găsești răspunsul
             căutat, te rugăm să ne contactezi."
-        />
-      </Group>
+      />
       <CTA
         title="Ai nevoie de mai multe informații?"
         text="Contactează-ne și echipa noastră îți va oferi toate detaliile de care ai nevoie pentru produse, servicii sau colaborare."

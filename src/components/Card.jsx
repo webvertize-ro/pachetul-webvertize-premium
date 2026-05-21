@@ -1,6 +1,5 @@
-import { faComment } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styled from "styled-components";
 
 const StyledCard = styled.div`
   position: relative;
@@ -14,11 +13,14 @@ const StyledCard = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  border: 1px solid rgba(107, 117, 128, 0.75);
+  border: 0.5px solid rgba(168, 212, 245, 0.12);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 
   &:after {
-    content: '';
-    background-color: rgba(0, 0, 0, 0.65);
+    content: "";
+    background-color: rgba(11, 34, 64, 0.35);
     position: absolute;
     top: 0;
     bottom: 0;
@@ -27,6 +29,11 @@ const StyledCard = styled.div`
     border-radius: 0.75rem;
     width: 100%;
     height: 100%;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(168, 212, 245, 0.25);
   }
 `;
 
@@ -39,23 +46,25 @@ const TextContent = styled.div`
   position: relative;
   z-index: 11;
   color: #fff;
-  background-color: rgba(107, 117, 128, 0.3);
+  background-color: rgba(15, 47, 90, 0.75);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(107, 117, 128, 0.3);
+  border: 0.5px solid rgba(168, 212, 245, 0.15);
   margin-top: auto;
-  padding: 0.5rem;
+  padding: 1rem 1.25rem;
   border-radius: 0.5rem;
   height: 100%;
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  font-size: 2.2rem;
+  font-size: 1.8rem;
+  color: #60a5e8;
 `;
 
 const StyledH4 = styled.h4`
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 1rem;
   text-align: center;
 
   @media (max-width: 576px) {
@@ -68,9 +77,10 @@ const StyledH4 = styled.h4`
 `;
 
 const StyledP = styled.p`
-  font-weight: 500;
+  font-weight: 300;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 0.875rem;
+  color: rgba(168, 212, 245, 0.75);
 `;
 
 function Card({ title, text, bg_img, icon }) {

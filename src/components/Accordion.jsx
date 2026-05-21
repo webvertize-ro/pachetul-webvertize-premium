@@ -1,20 +1,21 @@
-import styled from 'styled-components';
-import AccordionItem from './AccordionItem';
-import { useState } from 'react';
-import accordionDefaultImg from '../assets/images/accordion_default_img.avif';
+import styled from "styled-components";
+import AccordionItem from "./AccordionItem";
+import { useState } from "react";
+import accordionDefaultImg from "../assets/images/accordion_default_img.avif";
 
 const StyledAccordion = styled.div`
-  padding: 3rem 0;
-  border-top: 3px solid rgba(107, 117, 128, 0.75);
+  background-color: #0f2f5a;
+  padding: 5rem 0;
+  border-top: 0.5px solid rgba(168, 212, 245, 0.1);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(11, 34, 64, 0.75);
     top: 0;
     left: 0;
     width: 100%;
@@ -28,8 +29,10 @@ const StyledAccordion = styled.div`
 `;
 
 const StyledH2 = styled.h2`
-  font-weight: 600;
+  font-weight: 500;
   color: #fff;
+  letter-spacing: -0.01em;
+  font-size: 2rem;
 
   @media (max-width: 576px) {
     font-size: 1.6rem;
@@ -41,8 +44,11 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledP = styled.p`
-  color: #fff;
-  font-size: 1.2rem;
+  color: rgba(168, 212, 245, 0.75);
+  font-size: 1rem;
+  font-weight: 300;
+  max-width: 560px;
+  margin-bottom: 2.5rem;
 `;
 
 const Container = styled.div`
@@ -53,7 +59,7 @@ const Container = styled.div`
 const AccordionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 `;
 
 function Accordion({ data, title, subtitle, bgImg }) {
@@ -63,7 +69,7 @@ function Accordion({ data, title, subtitle, bgImg }) {
     <StyledAccordion bgImg={bgImg ? bgImg : accordionDefaultImg}>
       <Container className="container">
         <StyledH2>{title}</StyledH2>
-        {subtitle ? <StyledP>{subtitle}</StyledP> : ''}
+        {subtitle ? <StyledP>{subtitle}</StyledP> : ""}
         <AccordionContainer className="accordion" id="accordionExample">
           {data.map((item, index) => (
             <AccordionItem

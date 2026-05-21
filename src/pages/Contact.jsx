@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import Hero from '../components/Hero';
-import contactImg from '../assets/images/contact-img.avif';
-import ContactSection from '../components/ContactSection';
-import CTA from '../components/CTA';
-import { useEffect } from 'react';
-import Group from '../components/Group';
-import StreetView from '../components/StreetView';
-import { Helmet } from 'react-helmet-async';
+import styled from "styled-components";
+import Hero from "../components/Hero";
+import contactImg from "../assets/images/contact-img.avif";
+import ContactSection from "../components/ContactSection";
+import CTA from "../components/CTA";
+import { useEffect } from "react";
+import Group from "../components/Group";
+import StreetView from "../components/StreetView";
+import { Helmet } from "react-helmet-async";
 
 const StyledContact = styled.div`
   /* height: 650px; */
@@ -29,13 +29,12 @@ function Contact() {
         />
       </Helmet>
       <StyledContact>
-        <Group bgImg={contactImg}>
-          <Hero
-            heroTitle="Hai să discutăm despre proiectul tău"
-            heroDesc="Ne face plăcere să răspundem la întrebările tale și să găsim soluții adaptate nevoilor afacerii tale. Completează formularul sau folosește datele de contact de mai jos."
-          />
-          <ContactSection />
-        </Group>
+        <Hero
+          heroTitle="Hai să discutăm despre proiectul tău"
+          heroDesc="Ne face plăcere să răspundem la întrebările tale și să găsim soluții adaptate nevoilor afacerii tale. Completează formularul sau folosește datele de contact de mai jos."
+          heroBg={contactImg}
+        />
+        <ContactSection />
         <StreetView />
         <CTA
           title="Vrei să lucrăm împreună?"

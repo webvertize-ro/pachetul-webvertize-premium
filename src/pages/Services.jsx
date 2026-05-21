@@ -1,13 +1,13 @@
-import styled from 'styled-components';
-import Hero from '../components/Hero';
-import heroBg from '../assets/images/services-hero.avif';
-import ServicesDetails from '../components/ServicesDetails';
-import CTA from '../components/CTA';
-import { useEffect } from 'react';
-import { images } from '../data/gallery2';
-import PhotoGallery from '../components/PhotoGallery';
-import Group from '../components/Group';
-import { Helmet } from 'react-helmet-async';
+import styled from "styled-components";
+import Hero from "../components/Hero";
+import heroBg from "../assets/images/services-hero.avif";
+import ServicesDetails from "../components/ServicesDetails";
+import CTA from "../components/CTA";
+import { useEffect } from "react";
+import { images } from "../data/gallery2";
+import PhotoGallery from "../components/PhotoGallery";
+import Group from "../components/Group";
+import { Helmet } from "react-helmet-async";
 
 const StyledServices = styled.div`
   /* height: 650px; */

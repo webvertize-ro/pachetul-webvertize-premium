@@ -1,24 +1,34 @@
-import styled from 'styled-components';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { whyChooseOurProducts } from '../data/listData';
-import ListItem from './ListItem';
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { whyChooseOurProducts } from "../data/listData";
+import ListItem from "./ListItem";
 
 const StyledWhyChooseOurProducts = styled.div`
-  padding: 3rem 0;
-  background-color: #6b7580;
-  color: #fff;
+  padding: 5rem 0;
+  background-color: #e4f0fc;
+  color: #0c1e33;
 `;
 
-const StyledH2 = styled.h2``;
+const StyledH2 = styled.h2`
+  font-size: 2rem;
+  font-weight: 500;
+  color: #0c1e33;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+`;
 
 const StyledP = styled.p`
-  font-size: 1.25rem;
+  font-size: 1rem;
+  color: #0c1e33;
+  font-weight: 300;
+  max-width: 560px;
+  margin-bottom: 2.5rem;
 `;
 
 const StyledImg = styled.img`
-  border-radius: 1rem;
+  border-radius: 0.75rem;
+  width: 100%;
+  object-fit: cover;
 `;
 
 const StyledUl = styled.ul`
@@ -28,14 +38,7 @@ const StyledUl = styled.ul`
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-`;
-
-const StyledLi = styled.li`
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0.5rem;
-  padding: 1rem 3rem;
+  gap: 0.75rem;
   width: 100%;
 `;
 

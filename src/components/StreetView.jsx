@@ -6,7 +6,12 @@ import Modal from "./Modal";
 
 const StyledStreetView = styled.div`
   color: #fff;
-  padding: 3rem;
+  padding: 5rem 0;
+  background-color: #0f2f5a;
+
+  @media (max-width: 576px) {
+    padding: 3rem 1.5rem;
+  }
 `;
 
 const Container = styled.div`
@@ -16,8 +21,10 @@ const Container = styled.div`
 `;
 
 const StyledImg = styled.img`
-  max-width: 950px;
-  border-radius: 1rem;
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 0.5px solid rgba(168, 212, 245, 0.15);
+  display: block;
 
   @media (max-width: 576px) {
     max-width: 325px;
@@ -30,7 +37,9 @@ const StyledImg = styled.img`
 
 const StyledH2 = styled.h2`
   font-size: 2.2rem;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-align: center;
 
   @media (max-width: 576px) {
     font-size: 1.6rem;
@@ -39,7 +48,11 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledP = styled.p`
-  font-size: 1.25rem;
+  font-size: 1rem;
+  color: rgba(168, 212, 245, 0.75);
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 2rem;
 
   @media (max-width: 576px) {
     font-size: 1rem;
@@ -49,18 +62,19 @@ const StyledP = styled.p`
 
 const ImageContainer = styled.div`
   position: relative;
+  width: 100%;
+  max-width: 900px;
 `;
 
 const IframeWrapper = styled.div`
   width: 750px;
   height: 400px;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   overflow: hidden;
-  /* padding: 1.5rem; */
 `;
 
 const ModalWindowInner = styled.div`
-  padding: 2rem 3rem;
+  padding: 1.5rem 2rem;
 `;
 
 const StyledIframe = styled.iframe`
@@ -73,24 +87,29 @@ const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
   border-radius: 50%;
-  border: none;
-  padding: 1.5rem;
-  background-color: #3b5e75;
+  border: 0.5px solid rgba(168, 212, 245, 0.25);
+  padding: 1.25rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* glassmorphism effect */
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border: 2px solid #fff;
+  background: rgba(15, 47, 90, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    background: rgba(26, 79, 138, 0.95);
+    border-color: rgba(168, 212, 245, 0.45);
+  }
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #fff;
 `;
 

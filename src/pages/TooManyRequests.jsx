@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router';
-import styled from 'styled-components';
-import Logo from '../components/Logo';
-import { Helmet } from 'react-helmet-async';
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router";
+import styled from "styled-components";
+import Logo from "../components/Logo";
+import { Helmet } from "react-helmet-async";
 
 const StyledTooManyRequests = styled.div`
   height: 100vh;
@@ -10,30 +10,59 @@ const StyledTooManyRequests = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  background-color: #2e5368;
+  gap: 1.25rem;
+  background-color: #0b2240;
+  background-image: radial-gradient(
+    ellipse at center,
+    rgba(168, 212, 245, 0.08) 0%,
+    transparent 70%
+  );
   color: #fff;
 `;
 
 const StyledP = styled.p`
-  font-family: 'Montserrat';
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 0.95rem;
+  font-weight: 400;
   text-align: center;
   margin-bottom: 0;
   padding-bottom: 0;
-  max-width: 750px;
-  color: #fff;
+  max-width: 600px;
+  color: rgba(168, 212, 245, 0.8);
+
+  &:first-of-type {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #fff;
+  }
+`;
+
+const Divider = styled.div`
+  width: 36px;
+  height: 1px;
+  background: rgba(168, 212, 245, 0.2);
+  margin: 0.5rem 0;
+`;
+
+const PhoneHighlight = styled.span`
+  color: #60a5e8;
+  font-weight: 500;
 `;
 
 const StyledButton = styled(Link)`
   text-decoration: none;
   border: none;
-  padding: 0.75rem;
-  background-color: #1b3c53;
-  color: #fff;
-  border-radius: 0.5rem;
-  font-size: 1.1rem;
+  padding: 12px 28px;
+  background-color: #1a4f8a;
+  color: #e8f2ff;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: #2563b0;
+  }
 `;
 
 function TooManyRequests() {
@@ -41,15 +70,15 @@ function TooManyRequests() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const tooManyRequests = sessionStorage.getItem('tooManyRequests');
+    const tooManyRequests = sessionStorage.getItem("tooManyRequests");
     if (!tooManyRequests) {
-      navigate('/');
+      navigate("/");
       return;
     }
     setAllowed(true);
 
     // clear sessionStorage (such that it won't load on refresh
-    sessionStorage.removeItem('tooManyRequests');
+    sessionStorage.removeItem("tooManyRequests");
   }, [navigate]);
 
   if (!allowed) return null;
@@ -69,8 +98,11 @@ function TooManyRequests() {
         </StyledP>
         <StyledP>
           Dacă este o urgență, ne puteți contacta direct la numărul de telefon
-          0712345678. Mulțumim pentru înțelegere!
+          <PhoneHighlight>0712345678</PhoneHighlight>. Mulțumim pentru
+          înțelegere!
         </StyledP>
+
+        <Divider />
         <StyledButton to="/">Înapoi la pagina principală</StyledButton>
       </StyledTooManyRequests>
     </>

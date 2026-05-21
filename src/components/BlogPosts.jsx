@@ -5,13 +5,14 @@ import BlogPostItem from "./BlogPostItem";
 import LoadingSpinner from "./LoadingSpinner";
 
 const ContainerBlogPosts = styled.div`
-  background-color: #1a4f8a;
+  background-color: #0f2f5a;
 `;
 
 const Posts = styled.div`
   padding: 5rem 0rem;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 
   @media (max-width: 576px) {
     padding: 3rem 0;
@@ -30,6 +31,7 @@ const StyledH2 = styled.h2`
   font-size: 2rem;
   font-weight: 500;
   color: #fff;
+  letter-spacing: -0.01em;
 
   @media (max-width: 576px) {
     font-size: 1.6rem;
@@ -42,7 +44,8 @@ const StyledH2 = styled.h2`
 
 const StyledP = styled.p`
   font-size: 1rem;
-  color: #fff;
+  color: rgba(168, 212, 245, 0.75);
+  margin-bottom: 3rem;
   font-weight: 300;
   max-width: 600px;
 

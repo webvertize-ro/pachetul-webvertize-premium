@@ -1,12 +1,12 @@
-import Hero from '../components/Hero';
-import productsHeader from '../assets/images/products_header.avif';
-import ProductsSection from '../components/ProductsSection';
-import ProductsShortIntro from '../components/ProductsShortIntro';
-import WhyChooseOurProducts from '../components/WhyChooseOurProducts';
-import CTA from '../components/CTA';
-import PhotoGallery from '../components/PhotoGallery';
-import { images } from '../data/gallery4';
-import { Helmet } from 'react-helmet-async';
+import Hero from "../components/Hero";
+import productsHeader from "../assets/images/products_header.avif";
+import ProductsSection from "../components/ProductsSection";
+import ProductsShortIntro from "../components/ProductsShortIntro";
+import WhyChooseOurProducts from "../components/WhyChooseOurProducts";
+import CTA from "../components/CTA";
+import PhotoGallery from "../components/PhotoGallery";
+import { images } from "../data/gallery4";
+import { Helmet } from "react-helmet-async";
 
 function Products() {
   /**

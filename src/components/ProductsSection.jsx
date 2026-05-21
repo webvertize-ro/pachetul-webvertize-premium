@@ -1,16 +1,25 @@
-import styled from 'styled-components';
-import { products } from '../data/products';
-import Product from './Product';
+import styled from "styled-components";
+import { products } from "../data/products";
+import Product from "./Product";
 
 const StyledProducts = styled.div`
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  background-color: #2c5870;
+  padding: 5rem 0;
+
+  @media (max-width: 576px) {
+    padding: 3rem 0;
+  }
+
+  @media (min-width: 576px) and (max-width: 992px) {
+    padding: 3rem 0;
+  }
+
+  background-color: #0b2240;
 `;
 
 const StyledH2 = styled.h2`
   font-size: 2.2rem;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: -0.01em;
   color: #fff;
 
   @media (max-width: 576px) {
@@ -24,7 +33,11 @@ const StyledH2 = styled.h2`
 
 const StyledP = styled.p`
   font-size: 1.25rem;
-  color: #fff;
+  color: rgba(168, 212, 245, 0.75);
+  font-weight: 300;
+  font-size: 1rem;
+  max-width: 560px;
+  margin-bottom: 3rem;
 
   @media (max-width: 576px) {
     font-size: 1rem;
