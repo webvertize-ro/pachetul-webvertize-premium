@@ -34,27 +34,29 @@ const VideoOverlay = styled.div`
 `;
 
 const HeroContent = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 5vw;
-  transform: translate(-50%);
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 2rem;
-  color: #fff;
+  padding: 2.5rem 3rem;
+  max-width: 520px;
   background: rgba(255, 255, 255, 0.07);
   border: 0.5px solid rgba(168, 212, 245, 0.18);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-radius: 16px;
-  padding: 2.5rem 3rem;
-  max-width: 560px;
 
   @media (max-width: 576px) {
-    height: 90%;
-    width: 90%;
+    padding: 1.5rem;
+    max-width: 100%;
   }
+`;
+
+const ContentWrapper = styled.div`
+  position: absolute;
+  inset: 0;
+  z-index: 2;
 `;
 
 const StyledH1 = styled.h1`
@@ -64,6 +66,7 @@ const StyledH1 = styled.h1`
   line-height: 1.25;
   text-align: left;
   text-align: center;
+  color: #fff;
 
   @media (max-width: 576px) {
     font-size: 1.5rem;
@@ -155,24 +158,38 @@ function HeroVideo() {
       {/* Overlay layer */}
       <VideoOverlay />
       {/* Content layer */}
-      <HeroContent>
-        <StyledH1>Servicii profesionale în Cluj-Napoca</StyledH1>
-        <StyledP>
-          Oferim soluții de calitate pentru clienți care apreciază seriozitatea
-          și atenția la detalii. Suntem aici să vă ajutăm la fiecare pas.
-        </StyledP>
-        <ButtonsContainer>
-          <ViewProjectsButton to="/portfolio">Vezi proiecte</ViewProjectsButton>
-          <Modal>
-            <Modal.Open opens="form-modal">
-              <RequestOfferButton>Cere o ofertă de preț</RequestOfferButton>
-            </Modal.Open>
-            <Modal.Window name="form-modal" bgColor="rgba(59, 94, 117, 0.5)">
-              <Form />
-            </Modal.Window>
-          </Modal>
-        </ButtonsContainer>
-      </HeroContent>
+      <ContentWrapper>
+        <div className="container h-100">
+          <div className="d-flex align-items-center justify-content-center h-100">
+            <HeroContent>
+              <StyledH1>Servicii profesionale în Cluj-Napoca</StyledH1>
+              <StyledP>
+                Oferim soluții de calitate pentru clienți care apreciază
+                seriozitatea și atenția la detalii. Suntem aici să vă ajutăm la
+                fiecare pas.
+              </StyledP>
+              <ButtonsContainer>
+                <ViewProjectsButton to="/portfolio">
+                  Vezi proiecte
+                </ViewProjectsButton>
+                <Modal>
+                  <Modal.Open opens="form-modal">
+                    <RequestOfferButton>
+                      Cere o ofertă de preț
+                    </RequestOfferButton>
+                  </Modal.Open>
+                  <Modal.Window
+                    name="form-modal"
+                    bgColor="rgba(59, 94, 117, 0.5)"
+                  >
+                    <Form />
+                  </Modal.Window>
+                </Modal>
+              </ButtonsContainer>
+            </HeroContent>
+          </div>
+        </div>
+      </ContentWrapper>
     </StyledHeroVideo>
   );
 }
