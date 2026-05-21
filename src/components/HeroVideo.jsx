@@ -6,11 +6,11 @@ import Form from "./Form";
 const StyledHeroVideo = styled.div`
   position: relative;
   width: 100%;
-  height: 550px;
+  height: 100vh;
   overflow: hidden;
 
   @media (max-width: 576px) {
-    height: 350px;
+    height: 70vh;
   }
 `;
 
@@ -26,22 +26,30 @@ const VideoLayer = styled.video`
 const VideoOverlay = styled.div`
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(
+    120deg,
+    rgba(11, 34, 64, 0.72) 0%,
+    rgba(11, 34, 64, 0.3) 60%
+  );
 `;
 
 const HeroContent = styled.div`
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 5vw;
+  transform: translate(-50%);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 2rem;
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.07);
-  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 0.5px solid rgba(168, 212, 245, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 2.5rem 3rem;
+  max-width: 560px;
 
   @media (max-width: 576px) {
     height: 90%;
@@ -50,7 +58,11 @@ const HeroContent = styled.div`
 `;
 
 const StyledH1 = styled.h1`
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 500;
+  letter-spacing: -0.02;
+  line-height: 1.25;
+  text-align: left;
   text-align: center;
 
   @media (max-width: 576px) {
@@ -59,8 +71,12 @@ const StyledH1 = styled.h1`
 `;
 
 const StyledP = styled.p`
-  font-size: 1.2rem;
-  text-align: center;
+  font-size: 1rem;
+  color: rgba(168, 212, 245, 0.8);
+  font-weight: 300;
+  line-height: 1.65;
+  text-align: left;
+  margin-bottom: 1.75rem;
 
   @media (max-width: 576px) {
     font-size: 1rem;
@@ -69,7 +85,7 @@ const StyledP = styled.p`
 
 const ButtonsContainer = styled.div`
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
   @media (max-width: 576px) {
     flex-direction: column;
   }
@@ -80,13 +96,19 @@ const ViewProjectsButton = styled(NavLink)`
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  border: none;
-  background-color: rgba(11, 34, 64, 0.95);
+  background-color: #1a4f8a;
   white-space: nowrap;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
+  color: #e8f2ff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: #2563b0;
+  }
 `;
 
 // Ghost Button
@@ -95,15 +117,22 @@ const RequestOfferButton = styled.button`
   justify-content: center;
   align-items: center;
   background: transparent;
-  border: 2px solid #5b87b8;
+  border: 0.5px solid rgba(96, 165, 232, 0.45);
   white-space: nowrap;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
+  color: rgba(168, 212, 245, 0.85);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
 
   &:hover {
-    background-color: #5b87b8;
+    border-color: rgba(96, 165, 232, 0.9);
+    color: #fff;
+    background: transparent;
   }
 `;
 
