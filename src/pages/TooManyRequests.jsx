@@ -36,13 +36,6 @@ const StyledP = styled.p`
   }
 `;
 
-const Divider = styled.div`
-  width: 36px;
-  height: 1px;
-  background: rgba(168, 212, 245, 0.2);
-  margin: 0.5rem 0;
-`;
-
 const PhoneHighlight = styled.span`
   color: #60a5e8;
   font-weight: 500;
@@ -102,7 +95,6 @@ function TooManyRequests() {
           înțelegere!
         </StyledP>
 
-        <Divider />
         <StyledButton to="/">Înapoi la pagina principală</StyledButton>
       </StyledTooManyRequests>
     </>

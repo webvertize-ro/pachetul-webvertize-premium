@@ -35,13 +35,6 @@ const StyledP = styled.p`
   }
 `;
 
-const Divider = styled.div`
-  width: 36px;
-  height: 1px;
-  background: rgba(168, 212, 245, 0.2);
-  margin: 0.5rem 0;
-`;
-
 const StyledButton = styled(Link)`
   text-decoration: none;
   border: none;
@@ -95,7 +88,6 @@ function ThankYou() {
           Urmează să vă contactăm în cel mai scurt timp în legătură cu
           solicitarea dumneavoastră!
         </StyledP>
-        <Divider />
         <StyledButton to="/">Înapoi pe pagina principală</StyledButton>
       </StyledThankYou>
     </>
