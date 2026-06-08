@@ -1,9 +1,4 @@
-import { faWatchmanMonitoring } from "@fortawesome/free-brands-svg-icons";
-import {
-  faClock,
-  faPhone,
-  faPhoneVolume,
-} from "@fortawesome/free-solid-svg-icons";
+import { faClock, faPhoneVolume } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import progrm from "../data/program.json";
