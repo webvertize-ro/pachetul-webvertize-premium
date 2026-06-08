@@ -89,19 +89,19 @@ function Product({ product }) {
   return (
     <Modal>
       <Modal.Open opens="form-modal">
-        <Card bgImg={product.img}>
+        <Card bgImg={product.bg_image}>
           <CardInfo>
-            <StyledH4>{product.product_title}</StyledH4>
-            <StyledP>{product.short_desc}</StyledP>
+            <StyledH4>{product.title}</StyledH4>
+            <StyledP>{product.description}</StyledP>
             <StyledButton>Vezi detalii</StyledButton>
           </CardInfo>
         </Card>
       </Modal.Open>
-      <Modal.Window name="form-modal" title={product.product_title}>
+      <Modal.Window name="form-modal" title={product.title}>
         <ProductModalInner
-          title={product.product_title}
+          title={product.title}
           features={product.features}
-          img={product.img}
+          img={product.bg_image}
         />
       </Modal.Window>
     </Modal>

@@ -1,9 +1,9 @@
-import { faMessage } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Modal from './Modal';
-import { Link } from 'react-router';
-import styled from 'styled-components';
-import Form from './Form';
+import { faMessage } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Modal from "./Modal";
+import { Link } from "react-router";
+import styled from "styled-components";
+import Form from "./Form";
 
 const StyledTimelineItem = styled.li`
   list-style: none;
@@ -27,7 +27,7 @@ const StyledTimelineItem = styled.li`
     border-bottom: unset;
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       height: 36px;
       border-right: 2px solid #dee2e6;
@@ -93,7 +93,7 @@ const StyledButton = styled(Link)`
   text-transform: uppercase;
 `;
 
-function TimelineItem({ iconNum, icon, title, desc, CTAtext, btnLink }) {
+function TimelineItem({ iconNum, icon, title, desc }) {
   return (
     <StyledTimelineItem>
       <Badge>

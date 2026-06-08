@@ -6,6 +6,8 @@ import CookiesInfoSection from "../components/CookiesInfoSection";
 import cookies from "../data/cookies.json";
 import Group from "../components/Group";
 import { Helmet } from "react-helmet-async";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledCookies = styled.div`
   @media (min-width: 576px) and (max-width: 992px) {
@@ -14,6 +16,14 @@ const StyledCookies = styled.div`
 `;
 
 function Cookies() {
+  const { contentMap } = useContent();
+
+  const faqs = [1, 2, 3, 4, 5].map((i) => ({
+    number: c(contentMap, `cookies.accordion_item_${i}_number`),
+    question: c(contentMap, `cookies.accordion_item_${i}_question`),
+    answer: c(contentMap, `cookies.accordion_item_${i}_answer`),
+  }));
+
   return (
     <>
       <Helmet>
@@ -25,11 +35,15 @@ function Cookies() {
       </Helmet>
       <StyledCookies>
         <Hero
-          heroTitle="Politica noastră privind cookie-urile"
-          heroDesc="Cookie-urile sunt fișiere mici stocate pe dispozitivul tău atunci când vizitezi un site web. Ele ajută site-ul să funcționeze corect, să îți ofere o experiență personalizată și să colecteze informații statistice despre modul în care este folosit. Folosind site-ul nostru, accepți utilizarea cookie-urilor conform acestei politici."
-          heroBg={cookiesImg}
+          heroTitle={c(contentMap, "cookies.header_title")}
+          heroDesc={c(contentMap, "cookies.header_description")}
+          heroBg={c(contentMap, "cookies.header_bg_image")}
+          ctaBtnText={c(contentMap, "cookies.header_button_text")}
         />
-        <Accordion data={cookies} title="Informații generale despre cookies" />
+        <Accordion
+          faqs={faqs}
+          title={c(contentMap, "cookies.accordion_title")}
+        />
         <CookiesInfoSection />
       </StyledCookies>
     </>

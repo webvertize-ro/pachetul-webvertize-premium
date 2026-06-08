@@ -3,6 +3,8 @@ import Logo from "../components/Logo";
 import { Link, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledThankYou = styled.div`
   height: 100vh;
@@ -54,6 +56,7 @@ const StyledButton = styled(Link)`
 
 function ThankYou() {
   const navigate = useNavigate();
+  const { contentMap } = useContent();
 
   const [allowed, setAllowed] = useState(false);
 
@@ -83,12 +86,11 @@ function ThankYou() {
       </Helmet>
       <StyledThankYou>
         <Logo />
-        <StyledP>Vă mulțumim pentru completarea formularului!</StyledP>
-        <StyledP>
-          Urmează să vă contactăm în cel mai scurt timp în legătură cu
-          solicitarea dumneavoastră!
-        </StyledP>
-        <StyledButton to="/">Înapoi pe pagina principală</StyledButton>
+        <StyledP>{c(contentMap, "thank-you.thank-you-paragraph-1")}</StyledP>
+        <StyledP>{c(contentMap, "thank-you.thank-you-paragraph-2")}</StyledP>
+        <StyledButton to={c(contentMap, "thank-you.thank-you-button-route")}>
+          {c(contentMap, "thank-you.thank-you-button-text")}
+        </StyledButton>
       </StyledThankYou>
     </>
   );

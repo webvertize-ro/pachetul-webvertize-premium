@@ -2,6 +2,8 @@ import styled from "styled-components";
 import AccordionItem from "./AccordionItem";
 import { useState } from "react";
 import accordionDefaultImg from "../assets/images/accordion_default_img.avif";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledAccordion = styled.div`
   background-color: #0f2f5a;
@@ -62,7 +64,8 @@ const AccordionContainer = styled.div`
   gap: 0.75rem;
 `;
 
-function Accordion({ data, title, subtitle, bgImg }) {
+function Accordion({ faqs, title, subtitle, bgImg }) {
+  const { contentMap } = useContent();
   const [curOpen, setCurOpen] = useState(1);
 
   return (
@@ -71,14 +74,13 @@ function Accordion({ data, title, subtitle, bgImg }) {
         <StyledH2>{title}</StyledH2>
         {subtitle ? <StyledP>{subtitle}</StyledP> : ""}
         <AccordionContainer className="accordion" id="accordionExample">
-          {data.map((item, index) => (
+          {faqs.map((item, index) => (
             <AccordionItem
               question={item.question}
               answer={item.answer}
-              index={index + 1}
+              index={item.number}
               curOpen={curOpen}
               onCurOpen={setCurOpen}
-              links={item.links}
               key={index}
             />
           ))}

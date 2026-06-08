@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledCertificationCard = styled.div`
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -62,6 +62,26 @@ const StyledLink = styled.a`
 `;
 
 function CertificationCard({ title, desc, cert }) {
+  async function handleDownload(e) {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(cert);
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${title}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Download failed: ", error);
+    }
+  }
+
   return (
     <StyledCertificationCard>
       <Title>{title}</Title>
@@ -70,7 +90,7 @@ function CertificationCard({ title, desc, cert }) {
         <StyledLink href={cert} target="blank" rel="noopener noreferrer">
           Vizualizează
         </StyledLink>
-        <StyledLink href={cert} download>
+        <StyledLink href={cert} onClick={handleDownload}>
           Descarcă
         </StyledLink>
       </Buttons>

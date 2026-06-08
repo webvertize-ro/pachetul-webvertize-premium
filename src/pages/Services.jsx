@@ -3,11 +3,14 @@ import Hero from "../components/Hero";
 import heroBg from "../assets/images/services-hero.avif";
 import ServicesDetails from "../components/ServicesDetails";
 import CTA from "../components/CTA";
-import { useEffect } from "react";
 import { images } from "../data/gallery2";
 import PhotoGallery from "../components/PhotoGallery";
 import Group from "../components/Group";
 import { Helmet } from "react-helmet-async";
+import TimelineHowWeWork from "../components/TimelineHowWeWork";
+import CertificationsList from "../components/CertificationsList";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledServices = styled.div`
   /* height: 650px; */
@@ -15,6 +18,12 @@ const StyledServices = styled.div`
 `;
 
 function Services() {
+  const { contentMap } = useContent();
+  const images = [1, 2, 3, 4, 5, 6].map((i) => ({
+    image: c(contentMap, `services.gallery_image_${i}`),
+    description: c(contentMap, `services.gallery_image_${i}_alt`),
+  }));
+
   return (
     <>
       <Helmet>
@@ -26,19 +35,23 @@ function Services() {
       </Helmet>
       <StyledServices>
         <Hero
-          heroTitle="Servicii de încredere, aproape de tine"
-          heroDesc="Punem la dispoziție o gamă variată de servicii, adaptate nevoilor tale, cu accent pe calitate, seriozitate și atenție la detalii."
-          heroBg={heroBg}
+          heroTitle={c(contentMap, "services.header_title")}
+          heroDesc={c(contentMap, "services.header_description")}
+          heroBg={c(contentMap, "services.header_bg_image")}
+          ctaBtnText={c(contentMap, "services.header_button_text")}
         />
         <ServicesDetails />
+        <TimelineHowWeWork />
         <PhotoGallery
-          title="Serviciile noastre, în imagini"
-          text="O selecție de imagini care ilustrează modul în care oferim serviciile noastre și atenția acordată fiecărui proiect."
+          title={c(contentMap, "services.gallery_title")}
+          text={c(contentMap, "services.gallery_description")}
           images={images}
         />
+        <CertificationsList />
         <CTA
-          title="Ai un proiect în minte?"
-          text="Spune-ne ce îți dorești, iar noi te vom ajuta să găsești soluția potrivită pentru afacerea ta."
+          title={c(contentMap, "services.cta_title")}
+          text={c(contentMap, "services.cta_description")}
+          textBtn={c(contentMap, "services.cta_button_text")}
           bgColor="green"
         />
       </StyledServices>

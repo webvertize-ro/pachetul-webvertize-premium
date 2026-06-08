@@ -1,6 +1,16 @@
 import styled from "styled-components";
 import Card from "./Card";
 import { services } from "../data/services";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
+import {
+  faBolt,
+  faGear,
+  faHandshake,
+  faShieldHalved,
+  faStar,
+  faWrench,
+} from "@fortawesome/free-solid-svg-icons";
 
 const StyledServicesDetails = styled.div`
   padding: 5rem 0;
@@ -54,24 +64,37 @@ const StyledP = styled.p`
 `;
 
 function ServicesDetails() {
+  const { contentMap } = useContent();
+  const services = [1, 2, 3, 4, 5, 6].map((i) => ({
+    title: c(contentMap, `services.service_${i}_title`),
+    description: c(contentMap, `services.service_${i}_description`),
+    bg_image: c(contentMap, `services.service_${i}_bg_image`),
+    icon: c(contentMap, `services.service_${i}_icon`),
+  }));
+
+  const iconMap = {
+    "fa-solid fa-wrench": faWrench,
+    "fa-solid fa-gear": faGear,
+    "fa-solid fa-bolt": faBolt,
+    "fa-solid fa-star": faStar,
+    "fa-solid fa-shield-halved": faShieldHalved,
+    "fa-solid fa-handshake": faHandshake,
+  };
+
   return (
     <StyledServicesDetails>
       <Container className="container">
-        <StyledH2>Serviciile noastre</StyledH2>
-        <StyledP>
-          Oferim servicii adaptate nevoilor tale, realizate cu atenție la
-          detalii și focus pe calitate. Descoperă mai jos ce putem face pentru
-          tine.
-        </StyledP>
+        <StyledH2>{c(contentMap, "services.services_title")}</StyledH2>
+        <StyledP>{c(contentMap, "services.services_description")}</StyledP>
         <Services className="row d-flex justify-content-center">
           {services.map((service, i) => {
             return (
               <div key={i} className="col-12 col-md-6 col-lg-4 mb-4">
                 <Card
                   title={service.title}
-                  text={service.text}
-                  bg_img={service.bg_img}
-                  icon={service.icon}
+                  text={service.description}
+                  bg_img={service.bg_image}
+                  icon={iconMap[service.icon]}
                 />
               </div>
             );

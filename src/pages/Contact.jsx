@@ -3,10 +3,11 @@ import Hero from "../components/Hero";
 import contactImg from "../assets/images/contact-img.avif";
 import ContactSection from "../components/ContactSection";
 import CTA from "../components/CTA";
-import { useEffect } from "react";
 import Group from "../components/Group";
 import StreetView from "../components/StreetView";
 import { Helmet } from "react-helmet-async";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledContact = styled.div`
   /* height: 650px; */
@@ -19,6 +20,8 @@ const StyledContact = styled.div`
  */
 
 function Contact() {
+  const { contentMap } = useContent();
+
   return (
     <>
       <Helmet>
@@ -30,15 +33,17 @@ function Contact() {
       </Helmet>
       <StyledContact>
         <Hero
-          heroTitle="Hai să discutăm despre proiectul tău"
-          heroDesc="Ne face plăcere să răspundem la întrebările tale și să găsim soluții adaptate nevoilor afacerii tale. Completează formularul sau folosește datele de contact de mai jos."
-          heroBg={contactImg}
+          heroTitle={c(contentMap, "contact.header_title")}
+          heroDesc={c(contentMap, "contact.header_description")}
+          heroBg={c(contentMap, "contact.header_bg_image")}
+          ctaBtnText={c(contentMap, "contact.header_button_text")}
         />
         <ContactSection />
         <StreetView />
         <CTA
-          title="Vrei să lucrăm împreună?"
-          text="Completează formularul sau contactează-ne direct și hai să discutăm cum putem să-ți transformăm ideile în proiecte concrete."
+          title={c(contentMap, "contact.cta_title")}
+          text={c(contentMap, "contact.cta_description")}
+          textBtn={c(contentMap, "contact.cta_button_text")}
         />
       </StyledContact>
     </>

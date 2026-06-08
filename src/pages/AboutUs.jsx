@@ -4,8 +4,12 @@ import OurTeam from "../components/OurTeam";
 import OurMission from "../components/OurMission";
 import CTA from "../components/CTA";
 import { Helmet } from "react-helmet-async";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 function AboutUs() {
+  const { contentMap } = useContent();
+
   return (
     <div>
       <Helmet>
@@ -16,17 +20,17 @@ function AboutUs() {
         />
       </Helmet>
       <Hero
-        heroBg={aboutUsImage}
-        heroTitle={"Cine suntem"}
-        heroDesc={
-          "Povestea și valorile care ne definesc activitatea și modul în care lucrăm pentru clienții noștri"
-        }
+        heroBg={c(contentMap, "about.header_bg_image")}
+        heroTitle={c(contentMap, "about.header_title")}
+        heroDesc={c(contentMap, "about.header_description")}
+        ctaBtnText={c(contentMap, "about.header_button_text")}
       />
       <OurMission />
       <OurTeam />
       <CTA
-        title="Hai să discutăm despre proiectul tău"
-        text="Contactează-ne pentru a afla cum putem contribui la dezvoltarea și succesul afacerii tale."
+        title={c(contentMap, "about.cta_title")}
+        text={c(contentMap, "about.cta_description")}
+        ctaBtnText={c(contentMap, "about.cta_button_text")}
       />
     </div>
   );

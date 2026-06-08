@@ -4,6 +4,13 @@ import { contact } from "../data/contactInfo";
 import ContactDataItem from "./ContactDataItem";
 import Modal from "./Modal";
 import Form from "./Form";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
+import {
+  faEnvelope,
+  faLocationDot,
+  faPhone,
+} from "@fortawesome/free-solid-svg-icons";
 
 const StyledContactSection = styled.div`
   padding: 5rem 0;
@@ -122,10 +129,7 @@ const StyledButton = styled.button`
 
   @media (min-width: 992px) {
     &:hover {
-      background: rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 2px solid rgba(54, 85, 104, 0.5);
+      background-color: #2563b0;
     }
   }
 
@@ -145,27 +149,40 @@ const StyledButton = styled.button`
 `;
 
 function ContactSection() {
+  const { contentMap } = useContent();
+  const contactItems = [1, 2, 3].map((i) => ({
+    icon: c(contentMap, `contact.contact_item_${i}_icon`),
+    title: c(contentMap, `contact.contact_item_${i}_title`),
+    value: c(contentMap, `contact.contact_item_${i}_value`),
+    link: c(contentMap, `contact.contact_item_${i}_link`),
+  }));
+
+  const iconMap = {
+    "fa-solid fa-location-dot": faLocationDot,
+    "fa-solid fa-phone": faPhone,
+    "fa-solid fa-envelope": faEnvelope,
+  };
+
   return (
     <StyledContactSection>
       <Container className="container">
-        <StyledH2>Datele noastre de contact</StyledH2>
-        <StyledP>
-          Alege metoda de contact care ți se potrivește și spune-ne ce ai în
-          minte.
-        </StyledP>
+        <StyledH2>{c(contentMap, "contact.contact_title")}</StyledH2>
+        <StyledP>{c(contentMap, "contact.contact_description")}</StyledP>
         <Row className="row d-flex">
           <LeftSide className="col-lg-6 d-flex flex-column gap-3">
-            {contact.map((c) => (
+            {contactItems.map((c) => (
               <ContactDataItem
                 link={c.link}
-                title={c.name}
-                description={c.content}
-                icon={c.icon}
+                title={c.title}
+                description={c.value}
+                icon={iconMap[c.icon]}
               />
             ))}
             <Modal>
               <Modal.Open opens="form-modal">
-                <StyledButton>Cere o ofertă de preț</StyledButton>
+                <StyledButton>
+                  {c(contentMap, "contact.contact_button_text")}
+                </StyledButton>
               </Modal.Open>
               <Modal.Window name="form-modal">
                 <Form />
@@ -175,7 +192,7 @@ function ContactSection() {
           <RightSide className="col-lg-6 d-flex justify-content-center">
             <MapWrapper>
               <StyledIFrame
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91160.57954789398!2d26.012237353149644!3d44.43791870157616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f93abf3cad4f%3A0xac0632e37c9ca628!2sBucharest!5e0!3m2!1sen!2sro!4v1769760750337!5m2!1sen!2sro"
+                src={c(contentMap, "contact.contact_maps_url")}
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"

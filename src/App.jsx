@@ -43,16 +43,17 @@ function App() {
         <Routes>
           <Route element={<AppLayout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/cookies" element={<Cookies />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/testimonials" element={<Testimonials />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/cookies" element={<Cookies />} />
+
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/products" element={<Products />} />
           </Route>
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/too-many-requests" element={<TooManyRequests />} />

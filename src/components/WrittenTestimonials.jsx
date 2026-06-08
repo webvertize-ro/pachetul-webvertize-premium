@@ -6,6 +6,8 @@ import TestimonialContent from "./TestimonialContent";
 import ReviewGoogleButton from "./ReviewGoogleButton";
 import TestimonialWrittenCard from "./TestimonialWrittenCard";
 import GoogleReviewsBanner from "./GoogleReviewsBanner";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledWrittenTestimonials = styled.section`
   padding: 5rem 0;
@@ -61,13 +63,23 @@ const StyledRow = styled.div`
 `;
 
 function WrittenTestimonials() {
+  const { contentMap } = useContent();
+  const testimonials = [1, 2, 3, 4, 5, 6].map((i) => ({
+    image: c(contentMap, `testimonials.review_${i}_image`),
+    stars: c(contentMap, `testimonials.review_${i}_stars`),
+    quote: c(contentMap, `testimonials.review_${i}_quote`),
+    name: c(contentMap, `testimonials.review_${i}_name`),
+    function: c(contentMap, `testimonials.review_${i}_function`),
+  }));
+
   return (
     <StyledWrittenTestimonials>
       <WrittenTestimonialsTitle className="d-flex flex-column align-items-center">
-        <TestimonialsHeading>Testimoniale scrise</TestimonialsHeading>
+        <TestimonialsHeading>
+          {c(contentMap, "testimonials.reviews_title")}
+        </TestimonialsHeading>
         <TestimonialsSubtitle>
-          Recenzii Google de la oameni pentru care am realizat proiecte în
-          trecut
+          {c(contentMap, "testimonials.reviews_description")}
         </TestimonialsSubtitle>
         <GoogleReviewsBanner />
       </WrittenTestimonialsTitle>
@@ -78,11 +90,11 @@ function WrittenTestimonials() {
             <div className="col-sm-6 col-md-6 col-lg-4 mb-3">
               <TestimonialWrittenCard
                 key={index}
-                img={t.profile_pic}
+                img={t.image}
                 stars={t.stars}
-                content={t.testimonial_content}
-                name={t.user_name}
-                profession={t.profession}
+                content={t.quote}
+                name={t.name}
+                profession={t.function}
               />
             </div>
           ))}

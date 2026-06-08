@@ -2,6 +2,8 @@ import { NavLink } from "react-router";
 import styled from "styled-components";
 import Modal from "./Modal";
 import Form from "./Form";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledHeroVideo = styled.div`
   position: relative;
@@ -140,21 +142,24 @@ const RequestOfferButton = styled.button`
 `;
 
 function HeroVideo() {
+  const { contentMap } = useContent();
+
+  const videoSource = c(contentMap, `home.hero_video_url`);
+
   return (
     <StyledHeroVideo>
       {/* Video layer */}
-      <VideoLayer
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="https://ebsaptaehndiwvjdbqnm.supabase.co/storage/v1/object/public/website-assets/49e00d1c-b989-41c3-a898-62c9500fcb64/video_poster.png"
-      >
-        <source
-          src="https://ebsaptaehndiwvjdbqnm.supabase.co/storage/v1/object/public/website-assets/49e00d1c-b989-41c3-a898-62c9500fcb64/business_presentation.mp4"
-          type="video/mp4"
-        />
-      </VideoLayer>
+      {videoSource && (
+        <VideoLayer
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={c(contentMap, `home.hero_video_poster`)}
+        >
+          <source src={videoSource} type="video/mp4" />
+        </VideoLayer>
+      )}
       {/* Overlay layer */}
       <VideoOverlay />
       {/* Content layer */}
@@ -162,15 +167,13 @@ function HeroVideo() {
         <div className="container h-100">
           <div className="d-flex align-items-center justify-content-center h-100">
             <HeroContent>
-              <StyledH1>Servicii profesionale în Cluj-Napoca</StyledH1>
-              <StyledP>
-                Oferim soluții de calitate pentru clienți care apreciază
-                seriozitatea și atenția la detalii. Suntem aici să vă ajutăm la
-                fiecare pas.
-              </StyledP>
+              <StyledH1>{c(contentMap, "home.hero_title")}</StyledH1>
+              <StyledP>{c(contentMap, "home.hero_description")}</StyledP>
               <ButtonsContainer>
-                <ViewProjectsButton to="/portfolio">
-                  Vezi proiecte
+                <ViewProjectsButton
+                  to={c(contentMap, "home.hero_button_1_route")}
+                >
+                  {c(contentMap, "home.hero_button_1_text")}
                 </ViewProjectsButton>
                 <Modal>
                   <Modal.Open opens="form-modal">

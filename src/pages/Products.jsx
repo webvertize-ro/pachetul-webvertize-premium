@@ -5,8 +5,9 @@ import ProductsShortIntro from "../components/ProductsShortIntro";
 import WhyChooseOurProducts from "../components/WhyChooseOurProducts";
 import CTA from "../components/CTA";
 import PhotoGallery from "../components/PhotoGallery";
-import { images } from "../data/gallery4";
 import { Helmet } from "react-helmet-async";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 function Products() {
   /**
@@ -16,6 +17,13 @@ function Products() {
    * 3. Why choose our products
    * 4. CTA
    */
+
+  const { contentMap } = useContent();
+
+  const images = [1, 2, 3, 4, 5, 6].map((i) => ({
+    image: c(contentMap, `products.gallery_image_${i}`),
+    description: c(contentMap, `products.gallery_image_${i}_alt`),
+  }));
 
   return (
     <div>
@@ -27,20 +35,22 @@ function Products() {
         />
       </Helmet>
       <Hero
-        heroBg={productsHeader}
-        heroTitle="Produsele noastre"
-        heroDesc="Soluții fiabile și atent selecționate pentru a răspunde celor mai diverse cerințe."
+        heroBg={c(contentMap, "products.header_bg_image")}
+        heroTitle={c(contentMap, "products.header_title")}
+        heroDesc={c(contentMap, "products.header_description")}
+        ctaBtnText={c(contentMap, "products.header_button_text")}
       />
       <ProductsSection />
       <WhyChooseOurProducts />
       <PhotoGallery
-        title="Văzut prin ochii clienților noștri"
-        text="Cele mai autentice imagini ale produselor noastre nu vin din studioul foto, ci de la clienții noștri. Mulțumim fiecărui client care a ales să împărtășească o fotografie cu noi."
+        title={c(contentMap, "products.gallery_title")}
+        text={c(contentMap, "products.gallery_description")}
         images={images}
       />
       <CTA
-        title="Alege calitatea care face diferența"
-        text="Contactează-ne și transformă proiectul tău într-o soluție durabilă și performantă."
+        title={c(contentMap, "products.cta_title")}
+        text={c(contentMap, "products.cta_description")}
+        textBtn={c(contentMap, "products.cta_button_text")}
       />
     </div>
   );

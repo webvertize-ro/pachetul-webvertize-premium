@@ -267,32 +267,50 @@ function Navigation() {
             id="menuLinks"
           >
             <StyledNavUl className="navbar-nav ms-auto">
-              <StyledNavLink to="/" className="nav-item nav-link">
-                Acasă
+              <StyledNavLink
+                to={c(contentMap, `global.navbar_link_1_route`)}
+                className="nav-item nav-link"
+              >
+                {c(contentMap, `global.navbar_link_1_text`)}
               </StyledNavLink>
               {/* Dropdown Button */}
 
               <Dropdown className="my-dropdown" />
 
-              <StyledNavLink to="/services" className="nav-item nav-link">
-                Servicii
+              <StyledNavLink
+                to={c(contentMap, `global.navbar_link_2_route`)}
+                className="nav-item nav-link"
+              >
+                {c(contentMap, `global.navbar_link_2_text`)}
               </StyledNavLink>
-              <StyledNavLink to="/products" className="nav-item nav-link">
-                Produse
+              <StyledNavLink
+                to={c(contentMap, `global.navbar_link_3_route`)}
+                className="nav-item nav-link"
+              >
+                {c(contentMap, `global.navbar_link_3_text`)}
               </StyledNavLink>
-              <StyledNavLink to="/portfolio" className="nav-item nav-link">
-                Portofoliu
+              <StyledNavLink
+                to={c(contentMap, `global.navbar_link_4_route`)}
+                className="nav-item nav-link"
+              >
+                {c(contentMap, `global.navbar_link_4_text`)}
               </StyledNavLink>
-              <StyledNavLink to="/faq" className="nav-item nav-link">
-                Întrebări Frecvente
+              <StyledNavLink
+                to={c(contentMap, `global.navbar_link_5_route`)}
+                className="nav-item nav-link"
+              >
+                {c(contentMap, `global.navbar_link_5_text`)}
               </StyledNavLink>
-              <StyledNavLink to="/contact" className="nav-item nav-link">
-                Contact
+              <StyledNavLink
+                to={c(contentMap, `global.navbar_link_6_route`)}
+                className="nav-item nav-link"
+              >
+                {c(contentMap, `global.navbar_link_6_text`)}
               </StyledNavLink>
             </StyledNavUl>
           </StyledNavCollapse>
           <StyledSocialLinks>
-            {/* {socialLinks.map((link) => (
+            {socialLinks.map((link) => (
               <StyledAnchor
                 key={link.platform}
                 href={link.url}
@@ -301,22 +319,7 @@ function Navigation() {
               >
                 <StyledFontAwesomeIcon icon={iconMap[link.platform]} />
               </StyledAnchor>
-            ))} */}
-            {/* Temporary: before inserting the website in the database */}
-            <StyledAnchor
-              href="https://facebook.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <StyledFontAwesomeIcon icon={faFacebook} />
-            </StyledAnchor>
-            <StyledAnchor
-              href="https://instagram.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <StyledFontAwesomeIcon icon={faInstagram} />
-            </StyledAnchor>
+            ))}
           </StyledSocialLinks>
         </StyledNavContainer>
       </StyledNav>

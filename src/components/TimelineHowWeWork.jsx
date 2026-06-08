@@ -1,10 +1,20 @@
-import { fa1, faComment } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
-import { timeline } from '../data/timeline';
-import TimelineItem from './TimelineItem';
-import Modal from './Modal';
-import Form from './Form';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styled from "styled-components";
+import { timeline } from "../data/timeline";
+import TimelineItem from "./TimelineItem";
+import Modal from "./Modal";
+import Form from "./Form";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
+import {
+  fa1,
+  fa2,
+  fa3,
+  fa4,
+  faComment,
+  faFileSignature,
+  faHeadset,
+} from "@fortawesome/free-solid-svg-icons";
 
 const StyledTimelineHowWeWork = styled.div`
   padding: 3rem 0;
@@ -89,30 +99,51 @@ const Row = styled.div`
 `;
 
 function TimelineHowWeWork() {
+  const { contentMap } = useContent();
+  const steps = [1, 2, 3, 4].map((i) => ({
+    number: c(contentMap, `services.step_${i}_number`),
+    title: c(contentMap, `services.step_${i}_title`),
+    description: c(contentMap, `services.step_${i}_description`),
+    icon: c(contentMap, `services.step_${i}_icon`),
+    icon_num: c(contentMap, `services.step_${i}_icon_num`),
+  }));
+
+  const iconMap1 = {
+    fa1: fa1,
+    fa2: fa2,
+    fa3: fa3,
+    fa4: fa4,
+  };
+
+  const iconMap2 = {
+    faComment: faComment,
+    faFileSignature: faFileSignature,
+    faHeadset: faHeadset,
+  };
+
   return (
     <StyledTimelineHowWeWork>
       <div className="container">
-        <StyledH2>Procesul nostru</StyledH2>
-        <StyledP>
-          Credem că un proiect reușit începe cu un proces bine definit. De
-          aceea, fiecare etapă este planificată atent, pentru a asigura
-          transparență, eficiență și rezultate de calitate.
-        </StyledP>
+        <StyledH2>{c(contentMap, "services.how_we_work_title")}</StyledH2>
+        <StyledP>{c(contentMap, "services.how_we_work_description")}</StyledP>
 
         <Row className="row">
           <div className="col-lg-12">
             <HorizontalTimeline className="horizontal-timeline">
               <ul className="list-inline items">
-                {timeline.map((timeline, i) => (
-                  <TimelineItem
-                    iconNum={timeline.iconNum}
-                    icon={timeline.icon}
-                    title={timeline.title}
-                    desc={timeline.desc}
-                    CTAtext={timeline.CTAtext}
-                    btnLink={timeline.btnLink}
-                  />
-                ))}
+                {steps.map(
+                  (timeline, i) => (
+                    console.log(iconMap2[timeline.icon]),
+                    (
+                      <TimelineItem
+                        iconNum={iconMap1[timeline.icon_num]}
+                        icon={iconMap2[timeline.icon]}
+                        title={timeline.title}
+                        desc={timeline.description}
+                      />
+                    )
+                  ),
+                )}
               </ul>
               <Modal>
                 <Modal.Open opens="form-modal">

@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
-import { partners } from "../data/partners.js";
 import { useEffect, useState } from "react";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const ContainerFluid = styled.div`
   background-color: #0b2240;
@@ -65,6 +66,7 @@ const PartnerImg = styled.img`
 
 function OurPartners() {
   const [reducedMotion, setReducedMotion] = useState(false);
+  const { contentMap } = useContent();
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -72,13 +74,18 @@ function OurPartners() {
     setReducedMotion(mediaQuery.matches);
   }, []);
 
+  const partners = [1, 2, 3, 4, 5, 6].map((i) => ({
+    image: c(contentMap, `home.partner_logo_${i}`),
+    alt: c(contentMap, `home.partner_logo_${i}_alt`),
+  }));
+
   const duplicatedPartners = [...partners, ...partners];
 
   return (
     <ContainerFluid className="container-fluid">
       <div className="container">
         <Scroller>
-          <StyledH5>Partenerii noștri</StyledH5>
+          <StyledH5>{c(contentMap, "home.partners_title")}</StyledH5>
           <ScrollerInner
             speed="slow"
             direction="left"
@@ -86,7 +93,7 @@ function OurPartners() {
           >
             {duplicatedPartners.map((partner, index) => (
               <li key={index}>
-                <PartnerImg src={partner.img} alt="" />
+                <PartnerImg src={partner.image} alt={partner.alt} />
               </li>
             ))}
           </ScrollerInner>

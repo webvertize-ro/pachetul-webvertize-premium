@@ -96,7 +96,7 @@ const Button = styled(Link)`
   }
 `;
 
-function Hero({ heroBg, heroTitle, heroDesc, ctaBtn = true }) {
+function Hero({ heroBg, heroTitle, heroDesc, ctaBtn = true, ctaBtnText }) {
   return (
     <StyledHero heroBg={heroBg}>
       <div className="container">
@@ -106,7 +106,7 @@ function Hero({ heroBg, heroTitle, heroDesc, ctaBtn = true }) {
           {ctaBtn && (
             <Modal>
               <Modal.Open opens="form-modal">
-                <Button>Cere o ofertă de preț</Button>
+                <Button>{ctaBtnText}</Button>
               </Modal.Open>
               <Modal.Window name="form-modal" bgColor="rgba(59, 94, 117, 0.5)">
                 <Form />

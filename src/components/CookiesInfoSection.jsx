@@ -1,6 +1,8 @@
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledCookiesInfoSection = styled.div`
   padding: 5rem 0;
@@ -72,33 +74,27 @@ const Date = styled.span`
 `;
 
 function CookiesInfoSection() {
+  const { contentMap } = useContent();
+
   return (
     <StyledCookiesInfoSection>
       <div className="container">
         <StyledH3>
           <InfoIcon icon={faInfoCircle} />
-          Informații suplimentare și actualizări
+          {c(contentMap, "cookies.info_title")}
         </StyledH3>
         <StyledP>
-          Această pagină a fost actualizată ultima dată la{" "}
-          <Date>30 ianuarie 2026</Date>.
+          {c(contentMap, "cookies.info_paragraph_1")}{" "}
+          <Date>{c(contentMap, "cookies.info_paragraph_1_date")}</Date>.
         </StyledP>
+        <StyledP>{c(contentMap, "cookies.info_paragraph_2")}</StyledP>
         <StyledP>
-          Ne rezervăm dreptul de a modifica sau actualiza acest conținut ori de
-          câte ori este necesar, pentru a reflecta schimbări în funcționalitatea
-          website-ului sau în cerințele legale aplicabile.
-        </StyledP>
-        <StyledP>
-          Dacă ai întrebări legate de protecția datelor tale sau de conținutul
-          acestei pagini, ne poți contacta oricând la adresa de email:{" "}
+          {c(contentMap, "cookies.info_paragraph_3")}{" "}
           <StyledLink href="mailto:gdpr@afacere_locala.ro" target="_blank">
-            gdpr@afacere_locala.ro
+            {c(contentMap, "cookies.info_paragraph_3_email")}
           </StyledLink>
         </StyledP>
-        <StyledP>
-          Vom răspunde solicitărilor tale în cel mai scurt timp posibil, în
-          conformitate cu legislația în vigoare privind protecția datelor.
-        </StyledP>
+        <StyledP>{c(contentMap, "cookies.info_paragraph_4")}</StyledP>
       </div>
     </StyledCookiesInfoSection>
   );

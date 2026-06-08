@@ -6,13 +6,21 @@ import OurPartners from "../components/OurPartners";
 import WhyWorkWithUs from "../components/WhyWorkWithUs";
 import ShortServices from "../components/ShortServices";
 import PhotoGallery from "../components/PhotoGallery";
-import { images } from "../data/gallery1.js";
+
 import { Helmet } from "react-helmet-async";
 import HeroVideo from "../components/HeroVideo.jsx";
+import { useContent } from "../hooks/useContent.js";
+import { c } from "../utils/content.js";
 
 const StyledHome = styled.div``;
 
 function Home() {
+  const { contentMap } = useContent();
+  const images = [1, 2, 3, 4, 5, 6].map((n) => ({
+    image: c(contentMap, `home.gallery_image_${n}`),
+    description: c(contentMap, `home.gallery_image_${n}_alt`),
+  }));
+
   return (
     <>
       <Helmet>
@@ -26,8 +34,8 @@ function Home() {
       <StyledHome>
         <Stats />
         <PhotoGallery
-          title="Galerie foto din activitatea noastră"
-          text="Descoperă câteva imagini care surprind modul în care lucrăm, proiectele realizate și atenția pe care o acordăm fiecărui detaliu."
+          title={c(contentMap, `home.gallery_title`)}
+          text={c(contentMap, `home.gallery_description`)}
           images={images}
         />
         <ShortServices />

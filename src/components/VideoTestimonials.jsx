@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import user1 from "../assets/images/user1.jpg";
-import user2 from "../assets/images/user2.jpg";
-import user3 from "../assets/images/user3.jpg";
-import user4 from "../assets/images/user4.jpg";
 import TestimonialCard from "./TestimonialCard";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const Section = styled.section`
   background-color: #2c5d93;
@@ -44,54 +42,31 @@ const VideoTestimonialsInner = styled.div`
 `;
 
 function VideoTestimonials() {
-  const testimonials = [
-    {
-      name: "Ion Ionescu",
-      function: "Manager General",
-      user_image: user1,
-      testimonial_video:
-        "https://ebsaptaehndiwvjdbqnm.supabase.co/storage/v1/object/public/website-assets/49e00d1c-b989-41c3-a898-62c9500fcb64/testimonial_video_1.mp4",
-    },
-    {
-      name: "Paul Terescenco",
-      function: "Agent de vanzari",
-      user_image: user2,
-      testimonial_video:
-        "https://ebsaptaehndiwvjdbqnm.supabase.co/storage/v1/object/public/website-assets/49e00d1c-b989-41c3-a898-62c9500fcb64/testimonial_video_2.mp4",
-    },
-    {
-      name: "Ionut Camburescu",
-      function: "Manager de vanzari",
-      user_image: user3,
-      testimonial_video:
-        "https://ebsaptaehndiwvjdbqnm.supabase.co/storage/v1/object/public/website-assets/49e00d1c-b989-41c3-a898-62c9500fcb64/testimonial_video_3.mp4",
-    },
-    {
-      name: "Cosmin Papucaru",
-      function: "Manager de marketing",
-      user_image: user4,
-      testimonial_video:
-        "https://ebsaptaehndiwvjdbqnm.supabase.co/storage/v1/object/public/website-assets/49e00d1c-b989-41c3-a898-62c9500fcb64/testimonial_video_4.mp4",
-    },
-  ];
+  const { contentMap } = useContent();
+
+  const testimonials = [1, 2, 3, 4].map((i) => ({
+    image: c(contentMap, `testimonials.video_testimonial_${i}_image`),
+    name: c(contentMap, `testimonials.video_testimonial_${i}_name`),
+    function: c(contentMap, `testimonials.video_testimonial_${i}_function`),
+    video_url: c(contentMap, `testimonials.video_testimonial_${i}_video_url`),
+  }));
 
   return (
     <Section>
       <StyledVideoTestimonials className="container">
-        <VideoTestimonialsTitle>Testimoniale Video</VideoTestimonialsTitle>
+        <VideoTestimonialsTitle>
+          {c(contentMap, "testimonials.video_testimonials_title")}
+        </VideoTestimonialsTitle>
         <VideoTestimonialsDescription>
-          <p>
-            Vizualizează videoclipurile de mai jos și află care este opinia
-            oamenilor despre noi.
-          </p>
+          <p>{c(contentMap, "testimonials.video_testimonials_description")}</p>
         </VideoTestimonialsDescription>
         <VideoTestimonialsInner className="row g-4">
           {testimonials.map((t, index) => (
             <TestimonialCard
-              img={t.user_image}
+              img={t.image}
               name={t.name}
               functionUser={t.function}
-              video={t.testimonial_video}
+              video={t.video_url}
               key={index}
             />
           ))}

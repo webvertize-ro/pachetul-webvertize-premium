@@ -1,6 +1,8 @@
 import Modal from "./Modal";
 import Form from "./Form";
 import styled from "styled-components";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledCTA = styled.div`
   padding: 6rem 0;
@@ -70,6 +72,8 @@ function CTA({
   text = "Fiecare proiect este diferit. Completează câteva detalii și primești o ofertă personalizată, rapid și fără obligații.",
   textBtn = "Cere o ofertă de preț",
 }) {
+  const { contentMap } = useContent();
+
   return (
     <StyledCTA className="get-quote text-center">
       <div className="container">

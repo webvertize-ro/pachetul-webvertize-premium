@@ -1,3 +1,10 @@
+import {
+  faCheckCircle,
+  faClock,
+  faHandshake,
+  faShieldHalved,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 
@@ -53,11 +60,18 @@ const Title = styled.div`
   }
 `;
 
-function ListItem({ icon, title, subtitle }) {
+function ListItem({ title, subtitle, icon }) {
+  const iconMap = {
+    "fa-solid fa-star": faStar,
+    "fa-solid fa-shield-halved": faShieldHalved,
+    "fa-solid fa-handshake": faHandshake,
+    "fa-solid fa-clock": faClock,
+  };
+
   return (
     <StyledLi>
       <Top>
-        <StyledIcon icon={icon} />
+        <StyledIcon icon={iconMap[icon]} />
         <Title>{title}</Title>
       </Top>
       {subtitle && (

@@ -6,8 +6,11 @@ import styled from "styled-components";
 import {
   faFacebook,
   faInstagram,
+  faLinkedin,
   faPinterest,
+  faTiktok,
   faTwitter,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { c } from "../utils/content";
 import { useContent } from "../hooks/useContent";
@@ -104,6 +107,31 @@ const Copyright = styled.div`
 function Footer() {
   const { contentMap } = useContent();
 
+  const links = [1, 2, 3, 4, 5].map((link) => ({
+    link_text: c(contentMap, `global.footer_link_${link}_text`),
+    link_route: c(contentMap, `global.footer_link_${link}_route`),
+  }));
+
+  const iconMap = {
+    facebook: faFacebook,
+    instagram: faInstagram,
+    tiktok: faTiktok,
+    youtube: faYoutube,
+    linkedin: faLinkedin,
+  };
+
+  const socialLinks = [1, 2, 3, 4]
+    .map((n) => {
+      const raw = c(contentMap, `footer_social_${n}`);
+      if (!raw) return null;
+      try {
+        return JSON.parse(raw);
+      } catch {
+        return null;
+      }
+    })
+    .filter(Boolean);
+
   return (
     <StyledFooter className="footer py-6">
       <div className="container">
@@ -113,80 +141,48 @@ function Footer() {
               <StyledH6 className="fw-bold">Despre</StyledH6>
               <Logo width="100" />
             </div>
-            <FooterP>
-              Acesta este un mic paragraf despre afacerea ta. Poate fi un scurt
-              text descriptiv, un motto sau orice altceva ți se pare relevant.
-            </FooterP>
+            <FooterP>{c(contentMap, "global.footer_description")}</FooterP>
           </div>
           <div className="col-md-4 my-3">
-            <ColumnTitle className="fw-bold">Link-uri Utile</ColumnTitle>
+            <ColumnTitle className="fw-bold">
+              {c(contentMap, "global.footer_links_title")}
+            </ColumnTitle>
             <ul className="list-unstyled">
-              <li>
-                <FooterLink to="/">Acasă</FooterLink>
-              </li>
-              <li>
-                <FooterLink to="/services">Servicii</FooterLink>
-              </li>
-              <li>
-                <FooterLink to="/portfolio">Portfoliu</FooterLink>
-              </li>
-              <li>
-                <FooterLink to="/contact">Contact</FooterLink>
-              </li>
-              <li>
-                <FooterLink to="/cookies">Politica de Cookies</FooterLink>
-              </li>
+              {links.map((link) => (
+                <li>
+                  <FooterLink to={link.link_route}>{link.link_text}</FooterLink>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="col-md-4 my-3">
-            <ColumnTitle className="fw-bold">Rețele de socializare</ColumnTitle>
+            <ColumnTitle className="fw-bold">
+              {c(contentMap, "global.footer_social_title")}
+            </ColumnTitle>
             <div className="mb-4 d-flex gap-2">
-              <a
-                href="#"
-                className="text-decoration-none"
-                aria-label="Pagina de facebook a afacerii"
-              >
-                <StyledFontAwesomeIcon icon={faFacebook} />
-              </a>
-              <a
-                href="#"
-                className="text-decoration-none"
-                aria-label="Pagina de twitter a afacerii"
-              >
-                <StyledFontAwesomeIcon icon={faTwitter} />
-              </a>
-              <a
-                href="#"
-                className="text-decoration-none"
-                aria-label="Pagina de instagram a afacerii"
-              >
-                <StyledFontAwesomeIcon icon={faInstagram} />
-              </a>
-              <a
-                href="#"
-                className="text-decoration-none"
-                aria-label="Pagina de Pinterest a afacerii"
-              >
-                <StyledFontAwesomeIcon icon={faPinterest} />
-              </a>
+              {socialLinks.map((link) => (
+                <a key={link.platform} href={link.url} target="_blank">
+                  <StyledFontAwesomeIcon icon={iconMap[link.platform]} />
+                </a>
+              ))}
             </div>
             <FooterP>
-              Ne poți scrie direct pe email la
+              {c(contentMap, "global.footer_paragraph")}
               <StyledFooterLink
-                href="mailto:contact@site.com"
+                href={`mailto:${c(contentMap, "global.footer_paragraph_link_text")}`}
                 aria-label="Click pentru a scrie un email pe adresa afacerii"
               >
-                <StrongEmail> contact@afacerea_ta.ro</StrongEmail>
+                {" "}
+                <StrongEmail>
+                  {c(contentMap, "global.footer_paragraph_link_text")}
+                </StrongEmail>
               </StyledFooterLink>
             </FooterP>
           </div>
         </div>
 
         {/* Copyright */}
-        <Copyright>
-          {/* {c(contentMap, "global.footer_copyright")} */}
-          2026 - Toate drepturile rezervate. Numele Afacerii.
-        </Copyright>
+        <Copyright>{c(contentMap, "global.footer_copyright")}</Copyright>
       </div>
     </StyledFooter>
   );

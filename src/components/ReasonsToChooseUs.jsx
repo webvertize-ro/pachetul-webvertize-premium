@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { reasonsToChooseUs } from "../data/listData";
 import ListItem from "./ListItem";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledWhatRecommendsUs = styled.div`
   display: flex;
@@ -67,18 +69,27 @@ const StyledUl = styled.ul`
 `;
 
 function ReasonsToChooseUs() {
+  const { contentMap } = useContent();
+
+  const reasons = [1, 2, 3, 4].map((i) => ({
+    icon: c(contentMap, `portfolio.reason_${i}_icon`),
+    title: c(contentMap, `portfolio.reason_${i}_title`),
+    description: c(contentMap, `portfolio.reason_${i}_description`),
+  }));
+
+  console.log("reasons: ", reasons);
+
   return (
     <StyledWhatRecommendsUs>
       <Container className="container">
-        <StyledH2>Ce ne recomandă</StyledH2>
+        <StyledH2>{c(contentMap, "portfolio.what_recommends_title")}</StyledH2>
         <StyledP>
-          Clienții noștri apreciază calitatea serviciilor și atenția la detalii.
-          Iată câteva motive pentru care aleg să colaboreze cu noi:
+          {c(contentMap, "portfolio.what_recommends_description")}
         </StyledP>
 
         <div className="row">
           <StyledUl>
-            {reasonsToChooseUs.map((item) => (
+            {reasons.map((item) => (
               <ListItem
                 icon={item.icon}
                 title={item.title}

@@ -1,6 +1,8 @@
-import styled from 'styled-components';
-import { certifications } from '../data/certifications';
-import CertificationCard from './CertificationCard';
+import styled from "styled-components";
+import { certifications } from "../data/certifications";
+import CertificationCard from "./CertificationCard";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledCertificationsList = styled.div`
   padding: 3rem 0;
@@ -30,23 +32,28 @@ const StyledP = styled.p`
 `;
 
 function CertificationsList() {
+  const { contentMap } = useContent();
+
+  const certs = [1, 2, 3, 4].map((i) => ({
+    title: c(contentMap, `services.cert_${i}_title`),
+    description: c(contentMap, `services.cert_${i}_description`),
+    file_url: c(contentMap, `services.cert_${i}_file_url`),
+  }));
+
+  console.log("certs: ", certs);
+
   return (
     <StyledCertificationsList className="container-fluid">
       <div className="container">
-        <StyledH2>Certificări și Acreditări</StyledH2>
-        <StyledP>
-          Certificările și acreditările obținute reflectă angajamentul nostru
-          pentru respectarea standardelor profesionale și livrarea unor servicii
-          de calitate. Acestea confirmă competența echipei noastre și
-          responsabilitatea cu care abordăm fiecare proiect.
-        </StyledP>
+        <StyledH2>{c(contentMap, "services.certs_title")}</StyledH2>
+        <StyledP>{c(contentMap, "services.certs_description")}</StyledP>
         <div className="row">
-          {certifications.map((certification) => (
+          {certs.map((certification) => (
             <div className="col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex mb-4">
               <CertificationCard
                 title={certification.title}
                 desc={certification.description}
-                cert={certification.certification}
+                cert={certification.file_url}
               />
             </div>
           ))}

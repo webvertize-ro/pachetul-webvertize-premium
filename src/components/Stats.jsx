@@ -1,17 +1,16 @@
-import {
-  faHourglassHalf,
-  faStar,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightDots } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Counter from "./Counter";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledSection = styled.section`
   padding: 5rem 0;
   background-color: #0f2f5a;
   color: #fff;
+  border-bottom: 0.5px solid rgba(168, 212, 245, 0.1);
 
   @media (max-width: 576px) {
     padding: 3rem 1.5rem;
@@ -58,23 +57,12 @@ const CouterItem = styled.p`
 function Stats() {
   const sectionRef = useRef(null);
   const [startCounters, setStartCounters] = useState(false);
-  const statItems = [
-    {
-      icon: faHourglassHalf,
-      target: 12,
-      name: "Ani de activitate",
-    },
-    {
-      icon: faUser,
-      target: 275,
-      name: "Clienți mulțumiți",
-    },
-    {
-      icon: faStar,
-      target: 150,
-      name: "Recenzii pozitive",
-    },
-  ];
+  const { contentMap } = useContent();
+
+  const statItems = [1, 2, 3].map((i) => ({
+    number: c(contentMap, `home.stat_${i}_number`),
+    label: c(contentMap, `home.stat_${i}_label`),
+  }));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -100,17 +88,17 @@ function Stats() {
     <StyledSection className="stats" ref={sectionRef}>
       <div className="container">
         <StyledSectionTitle>
-          Câteva cifre despre experiența noastră
+          {c(contentMap, `home.stats_title`)}
         </StyledSectionTitle>
         <div className="row my-6">
           {statItems.map((item) => (
             <StatItem className="col-md-4 col-sm-6 text-center">
               <div className="d-flex justify-content-center align-items-center gap-2">
-                <StyledFontAwesomeIcon icon={item.icon} />
+                <StyledFontAwesomeIcon icon={faArrowUpRightDots} />
 
-                <Counter target={item.target} start={startCounters} />
+                <Counter target={item.number} start={startCounters} />
               </div>
-              <CouterItem>{item.name}</CouterItem>
+              <CouterItem>{item.label}</CouterItem>
             </StatItem>
           ))}
         </div>

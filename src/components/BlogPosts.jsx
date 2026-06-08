@@ -3,6 +3,8 @@ import { Link } from "react-router";
 import { useBlogPosts } from "../hooks/useBlogPosts";
 import BlogPostItem from "./BlogPostItem";
 import LoadingSpinner from "./LoadingSpinner";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const ContainerBlogPosts = styled.div`
   background-color: #0f2f5a;
@@ -59,6 +61,7 @@ const StyledP = styled.p`
 `;
 
 function BlogPosts() {
+  const { contentMap } = useContent();
   const { data: posts, isLoading } = useBlogPosts();
 
   if (isLoading) return <LoadingSpinner />;
@@ -66,11 +69,8 @@ function BlogPosts() {
   return (
     <ContainerBlogPosts>
       <Posts className="container">
-        <StyledH2>Postările noastre</StyledH2>
-        <StyledP>
-          Află mai multe despre serviciile și produsele oferite de Afacerea
-          Noastră Locală direct din postările de pe blogul nostru.{" "}
-        </StyledP>
+        <StyledH2>{c(contentMap, "blog.posts_title")}</StyledH2>
+        <StyledP>{c(contentMap, "blog.posts_description")}</StyledP>
         {posts
           ?.filter((p) => p.is_published)
           .map((post) => (

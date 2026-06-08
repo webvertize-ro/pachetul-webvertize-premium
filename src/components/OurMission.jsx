@@ -3,6 +3,8 @@ import ourMissionImg from "../assets/images/our_mission_image.avif";
 import Modal from "./Modal";
 import Form from "./Form";
 import { NavLink } from "react-router";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledOurMission = styled.div`
   padding: 5rem 0;
@@ -97,6 +99,8 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 function OurMission() {
+  const { contentMap } = useContent();
+
   return (
     <StyledOurMission>
       <div className="container">
@@ -104,31 +108,19 @@ function OurMission() {
           {/* Text */}
           <div className="col-lg-6 mb-4">
             <TextContent>
-              <StyledH2>Misiunea noastră</StyledH2>
-              <StyledP>
-                Misiunea noastră este să oferim servicii și soluții de calitate,
-                adaptate nevoilor fiecărui client.
-              </StyledP>
-              <StyledP>
-                Credem în profesionalism, transparență și colaborare pe termen
-                lung.
-              </StyledP>
-              <StyledP>
-                Ne dorim să construim parteneriate bazate pe încredere, să
-                livrăm rezultate durabile și să contribuim activ la dezvoltarea
-                fiecărui proiect în care ne implicăm.
-              </StyledP>
-              <StyledP>
-                Fiecare etapă a procesului nostru este ghidată de
-                responsabilitate, atenție la detalii și dorința de a depăși
-                așteptările.
-              </StyledP>
+              <StyledH2>{c(contentMap, "about.mission_title")}</StyledH2>
+              <StyledP>{c(contentMap, "about.mission_paragraph_1")}</StyledP>
+              <StyledP>{c(contentMap, "about.mission_paragraph_2")}</StyledP>
+              <StyledP>{c(contentMap, "about.mission_paragraph_3")}</StyledP>
+              <StyledP>{c(contentMap, "about.mission_paragraph_4")}</StyledP>
             </TextContent>
             {/* Buttons */}
             <ButtonsContainer>
               <Modal>
                 <Modal.Open opens="form-modal">
-                  <StyledButton>Cere o ofertă de preț</StyledButton>
+                  <StyledButton>
+                    {c(contentMap, "about.mission_button_offer_text")}
+                  </StyledButton>
                 </Modal.Open>
                 <Modal.Window
                   name="form-modal"
@@ -137,14 +129,20 @@ function OurMission() {
                   <Form />
                 </Modal.Window>
               </Modal>
-              <StyledNavLink to="/portfolio">
-                Descoperă proiectele noastre
+              <StyledNavLink
+                to={c(contentMap, "about.mission_button_portfolio_route")}
+              >
+                {c(contentMap, "about.mission_button_portfolio_text")}
               </StyledNavLink>
             </ButtonsContainer>
           </div>
           {/* Image */}
           <div className="col-lg-6 d-flex justify-content-center">
-            <StyledImg src={ourMissionImg} className="img-fluid" alt="" />
+            <StyledImg
+              src={c(contentMap, "about.mission_image")}
+              className="img-fluid"
+              alt=""
+            />
           </div>
         </div>
       </div>

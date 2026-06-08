@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { projects } from "../data/projects";
 import ProjectsCard from "./ProjectsCard";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledProjects = styled.div`
   padding: 5rem 0;
@@ -52,24 +54,37 @@ const StyledP = styled.p`
 `;
 
 function Projects() {
+  const { contentMap } = useContent();
+  const projects = [1, 2, 3, 4, 5, 6, 7, 8].map((i) => ({
+    image: c(contentMap, `portfolio.project_${i}_card_image`),
+    title: c(contentMap, `portfolio.project_${i}_card_title`),
+    description: c(contentMap, `portfolio.project_${i}_card_description`),
+    button_text: c(contentMap, `portfolio.project_${i}_card_button_text`),
+    modal_title: c(contentMap, `portfolio.project_${i}_modal_title`),
+    modal_description: c(
+      contentMap,
+      `portfolio.project_${i}_modal_description`,
+    ),
+    modal_images: [1, 2, 3, 4].map((j) => ({
+      src: c(contentMap, `portfolio.project_${i}_modal_image_${j}`),
+    })),
+  }));
+
   return (
     <StyledProjects>
       <Container className="container">
-        <StyledH2>Proiectele noastre</StyledH2>
-        <StyledP>
-          Află mai multe detalii despre proiectele realizate de noi printr-un
-          simplu click.
-        </StyledP>
+        <StyledH2>{c(contentMap, "portfolio.projects_title")}</StyledH2>
+        <StyledP>{c(contentMap, "portfolio.projects_description")}</StyledP>
 
         <div className="row">
           {projects.map((project) => (
             <div className="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4 d-flex">
               <ProjectsCard
-                img={project.topImg}
-                projectTitle={project.projectTitle}
-                projectShortDesc={project.projectShortDesc}
-                projectLongDesc={project.projectLongDesc}
-                imageGallery={project.imageGallery}
+                img={project.image}
+                projectTitle={project.title}
+                projectShortDesc={project.description}
+                projectLongDesc={project.modal_description}
+                imageGallery={project.modal_images}
               />
             </div>
           ))}

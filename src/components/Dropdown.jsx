@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router";
 import styled from "styled-components";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledDropdown = styled.div`
   display: flex;
@@ -117,6 +119,7 @@ const StyledNavLink = styled(NavLink)`
 
 function Dropdown() {
   const [open, setOpen] = useState(false);
+  const { contentMap } = useContent();
 
   // Close the dropdown when clicking outside
   const myRef = useRef(null);
@@ -142,7 +145,7 @@ function Dropdown() {
           return setOpen((t) => !t);
         }}
       >
-        Despre Noi
+        {c(contentMap, "global.navbar_dropdown_label")}
         {open ? (
           <FontAwesomeIcon icon={faChevronUp} />
         ) : (
@@ -153,18 +156,27 @@ function Dropdown() {
         <DropdownItemsContainer>
           <DropdownItems>
             <StyledLi>
-              <StyledNavLink to="/about-us" onClick={() => setOpen(false)}>
-                Despre Noi
+              <StyledNavLink
+                to={c(contentMap, "global.navbar_dropdown_link_1_route")}
+                onClick={() => setOpen(false)}
+              >
+                {c(contentMap, "global.navbar_dropdown_link_1_text")}
               </StyledNavLink>
             </StyledLi>
             <StyledLi>
-              <StyledNavLink to="/testimonials" onClick={() => setOpen(false)}>
-                Testimoniale
+              <StyledNavLink
+                to={c(contentMap, "global.navbar_dropdown_link_2_route")}
+                onClick={() => setOpen(false)}
+              >
+                {c(contentMap, "global.navbar_dropdown_link_2_text")}
               </StyledNavLink>
             </StyledLi>
             <StyledLi>
-              <StyledNavLink to="/blog" onClick={() => setOpen(false)}>
-                Blog/Noutăți
+              <StyledNavLink
+                to={c(contentMap, "global.navbar_dropdown_link_3_route")}
+                onClick={() => setOpen(false)}
+              >
+                {c(contentMap, "global.navbar_dropdown_link_3_text")}
               </StyledNavLink>
             </StyledLi>
           </DropdownItems>

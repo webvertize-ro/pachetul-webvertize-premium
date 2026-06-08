@@ -13,11 +13,11 @@ const GlobalStyles = createGlobalStyle`
   src: url(${MontserratVariable}) format('truetype');
   font-weight: 100 900;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 body {
-  font-family: 'Montserrat' !important;
+  font-family: 'Montserrat', sans-serif !important;
   font-weight: 400 !important;
   background-color: rgba(26,79,138,0.92) !important;
 }

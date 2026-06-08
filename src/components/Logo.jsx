@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import logoImg from "../assets/images/basic-business-logo.svg";
 import logoImgDark from "../assets/images/basic-business-logo-dark.svg";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const ImgContainer = styled.div`
   display: flex;
@@ -13,11 +15,13 @@ const StyledImg = styled.img`
 `;
 
 function Logo({ width, dark }) {
+  const { contentMap } = useContent();
+
   return (
     <ImgContainer>
       <StyledImg
         width={width}
-        src={dark ? logoImgDark : logoImg}
+        src={c(contentMap, "global.logo")}
         alt="Logo-ul afacerii [Nume Afacere]"
       />
     </ImgContainer>

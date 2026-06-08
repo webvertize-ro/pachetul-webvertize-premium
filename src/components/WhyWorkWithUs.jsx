@@ -8,6 +8,8 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import Form from "./Form";
 import Modal from "./Modal";
 import reasons from "../data/reasons.json";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledSection = styled.section`
   padding: 5rem 0;
@@ -115,6 +117,12 @@ const StyledButton = styled.button`
 `;
 
 function WhyWorkWithUs() {
+  const { contentMap } = useContent();
+  const reasons = [1, 2, 3, 4].map((i) => ({
+    title: c(contentMap, `home.why_reason_${i}_title`),
+    description: c(contentMap, `home.why_reason_${i}_description`),
+  }));
+
   return (
     <StyledSection
       id="details"
@@ -125,27 +133,24 @@ function WhyWorkWithUs() {
           <div className="col-lg-6">
             <div className="image-container d-flex justify-content-center">
               <StyledImg
-                src={whyWorkWithUsPic}
+                src={c(contentMap, "home.why_image")}
                 alt=""
                 className="img-fluid"
-                srcSet={`${img400} 400w, ${img800} 800w, ${img1200} 1200w`}
-                sizes="(max-width: 576px) 33vw, (max-width: 992px) 33vw, calc(33vw - 4rem)"
               />
             </div>
           </div>
           <div className="col-lg-6">
             <StyledTextContent className="mt-4">
               <StyledTitle className="mb-4">
-                De ce să alegi serviciile{" "}
-                <TitleAccent>afacerii noastre</TitleAccent>
+                {c(contentMap, "home.why_title")}
               </StyledTitle>
               <StyledUl className="list-unstyled">
                 {reasons.map((reason) => (
                   <ListItem className="d-flex mb-3" key={reason.strong}>
                     <StyledFontAwesomeIcon icon={faCheck} />
                     <StyledP>
-                      <StyledStrong>{reason.strong}: </StyledStrong>
-                      {reason.desc}
+                      <StyledStrong>{reason.title}: </StyledStrong>
+                      {reason.description}
                     </StyledP>
                   </ListItem>
                 ))}

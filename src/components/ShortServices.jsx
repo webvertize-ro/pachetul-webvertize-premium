@@ -1,14 +1,12 @@
 import Modal from "./Modal";
-import img400 from "../assets/images/short_services_pic-400.avif";
-import img800 from "../assets/images/short_services_pic-800.avif";
-import img1200 from "../assets/images/short_services_pic-1200.avif";
 import Form from "./Form";
 import styled, { keyframes } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router";
-import { shortServices } from "../data/listData";
 import ListItem from "./ListItem";
+import { useContent } from "../hooks/useContent";
+import { c } from "../utils/content";
 
 const StyledShortServices = styled.div`
   padding: 5rem 0;
@@ -263,6 +261,12 @@ const TextContent = styled.div`
 `;
 
 function ShortServices() {
+  const { contentMap } = useContent();
+
+  const services = [1, 2, 3, 4, 5].map((i) => ({
+    service: c(contentMap, `home.services_item_${i}`),
+  }));
+
   return (
     <StyledShortServices>
       <div className="container">
@@ -271,8 +275,7 @@ function ShortServices() {
           <VideoContainer className="col-lg-6">
             <ImageWrapper>
               <StyledImg
-                srcSet={`${img400} 400w, ${img800} 800w, ${img1200} 1200w`}
-                sizes="(max-width: 576px) 33vw, (max-width: 992px) 33vw, calc(33vw - 4rem)"
+                src={c(contentMap, "home.services_image")}
                 alt=""
                 className="img-fluid"
               />
@@ -291,7 +294,7 @@ function ShortServices() {
                 <ModalWindowInner>
                   <IframeWrapper>
                     <StyledIframe
-                      src="https://www.youtube.com/embed/jFum1tXS6H0?si=FR8U2WwAfJOZWdF6"
+                      src={c(contentMap, "home.services_video_url")}
                       frameborder="0"
                       allowfullscreen
                     ></StyledIframe>
@@ -302,29 +305,26 @@ function ShortServices() {
           </VideoContainer>
           {/* Text */}
           <TextContent className="col-lg-6">
-            <StyledH2>
-              Toate serviciile de care ai nevoie, într-un singur loc
-            </StyledH2>
-            <StyledP>
-              Lucrăm simplu, atent și adaptat fiecărui proiect. Ne concentrăm pe
-              rezultate clare și colaborări pe termen lung.
-            </StyledP>
+            <StyledH2>{c(contentMap, "home.services_title")}</StyledH2>
+            <StyledP>{c(contentMap, "home.services_description")}</StyledP>
 
             <StyledUl>
-              {shortServices.map((item, index) => (
-                <ListItem icon={item.icon} title={item.title} key={index} />
+              {services.map((item, index) => (
+                <ListItem title={item.service} key={index} />
               ))}
             </StyledUl>
             <ButtonsContainer>
               <Button1
-                to="/services"
+                to={c(contentMap, "home.services_button_more_route")}
                 aria-label="navighează la pagina cu servicii"
               >
-                Află mai multe
+                {c(contentMap, "home.services_button_more_text")}
               </Button1>
               <Modal>
                 <Modal.Open opens="form-modal">
-                  <Button2>Cere o ofertă de preț</Button2>
+                  <Button2>
+                    {c(contentMap, "home.services_button_offer_text")}
+                  </Button2>
                 </Modal.Open>
                 <Modal.Window
                   name="form-modal"
