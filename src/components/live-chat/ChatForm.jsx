@@ -10,6 +10,17 @@ const StyledForm = styled.form`
   flex-direction: column;
   justify-content: space-around;
   flex: 20;
+  padding: 1rem 2rem;
+
+  @media (max-width: 576px) {
+    padding: 0.5rem 1rem;
+  }
+`;
+
+const StyledInput = styled.input`
+  @media (max-width: 576px) {
+    font-size: 0.75rem;
+  }
 `;
 
 const StartConvoBtn = styled.button`
@@ -18,6 +29,11 @@ const StartConvoBtn = styled.button`
   color: #fff;
   padding: 0.5rem;
   border-radius: 0.5rem;
+
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+  }
 `;
 
 const CancelBtn = styled.button`
@@ -26,6 +42,11 @@ const CancelBtn = styled.button`
   color: #fff;
   padding: 0.5rem;
   border-radius: 0.5rem;
+
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+  }
 `;
 
 const ActionButtons = styled.div`
@@ -54,7 +75,7 @@ function ChatForm({ user, isCreating, mutate }) {
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
       <FormRow label="Nume Complet" error={errors?.name?.message}>
-        <input
+        <StyledInput
           type="text"
           name="name"
           className="form-control"

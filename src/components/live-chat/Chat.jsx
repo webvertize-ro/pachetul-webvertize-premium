@@ -15,6 +15,10 @@ const StyledChat = styled.div`
   bottom: 10%;
   right: 1.5rem;
   z-index: 100;
+
+  @media (max-width: 576px) {
+    bottom: 15%;
+  }
 `;
 
 function Chat() {

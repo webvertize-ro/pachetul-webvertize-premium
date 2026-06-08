@@ -1,8 +1,5 @@
 import styled from "styled-components";
 import ChatForm from "./ChatForm";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteUser } from "../../services/apiUsers";
-import toast from "react-hot-toast";
 import ChatConversation from "./ChatConversation";
 import { faWindowMinimize } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,6 +16,12 @@ const StyledChatWindow = styled.div`
   border-radius: 0.5rem;
   width: 350px;
   aspect-ratio: 1 / 1.2;
+
+  @media (max-width: 576px) {
+    right: 75%;
+    bottom: 110%;
+    width: 275px;
+  }
 `;
 
 const ChatHeader = styled.div`
@@ -72,7 +75,7 @@ function ChatWindow({
   return (
     <StyledChatWindow>
       <ChatHeader>
-        <Logo dark="true" />
+        <Logo dark="true" width="100" />
         <ClosingButton onClick={() => onCloseWindow()}>
           <FontAwesomeIcon icon={faWindowMinimize} />
         </ClosingButton>
