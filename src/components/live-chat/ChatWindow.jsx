@@ -21,7 +21,7 @@ const StyledChatWindow = styled.div`
     right: 75%;
     bottom: 110%;
     width: 275px;
-    aspect-ratio: 1 / 1.5;
+    aspect-ratio: 1 / 1.75;
   }
 `;
 

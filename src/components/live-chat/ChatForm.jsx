@@ -11,7 +11,6 @@ const StyledForm = styled.form`
   justify-content: space-around;
   flex: 20;
   padding: 1rem 2rem;
-
   @media (max-width: 576px) {
     padding: 0.5rem 1rem;
   }
