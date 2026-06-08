@@ -1,4 +1,3 @@
-import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import MessageSender from "./MessageSender";
 import Conversations from "./Conversations";
@@ -12,6 +11,8 @@ const StyledChatConversation = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
+  background: transparent;
+  overflow: hidden;
 `;
 
 function ChatConversation({ user, mutateMsg, mutateFile, isSending }) {

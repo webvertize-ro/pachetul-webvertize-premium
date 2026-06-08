@@ -17,17 +17,43 @@ const StyledForm = styled.form`
 `;
 
 const StyledInput = styled.input`
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border-radius: 6px;
+
+  &:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(96, 165, 232, 0.6);
+    color: #fff;
+    box-shadow: none;
+    outline: none;
+  }
+
   @media (max-width: 576px) {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 `;
 
 const StartConvoBtn = styled.button`
   border: none;
-  background-color: #1e5128;
-  color: #fff;
-  padding: 0.5rem;
+  background-color: #1a4f8a;
+  color: #e8f2ff;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
   border-radius: 0.5rem;
+
+  &:hover {
+    background-color: #2563b0;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 
   @media (max-width: 576px) {
     font-size: 0.9rem;
@@ -36,22 +62,32 @@ const StartConvoBtn = styled.button`
 `;
 
 const CancelBtn = styled.button`
-  border: none;
-  background-color: #740a03;
-  color: #fff;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  border: 0.5px solid rgba(168, 212, 245, 0.25);
+  background-color: transparent;
+  color: rgba(168, 212, 245, 0.7);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    border-color: rgba(168, 212, 245, 0.6);
+    color: #fff;
+  }
 
   @media (max-width: 576px) {
-    font-size: 0.9rem;
-    padding: 0.4rem;
+    font-size: 0.8rem;
+    padding: 8px;
   }
 `;
 
 const ActionButtons = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.5rem;
 `;
 
 function ChatForm({ user, isCreating, mutate }) {
@@ -84,7 +120,7 @@ function ChatForm({ user, isCreating, mutate }) {
         />
       </FormRow>
       <FormRow label="Număr de telefon" error={errors?.phone_number?.message}>
-        <input
+        <StyledInput
           type="text"
           name="phone_number"
           className="form-control"

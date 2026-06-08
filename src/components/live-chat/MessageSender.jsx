@@ -13,18 +13,22 @@ import LoadingSpinner from "../LoadingSpinner";
 
 const StyledMessageSender = styled.div`
   display: flex;
+  color: #fff;
   flex-direction: column;
   justify-content: center;
   padding: 0.5rem;
-  background-color: #0f828c;
-  color: #fff;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+  background-color: rgba(11, 34, 64, 0.6);
+  border-top: 0.5px solid rgba(168, 212, 245, 0.12);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 `;
 
 const ReplyToMessagePreview = styled.div`
-  background-color: rgba(92, 118, 109, 0.25);
-
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 2px solid #3b82d4;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: rgba(168, 212, 245, 0.75);
   width: 100%;
   padding: 1rem;
   position: relative;
@@ -35,14 +39,20 @@ const CancelReply = styled.button`
   top: 10px;
   right: 10px;
   border: none;
-  background-color: #740a03;
-  color: #fff;
+  background-color: rgba(168, 212, 245, 0.15);
+  border: 0.5px solid rgba(168, 212, 245, 0.2);
+  color: rgba(168, 212, 245, 0.8);
+  transition: background 0.2s ease;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 20px;
   height: 20px;
+
+  &:hover {
+    background: rgba(168, 212, 245, 0.25);
+  }
 `;
 
 const StyledFontAwesomeIconCancelBtn = styled(FontAwesomeIcon)`
@@ -56,27 +66,56 @@ const StyledForm = styled.form`
   padding: 0.25rem;
 `;
 
-const StyledInput = styled.input``;
+const StyledInput = styled.input`
+  background: rgba(255, 255, 255, 0.06);
+  border: 0.5px solid rgba(168, 212, 245, 0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.875rem;
+  padding: 6px 10px;
+
+  &::placeholder {
+    color: rgba(168, 212, 245, 0.35);
+  }
+
+  &:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(96, 165, 232, 0.5);
+    outline: none;
+    box-shadow: none;
+    color: #fff;
+  }
+`;
 
 const SendingButton = styled.button`
   border: none;
-  background-color: #75b06f;
-  color: #fff;
-  padding: 0.5rem;
+  background-color: #1a4f8a;
+  color: #e8f2ff;
+  padding: 6px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0.5rem;
-  font-size: 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: #2563b0;
+  }
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)``;
 
 const FileLabel = styled.label`
+  color: rgba(168, 212, 245, 0.6);
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+  cursor: pointer;
+
   &:hover {
-    cursor: pointer;
+    color: #fff;
   }
-  font-size: 1.2rem;
 `;
 
 const InputFile = styled.input`

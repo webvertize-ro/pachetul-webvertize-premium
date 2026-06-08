@@ -6,15 +6,34 @@ import MessageBubble from "./MessageBubble";
 import styled from "styled-components";
 import Message from "./Message";
 import { useFetcher } from "react-router";
+import LoadingSpinner from "../LoadingSpinner";
 
 const StyledConversations = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
   overflow-y: auto;
   max-height: 100%;
   padding: 1rem 0.75rem;
   height: 90%;
+  background: rgba(7, 20, 38, 0.3);
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(168, 212, 245, 0.2);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(168, 212, 245, 0.4);
+  }
 `;
 
 const InvisibleDiv = styled.div`
@@ -62,7 +81,12 @@ function Conversations({
     return () => clearTimeout(timer);
   }, [messages]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
 
   return (
     <StyledConversations>

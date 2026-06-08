@@ -5,13 +5,20 @@ const StyledFormRow = styled.div`
   margin-bottom: 0.5rem;
 
   @media (max-width: 576px) {
-    margin-bottom: 0;
+    margin-bottom: 0.35;
   }
 `;
 
 const StyledLabel = styled.label`
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(168, 212, 245, 0.7);
+  margin-bottom: 0.3rem;
+  display: block;
+
   @media (max-width: 576px) {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
 `;
 

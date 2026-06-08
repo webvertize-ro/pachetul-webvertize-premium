@@ -8,10 +8,19 @@ import styled from "styled-components";
 import Lightbox from "yet-another-react-lightbox";
 
 const FileLink = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   max-width: 150px;
   overflow-wrap: break-word;
-  position: relative;
-  color: #fff;
+  color: #a8d4f5;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #fff;
+  }
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -45,21 +54,22 @@ const ImageContainer = styled.div`
 `;
 
 const TextMessage = styled.div`
-  font-size: 1.25rem;
+  font-size: 0.875rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 `;
 
 const Date = styled.div`
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 400;
+  color: rgba(168, 212, 245, 0.45);
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 `;
 
 const StyledImg = styled.img`
   width: 100%;
-  max-width: 200px;
+  max-width: 150px;
   aspect-ratio: 1 / 1.2;
   object-fit: cover;
 `;
@@ -70,9 +80,14 @@ const ReplyMessageContainer = styled.div`
 `;
 
 const ReplyBox = styled.div`
-  margin-left: 1rem;
-  padding-left: 0.5rem;
-  border-left: 5px solid green;
+  margin-bottom: 0.4rem;
+  padding: 0.4rem 0.5rem;
+  border-left: 2px solid #3b82d4;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.75rem;
+  color: rgba(168, 212, 245, 0.7);
+  padding: 0.4rem 0.5rem;
 `;
 
 function Message({ msg, messages, replyMessage, datePrepared }) {

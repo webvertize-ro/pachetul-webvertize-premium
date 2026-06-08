@@ -11,12 +11,21 @@ const StyledMessageBubble = styled.div`
   align-self: ${(props) =>
     props.$isAdmin === "admin" ? "self-start" : "self-end"};
   background-color: ${(props) =>
-    props.$isAdmin === "admin" ? "#1F7D53" : "#16476A"};
+    props.$isAdmin === "admin"
+      ? "rgba(15, 47, 90, 0.9)"
+      : "rgba(26, 79, 138, 0.85)"};
   color: #fff;
   padding: 0.5rem;
   border-radius: 0.5rem;
   cursor: pointer;
   position: relative;
+  border: 0.5px solid
+    ${(props) =>
+      props.$isAdmin === "admin"
+        ? "rgba(168, 212, 245, 0.15)"
+        : "rgba(96, 165, 232, 0.25)"};
+  border-radius: ${(props) =>
+    props.$isAdmin === "admin" ? "4px 12px 12px 12px" : "12px 4px 12px 12px"};
 `;
 
 const ReplyToIcon = styled.div`
@@ -30,7 +39,9 @@ const ReplyToIcon = styled.div`
   padding: 0.25rem;
   z-index: 110;
   font-size: 0.75rem;
-  background-color: #393e46;
+  background-color: rgba(15, 47, 90, 0.95);
+  border: 0.5px solid rgba(168, 212, 245, 0.2);
+  color: rgba(168, 212, 245, 0.8);
   opacity: 0;
   transition: all 0.2s ease;
 
@@ -44,12 +55,13 @@ const UserName = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 0.25rem;
-  font-weight: 800;
-  font-size: 0.9rem;
+  font-weight: 500;
+  font-size: 0.75rem;
 `;
 
 const UserNameInner = styled.div`
   font-size: 0.75rem;
+  color: rgba(168, 212, 245, 0.65);
   display: flex;
   align-items: center;
   gap: 0.25rem;

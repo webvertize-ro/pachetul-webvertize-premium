@@ -4,6 +4,7 @@ import ChatConversation from "./ChatConversation";
 import { faWindowMinimize } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../Logo";
+import LoadingSpinner from "../LoadingSpinner";
 
 const StyledChatWindow = styled.div`
   display: flex;
@@ -12,16 +13,24 @@ const StyledChatWindow = styled.div`
   bottom: 100%;
   right: 110%;
   z-index: 110;
-  background-color: #fff;
-  border-radius: 0.5rem;
-  width: 350px;
+  background: rgba(15, 47, 90, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 0.5px solid rgba(168, 212, 245, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  border-radius: 12px;
+  width: 360px;
   aspect-ratio: 1 / 1.2;
 
   @media (max-width: 576px) {
-    right: 75%;
-    bottom: 110%;
-    width: 275px;
-    aspect-ratio: 1 / 1.75;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+    aspect-ratio: unset;
+    height: 85vh;
   }
 `;
 
@@ -29,13 +38,21 @@ const ChatHeader = styled.div`
   display: flex;
   flex: 1;
   border-bottom: 2px solid #1f7d53;
-  padding: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(11, 34, 64, 0.4);
 `;
 
 const ClosingButton = styled.button`
   border: none;
   background: transparent;
   margin-left: auto;
+  color: rgba(168, 212, 245, 0.65);
+
+  @media (min-width: 992px) {
+    &:hover {
+      color: #fff;
+    }
+  }
 `;
 
 function ChatWindow({
@@ -71,7 +88,12 @@ function ChatWindow({
   //   onError: (err) => toast.error(err.message),
   // });
 
-  if (isCreating) return <div>Loading...</div>;
+  if (isCreating)
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
 
   return (
     <StyledChatWindow>

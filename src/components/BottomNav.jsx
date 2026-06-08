@@ -1,13 +1,13 @@
-import { faWatchmanMonitoring } from '@fortawesome/free-brands-svg-icons';
+import { faWatchmanMonitoring } from "@fortawesome/free-brands-svg-icons";
 import {
   faClock,
   faPhone,
   faPhoneVolume,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
-import progrm from '../data/program.json';
-import { useEffect, useRef, useState } from 'react';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styled from "styled-components";
+import progrm from "../data/program.json";
+import { useEffect, useRef, useState } from "react";
 
 const StyledBottomNav = styled.div`
   display: none;
@@ -27,7 +27,7 @@ const StyledBottomNav = styled.div`
     margin-right: auto;
     width: 90%;
     padding: 0.75rem;
-    z-index: 110;
+    z-index: 90;
     gap: 0.5rem;
     /* glassmorphism effect */
     background: rgba(255, 255, 255, 0.2);
@@ -135,7 +135,7 @@ const ProgramLine = styled.li`
   display: flex;
   gap: 0.25rem;
   font-size: 1.1rem;
-  font-weight: ${(props) => (props.currenDay ? '800' : '400')};
+  font-weight: ${(props) => (props.currenDay ? "800" : "400")};
 `;
 
 const DayName = styled.div``;
@@ -148,13 +148,13 @@ function BottomNav() {
   const [programOpen, setProgramOpen] = useState(false);
   const ref = useRef(null);
   const days = [
-    'Duminică',
-    'Luni',
-    'Marți',
-    'Miercuri',
-    'Joi',
-    'Vineri',
-    'Sâmbătă',
+    "Duminică",
+    "Luni",
+    "Marți",
+    "Miercuri",
+    "Joi",
+    "Vineri",
+    "Sâmbătă",
   ];
   const currentDate = new Date();
   // currentDate.setTime(currentDate.getTime() + 24 * 60 * 60 * 1000);
@@ -170,8 +170,8 @@ function BottomNav() {
         }
       }
 
-      document.addEventListener('mousedown', handleClick);
-      return () => document.removeEventListener('mousedown', handleClick);
+      document.addEventListener("mousedown", handleClick);
+      return () => document.removeEventListener("mousedown", handleClick);
     }, [ref, callback]);
   }
 
@@ -190,7 +190,7 @@ function BottomNav() {
 
         <ProgramButton onClick={() => setProgramOpen((o) => !o)}>
           <StyledFontAwesomeIcon icon={faClock} />
-          <ScheduleText>{programOpen ? 'Închide' : 'Program'}</ScheduleText>
+          <ScheduleText>{programOpen ? "Închide" : "Program"}</ScheduleText>
         </ProgramButton>
       </ButtonsContainer>
 
