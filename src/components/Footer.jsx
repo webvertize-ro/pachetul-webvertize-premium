@@ -27,6 +27,7 @@ const StyledFooter = styled.footer`
 const StyledH6 = styled.h6`
   font-size: 1rem;
   letter-spacing: 0.02em;
+  margin: 0;
 `;
 
 const ColumnTitle = styled.h5`
@@ -139,7 +140,7 @@ function Footer() {
           <div className="col-md-4 my-3">
             <div className="d-flex align-items-center gap-1">
               <StyledH6 className="fw-bold">Despre</StyledH6>
-              <Logo width="100" />
+              {c(contentMap, "global.brand_name")}
             </div>
             <FooterP>{c(contentMap, "global.footer_description")}</FooterP>
           </div>

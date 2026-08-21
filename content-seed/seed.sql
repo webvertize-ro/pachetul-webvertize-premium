@@ -278,7 +278,7 @@ insert into content (website_id, page, section, key, label, value, content_type,
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'testimonials', 'written_reviews', 'review_6_name', 'Recenzie 6 — nume', 'Nume Client', 'text', 216),
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'testimonials', 'written_reviews', 'review_6_function', 'Recenzie 6 — funcție', 'Manager Proiect', 'text', 217),
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'testimonials', 'written_reviews', 'reviews_button_text', 'Recenzii — text buton Google', 'Scrie-ne o recenzie Google', 'text', 218),
-('3a955544-8bad-40b5-9728-86aa5a8def2d', 'testimonials', 'written_reviews', 'reviews_button_url', 'Recenzii — link buton Google', 'https://g.page/r/YOUR_GOOGLE_REVIEW_LINK', 'text', 219),
+('3a955544-8bad-40b5-9728-86aa5a8def2d', 'testimonials', 'written_reviews', 'reviews_button_url', 'Recenzii — link buton Google', 'https://google.com', 'text', 219),
 
 -- ============================================================
 -- BLOG PAGE (new in premium)
@@ -742,7 +742,7 @@ insert into content (website_id, page, section, key, label, value, content_type,
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'contact', 'contact_main', 'contact_item_3_title', 'Date contact 3 — titlu', 'Email', 'text', 609),
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'contact', 'contact_main', 'contact_item_3_value', 'Date contact 3 — valoare', 'contact@afacere.ro', 'text', 610),
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'contact', 'contact_main', 'contact_button_text', 'Contact — text buton', 'Cere o ofertă de preț', 'text', 611),
-('3a955544-8bad-40b5-9728-86aa5a8def2d', 'contact', 'contact_main', 'contact_maps_url', 'Contact — URL Google Maps iframe', 'https://www.google.com/maps/embed?pb=YOUR_EMBED_URL', 'text', 612),
+('3a955544-8bad-40b5-9728-86aa5a8def2d', 'contact', 'contact_main', 'contact_maps_url', 'Contact — URL Google Maps iframe', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91160.57954789398!2d26.012237353149644!3d44.43791870157616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f93abf3cad4f%3A0xac0632e37c9ca628!2sBucharest!5e0!3m2!1sen!2sro!4v1777384505894!5m2!1sen!2sro', 'text', 612),
 
 -- contact / street_view
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'contact', 'street_view', 'street_view_title', 'Vedere stradală — titlu', 'Găsește-ne ușor', 'text', 613),

@@ -4,6 +4,7 @@ import FormRow from "./FormRow";
 import styled from "styled-components";
 import Logo from "../Logo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfo, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 const StyledForm = styled.form`
   display: flex;
@@ -14,6 +15,21 @@ const StyledForm = styled.form`
   @media (max-width: 576px) {
     padding: 0.5rem 1rem;
   }
+`;
+
+const WelcomeH3 = styled.h3`
+  color: #e8f2ff;
+  display: flex;
+  justify-content: center;
+  font-weight: 600;
+`;
+
+const StyledP = styled.p`
+  color: #e8f2ff;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 0.8rem;
+  font-weight: 500;
 `;
 
 const StyledInput = styled.input`
@@ -109,6 +125,12 @@ function ChatForm({ user, isCreating, mutate }) {
 
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit, onError)}>
+      <div>
+        <WelcomeH3>Bun venit pe chat!</WelcomeH3>
+        <StyledP>
+          Completați formularul de mai jos pentru a începe o conversație live.
+        </StyledP>
+      </div>
       <FormRow label="Nume Complet" error={errors?.name?.message}>
         <StyledInput
           type="text"

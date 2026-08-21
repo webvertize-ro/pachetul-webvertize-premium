@@ -1,13 +1,8 @@
 import styled from "styled-components";
-import whyWorkWithUsPic from "../assets/images/why_work_with_us_pic.avif";
-import img400 from "../assets/images/why_work_with_us_pic-400.avif";
-import img800 from "../assets/images/why_work_with_us_pic-800.avif";
-import img1200 from "../assets/images/why_work_with_us_pic-1200.avif";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import Form from "./Form";
 import Modal from "./Modal";
-import reasons from "../data/reasons.json";
 import { useContent } from "../hooks/useContent";
 import { c } from "../utils/content";
 

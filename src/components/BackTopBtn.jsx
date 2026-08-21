@@ -1,7 +1,7 @@
-import { faCircleUp } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { faCircleUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
 
 const StyledButton = styled.button`
   display: flex;
@@ -35,9 +35,9 @@ function BackTopBtn() {
       setShowButton(scrollTop > 35);
     }
 
-    window.addEventListener('scroll', handleScrollButton);
+    window.addEventListener("scroll", handleScrollButton);
 
-    return () => window.removeEventListener('scroll', handleScrollButton);
+    return () => window.removeEventListener("scroll", handleScrollButton);
   }, []);
 
   return (
