@@ -804,3 +804,5 @@ insert into content (website_id, page, section, key, label, value, content_type,
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'too-many-requests', 'too-many-requests-section', 'too-many-requests-paragraph-2', 'Pagina de Prea Multe Solicitări - Paragraful 2', 'Dacă este o urgență, ne puteți contacta direct la numărul de telefon 0712345678. Mulțumim pentru înțelegere!', 'text', 653),
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'too-many-requests', 'too-many-requests-section', 'too-many-requests-button-text', 'Pagina de Prea Multe Solicitări - Buton Text', 'Înapoi pe pagina principală', 'text', 654),
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'too-many-requests', 'too-many-requests-section', 'too-many-requests-button-route', 'Pagina de Prea Multe Solicitări - Buton Rută', '/', 'text', 655);
+
+update content set width = 160 where website_id = '3a955544-8bad-40b5-9728-86aa5a8def2d' and key = 'logo';
