@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 const StyledImg = styled.img`
-  max-width: 75px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
   border: 2px solid #ccc;
+  object-fit: cover;
+  object-position: center top;
 `;
 
 function Avatar({ img }) {
