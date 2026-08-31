@@ -111,7 +111,7 @@ insert into content (website_id, page, section, key, label, value, content_type,
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'home', 'services', 'services_button_more_text', 'Servicii — buton Află mai multe text', 'Află mai multe', 'text', 8300),
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'home', 'services', 'services_button_more_route', 'Servicii — buton Află mai multe rută', '/services', 'text', 8300),
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'home', 'services', 'services_button_offer_text', 'Servicii — buton Cere ofertă text', 'Cere o ofertă de preț', 'text', 8400),
-('3a955544-8bad-40b5-9728-86aa5a8def2d', 'home', 'services', 'services_video_url', 'Servicii — URL video prezentare', '', 'text', 8500),
+('3a955544-8bad-40b5-9728-86aa5a8def2d', 'home', 'services', 'services_video_url', 'Servicii — URL video prezentare', '', 'video_url', 8500),
 ('3a955544-8bad-40b5-9728-86aa5a8def2d', 'home', 'services', 'services_video_button_text', 'Servicii — text buton video', 'Vezi prezentarea video', 'text', 8600),
 
 -- home / partners
