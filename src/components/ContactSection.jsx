@@ -184,7 +184,7 @@ function ContactSection() {
                   {c(contentMap, "contact.contact_button_text")}
                 </StyledButton>
               </Modal.Open>
-              <Modal.Window name="form-modal">
+              <Modal.Window name="form-modal" bgColor="rgba(59, 94, 117, 0.3)">
                 <Form />
               </Modal.Window>
             </Modal>

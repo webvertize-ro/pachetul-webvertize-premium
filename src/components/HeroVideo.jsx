@@ -144,7 +144,7 @@ const RequestOfferButton = styled.button`
 function HeroVideo() {
   const { contentMap } = useContent();
 
-  const videoSource = c(contentMap, `home.hero_video_url`);
+  const videoSource = c(contentMap, `home.hero_video_poster`);
 
   return (
     <StyledHeroVideo>

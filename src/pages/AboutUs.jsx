@@ -1,5 +1,4 @@
 import Hero from "../components/Hero";
-import aboutUsImage from "../assets/images/about_us_image.avif";
 import OurTeam from "../components/OurTeam";
 import OurMission from "../components/OurMission";
 import CTA from "../components/CTA";

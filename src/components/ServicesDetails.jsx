@@ -31,6 +31,8 @@ const Container = styled.div``;
 
 const Services = styled.div``;
 
+const CardWrapper = styled.div``;
+
 const StyledH2 = styled.h2`
   font-size: 2.2rem;
   font-weight: 500;
@@ -89,14 +91,14 @@ function ServicesDetails() {
         <Services className="row d-flex justify-content-center">
           {services.map((service, i) => {
             return (
-              <div key={i} className="col-12 col-md-6 col-lg-4 mb-4">
+              <CardWrapper key={i} className="col-12 col-md-6 col-lg-4 mb-4 ">
                 <Card
                   title={service.title}
                   text={service.description}
                   bg_img={service.bg_image}
                   icon={iconMap[service.icon]}
                 />
-              </div>
+              </CardWrapper>
             );
           })}
         </Services>

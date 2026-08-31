@@ -25,7 +25,6 @@ const Question = styled.div`
   cursor: pointer;
   border-radius: 0.75rem;
   gap: 0.75rem;
-  border-left: ${(props) => (props.isOpen ? "3px solid #3b82d4" : "unset")};
   padding-left: ${(props) => (props.isOpen ? "0.85rem" : "1rem")};
 `;
 

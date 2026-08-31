@@ -17,6 +17,8 @@ const StyledCard = styled.div`
   transition:
     transform 0.3s ease,
     border-color 0.3s ease;
+  display: flex;
+  justify-content: center;
 
   &:after {
     content: "";
